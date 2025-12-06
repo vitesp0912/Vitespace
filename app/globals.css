@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Import condensed bold font */
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  /* Hide cursor only on desktop non-touch devices */
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    body {
+      cursor: none;
+    }
+    
+    * {
+      cursor: none !important;
+    }
+  }
+
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+@layer utilities {
+  /* Noise texture overlay */
+ 
+  /* Monospace font for timestamp */
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Performance optimizations for smooth transitions */
+  .noise-bg {
+    will-change: auto;
+  }
+
+  /* Optimize motion animations */
+  @media (min-width: 1024px) {
+    .noise-bg {
+      will-change: transform, opacity;
+    }
+  }
+
+  /* Reduce motion for accessibility and performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Glassmorphism button */
+  .glass-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-button:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Text gradient */
+  .text-gray-light {
+    color: #808080;
+  }
+  
+  /* Smooth animations */
+  .transition-all-smooth {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Custom Cursor */
+  .custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff; /* solid white for consistent difference blend */
+    border: none; /* remove border to avoid blend artifacts */
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: difference;
+  }
+
+  .custom-cursor-pointer {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff; /* keep solid for proper inversion */
+  }
+}

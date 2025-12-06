@@ -1,0 +1,160 @@
+VITESPACE WEBSITE CONTENT
+================================
+
+SECTION 1: HERO SECTION
+------------------------
+Main Title: VITESPACE
+Subtitle: Digital Presence, Made Easy
+Description: Websites, systems, and automation — everything your business needs in one place
+
+
+SECTION 2: CORE OFFERING (Modern Websites for Modern Businesses)
+-----------------------------------------------------------------
+Main Title: Modern Websites for
+Secondary Title: Modern Businesses
+
+Cards (4 Feature Cards):
+
+Card 1:
+- Title: SPEED
+- Description: Lightning-fast load times
+
+Card 2:
+- Title: DESIGN
+- Description: Beautiful, modern interfaces
+
+Card 3:
+- Title: MOBILE-FIRST
+- Description: Perfect on every device
+
+Card 4:
+- Title: SEO-READY
+- Description: Built to be found
+
+
+SECTION 3: SERVICES (One-Stop Digital Solution)
+------------------------------------------------
+Main Title: One-Stop
+Secondary Title: Digital Solution
+
+Service Columns (3 Columns):
+
+Column 1 - PRESENCE:
+- Number: 01
+- Title: Presence
+- Subtitle: Website Engineering
+- Services:
+  • Websites
+  • SEO
+  • Modernization
+  • Brand-ready online identity
+
+Column 2 - SYSTEMS:
+- Number: 02
+- Title: Systems
+- Subtitle: Digital Systems
+- Services:
+  • CRM
+  • Operational tools
+  • Booking engines
+  • Dashboards
+
+Column 3 - AUTOMATION:
+- Number: 03
+- Title: Automation
+- Subtitle: Business Automation
+- Services:
+  • WhatsApp flows
+  • Email sequences
+  • Lead nurturing
+  • Internal task automation
+
+
+SECTION 4: WHAT WE HELP YOU WITH
+---------------------------------
+Main Title: What We Help You With
+
+Service Cards (6 Cards):
+
+Card 1:
+- Title: WEBSITES
+- Description: Custom-built digital presence
+
+Card 2:
+- Title: SEO
+- Description: Get found by your customers
+
+Card 3:
+- Title: AUTOMATION
+- Description: Save time, scale faster
+
+Card 4:
+- Title: CRM / DASHBOARDS
+- Description: Track what matters
+
+Card 5:
+- Title: ADS & MARKETING
+- Description: Reach the right audience
+
+Card 6:
+- Title: ADS & MARKETING
+- Description: Reach the right audience
+
+
+SECTION 5: BENEFITS (Why Choose VITESPACE)
+-------------------------------------------
+Main Title: Why Choose
+Secondary Title: VITESPACE
+
+Benefit Cards (4 Cards):
+
+Card 1:
+- Title: NO COMPLEXITY
+- Description: Simple, straightforward solutions that just work
+
+Card 2:
+- Title: CLEAR COMMUNICATION
+- Description: Always in the loop, no surprises
+
+Card 3:
+- Title: EVERYTHING HANDLED
+- Description: From start to finish, we take care of it all
+
+Card 4:
+- Title: PARTNER, NOT AGENCY
+- Description: We grow with you, not just deliver and disappear
+
+
+SECTION 6: HOW WE WORK
+-----------------------
+Main Title: How We Work
+
+Process Steps (3 Steps):
+
+Step 1:
+- Number: 01
+- Title: CONSULTATION
+- Description: We listen to your needs and goals
+
+Step 2:
+- Number: 02
+- Title: BUILD
+- Description: We craft your solution with care
+
+Step 3:
+- Number: 03
+- Title: LAUNCH
+- Description: You go live and start growing
+
+
+SECTION 7: FINAL CTA (Call to Action)
+--------------------------------------
+Main Title: Ready to
+Secondary Title: HUSTLE?
+Button Text: Start a Project
+Subtext: Let's build something great together
+
+
+================================
+END OF WEBSITE CONTENT
+================================
