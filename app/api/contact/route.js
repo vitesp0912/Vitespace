@@ -1,6 +1,19 @@
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 
+// HTML escape function to prevent XSS
+function escapeHtml(text) {
+  if (typeof text !== 'string') return '';
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 export async function POST(request) {
   try {
     const { name, phone, email, message } = await request.json();
@@ -12,6 +25,21 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    // Escape all user inputs to prevent XSS
+    const escapedName = escapeHtml(name);
+    const escapedPhone = escapeHtml(phone);
+    const escapedEmail = escapeHtml(email);
+    const escapedMessage = escapeHtml(message);
 
     // Create transporter using Gmail
     const transporter = nodemailer.createTransport({
@@ -26,8 +54,8 @@ export async function POST(request) {
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER, // Send to the same email
-      replyTo: email, // Allow replying directly to the sender
-      subject: `New Contact Form Submission from ${name}`,
+      replyTo: email, // Allow replying directly to the sender (email is validated by nodemailer)
+      subject: `New Contact Form Submission from ${escapedName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #333; padding-bottom: 10px;">
@@ -35,18 +63,18 @@ export async function POST(request) {
           </h2>
           
           <div style="margin-top: 20px;">
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Name:</strong> ${escapedName}</p>
+            <p><strong>Phone:</strong> ${escapedPhone}</p>
+            <p><strong>Email:</strong> <a href="mailto:${escapedEmail}">${escapedEmail}</a></p>
             <p><strong>Message:</strong></p>
             <div style="background-color: #f5f5f5; padding: 15px; border-left: 4px solid #333; margin-top: 10px;">
-              ${message.replace(/\n/g, '<br>')}
+              ${escapedMessage.replace(/\n/g, '<br>')}
             </div>
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px;">
             <p>This email was sent from the VITESPACE contact form.</p>
-            <p>You can reply directly to this email to respond to ${name}.</p>
+            <p>You can reply directly to this email to respond to ${escapedName}.</p>
           </div>
         </div>
       `,
