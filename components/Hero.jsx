@@ -30,8 +30,8 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 pt-20 sm:pt-24 pb-16 sm:pb-20 relative">
       <div className="container-content w-full max-w-4xl mx-auto">
-        {/* Left Aligned Content */}
-        <div className="space-y-6 sm:space-y-8 text-left">
+        {/* Left Aligned on Mobile, Center on Desktop */}
+        <div className="space-y-6 sm:space-y-8 text-left md:text-center">
             {/* Main Headline */}
             <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase"
@@ -48,7 +48,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <motion.p
-              className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl"
+              className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl md:mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -58,7 +58,7 @@ export default function Hero() {
 
             {/* CTA Row */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-start sm:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start md:items-center justify-start md:justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
