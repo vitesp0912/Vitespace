@@ -5,9 +5,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import MenuOverlay from '@/components/MenuOverlay';
 import Hero from '@/components/Hero';
+import TheProblem from '@/components/TheProblem';
 import Services from '@/components/Services';
-import CoreOffering from '@/components/CoreOffering';
-import WhatWeHelp from '@/components/WhatWeHelp';
+import HowItConnects from '@/components/HowItConnects';
 import Benefits from '@/components/Benefits';
 import HowItWorks from '@/components/HowItWorks';
 import FinalCTA from '@/components/FinalCTA';
@@ -19,8 +19,6 @@ export default function Home() {
   
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
-  const coreRef = useRef(null);
-  const whatWeHelpRef = useRef(null);
   const benefitsRef = useRef(null);
   const howItWorksRef = useRef(null);
   const ctaRef = useRef(null);
@@ -56,27 +54,6 @@ export default function Home() {
   const heroY = useTransform(heroScroll, [0, 1], enableParallax ? ["0%", "50%"] : ["0%", "0%"]);
   const heroOpacity = useTransform(heroScroll, [0, 0.5, 1], enableParallax ? [1, 0.8, 0.3] : [1, 1, 1]);
 
-  const { scrollYProgress: coreScroll } = useScroll({
-    target: coreRef,
-    offset: ["start end", "end start"]
-  });
-  const coreY = useTransform(coreScroll, [0, 1], enableParallax ? ["15%", "-15%"] : ["0%", "0%"]);
-  const coreBgY = useTransform(coreScroll, [0, 1], enableParallax ? ["0%", "30%"] : ["0%", "0%"]);
-  const coreOpacity = useTransform(coreScroll, [0, 0.5, 1], enableParallax ? [0.3, 1, 0.3] : [1, 1, 1]);
-
-  const { scrollYProgress: whatWeHelpScroll } = useScroll({
-    target: whatWeHelpRef,
-    offset: ["start end", "end start"]
-  });
-  const whatWeHelpY = useTransform(whatWeHelpScroll, [0, 1], enableParallax ? ["20%", "-20%"] : ["0%", "0%"]);
-
-  const { scrollYProgress: benefitsScroll } = useScroll({
-    target: benefitsRef,
-    offset: ["start end", "end start"]
-  });
-  const benefitsY = useTransform(benefitsScroll, [0, 1], enableParallax ? ["15%", "-15%"] : ["0%", "0%"]);
-  const benefitsBgY = useTransform(benefitsScroll, [0, 1], enableParallax ? ["0%", "30%"] : ["0%", "0%"]);
-  const benefitsOpacity = useTransform(benefitsScroll, [0, 0.5, 1], enableParallax ? [0.3, 1, 0.3] : [1, 1, 1]);
 
   const { scrollYProgress: howItWorksScroll } = useScroll({
     target: howItWorksRef,
@@ -120,87 +97,39 @@ export default function Home() {
         >
           <ParticlesComponent id="tsparticles-hero" />
         </motion.div>
+        {/* Dark Overlay - Bottom Half */}
+        <div className="absolute inset-0 z-[15] pointer-events-none">
+          <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-black/95 via-black/70 via-black/50 to-transparent"></div>
+        </div>
         {/* Content */}
         <div className="relative z-20">
           <Hero />
         </div>
       </div>
       
-      {/* 2. Services Section - Solid Background */}
+      {/* 2. The Problem Section - Solid Background */}
+      <div 
+        id="problem" 
+        className="relative bg-gradient-to-b from-black via-gray-900 to-black z-20"
+      >
+        <TheProblem />
+      </div>
+
+      {/* 3. Services Section - Solid Background */}
       <div 
         ref={servicesRef}
-        id="solutions" 
+        id="services" 
         className="relative bg-gradient-to-b from-black via-gray-900 to-black z-20"
       >
         <Services />
       </div>
 
-      {/* 3. Core Offering - Particles Background */}
-      <div ref={coreRef} className="relative min-h-screen noise-bg overflow-hidden z-10">
-        {/* Background Image */}
-        <motion.div 
-          className="absolute inset-0 z-0"
-          style={{ y: coreBgY, opacity: coreOpacity }}
-        >
-          <img 
-            src="/syn.png" 
-            alt="Core offering background" 
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        {/* Particles Layer */}
-        <motion.div 
-          className="absolute inset-0 z-5"
-          style={{ y: coreY }}
-        >
-          <ParticlesComponent id="tsparticles-core" />
-        </motion.div>
-        {/* Content */}
-        <motion.div 
-          className="relative z-10"
-          style={{ y: coreY }}
-        >
-          <CoreOffering />
-        </motion.div>
-      </div>
+      {/* 4. How It All Connects */}
+      <HowItConnects />
 
-      {/* 4. What We Help - Solid Background */}
-      <motion.div 
-        ref={whatWeHelpRef}
-        id="services" 
-        className="relative bg-gradient-to-b from-black via-gray-900 to-black z-20"
-        style={{ y: whatWeHelpY }}
-      >
-        <WhatWeHelp />
-      </motion.div>
-
-      {/* 5. Benefits - Particles Background */}
-      <div ref={benefitsRef} id="about" className="relative min-h-screen noise-bg overflow-hidden z-10">
-        {/* Background Image */}
-        <motion.div 
-          className="absolute inset-0 z-0"
-          style={{ y: benefitsBgY, opacity: benefitsOpacity }}
-        >
-          <img 
-            src="/synsun.png" 
-            alt="Benefits background" 
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        {/* Particles Layer */}
-        <motion.div 
-          className="absolute inset-0 z-5"
-          style={{ y: benefitsY }}
-        >
-          <ParticlesComponent id="tsparticles-benefits" />
-        </motion.div>
-        {/* Content */}
-        <motion.div 
-          className="relative z-10"
-          style={{ y: benefitsY }}
-        >
-          <Benefits />
-        </motion.div>
+      {/* 5. Benefits - Solid Black Background */}
+      <div ref={benefitsRef} id="about" className="relative bg-black z-20">
+        <Benefits />
       </div>
 
       {/* 6. How It Works - Solid Background */}

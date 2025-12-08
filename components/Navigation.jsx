@@ -4,30 +4,48 @@ import { useState, useEffect } from 'react';
 import EmailPopup from './EmailPopup';
 
 export default function Navigation({ onMenuClick }) {
-  const [time, setTime] = useState('');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      setTime(`${hours}:${minutes}:${seconds}`);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 10);
     };
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
 
-    return () => clearInterval(interval);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
-      <div className="flex items-center justify-between">
-        {/* Left: Timestamp */}
-        <div className="mono text-xs md:text-sm text-white tracking-wider">
-          LOCAL/{time}
+      {/* Vignette Overlay */}
+      {isScrolled && (
+        <>
+          <div 
+            className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(ellipse at center top, transparent 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.8) 100%)',
+              backdropFilter: 'blur(8px)',
+            }}
+          />
+          {/* Blurry Bottom Border */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-px pointer-events-none transition-opacity duration-300"
+            style={{
+              background: 'linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 80%, transparent 100%)',
+              filter: 'blur(4px)',
+              transform: 'scaleY(2)',
+            }}
+          />
+        </>
+      )}
+      <div className="relative flex items-center justify-between">
+        {/* Left: Logo */}
+        <div className="text-xl md:text-2xl font-semibold tracking-wider text-white">
+          VITESPACE
         </div>
 
         {/* Center: Menu Button */}

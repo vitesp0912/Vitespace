@@ -1,23 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { ConsultationIcon, BuildIcon, RocketIcon } from './Icons';
 
 export default function HowItWorks() {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   const steps = [
     {
       number: '01',
-      title: 'Consultation',
+      title: 'Discover & Plan',
       icon: ConsultationIcon,
       items: [
         '45-60 minute discovery call',
@@ -27,7 +17,7 @@ export default function HowItWorks() {
     },
     {
       number: '02',
-      title: 'Build',
+      title: 'Build & Connect',
       icon: BuildIcon,
       items: [
         'Regular progress updates (weekly/bi-weekly)',
@@ -37,7 +27,7 @@ export default function HowItWorks() {
     },
     {
       number: '03',
-      title: 'Launch',
+      title: 'Launch & Support',
       icon: RocketIcon,
       items: [
         'Final review and training',
@@ -47,53 +37,84 @@ export default function HowItWorks() {
     },
   ];
 
-  return (
-    <section ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-20">
-      <motion.div 
-        className="w-full max-w-7xl mx-auto"
-        style={{ y, opacity }}
-      >
-        {/* Section Title */}
-        <motion.h2
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-20 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          How We Work
-        </motion.h2>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
-        {/* Steps (no card animations) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  return (
+    <section className="section-padding">
+      <div className="container-content">
+        {/* Section Title */}
+        <motion.div
+          className="mb-12 md:mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 uppercase">
+            How we work with you
+          </h2>
+          <p className="text-white/70 text-base max-w-2xl mx-auto">
+            A simple, transparent process from discovery to launch
+          </p>
+        </motion.div>
+
+        {/* Steps Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 relative hover:bg-white/15 transition-all duration-300"
+              variants={itemVariants}
+              className="group relative bg-white/5 border border-white/10 rounded-xl p-6 lg:p-8 hover:bg-white/8 hover:border-white/20 hover:scale-[1.02] transition-all duration-300 ease-premium"
             >
               {/* Step Number */}
-              <div className="text-6xl font-extrabold text-white opacity-20 mb-4">
+              <div className="absolute top-6 right-6 text-5xl lg:text-6xl font-extrabold text-white/10 group-hover:text-white/15 transition-colors">
                 {step.number}
               </div>
-              
+
               {/* Icon */}
-              <div className="mb-6 flex justify-start text-white opacity-60">
-                <step.icon className="w-16 h-16" />
+              <div className="mb-6 text-white/60 group-hover:text-white/80 transition-colors">
+                <step.icon className="w-12 h-12" />
               </div>
-              
+
               {/* Title */}
-              <h3 className="text-3xl md:text-4xl font-bold text-white uppercase mb-6">
+              <h3 className="text-xl lg:text-2xl font-semibold text-white mb-4 uppercase">
                 {step.title}
               </h3>
-              
+
               {/* Items List */}
               <ul className="space-y-3">
                 {step.items.map((item, itemIndex) => (
                   <li
                     key={itemIndex}
-                    className="flex items-start gap-3 text-white opacity-80 text-base leading-relaxed"
+                    className="flex items-start gap-3 text-white/80 text-sm leading-relaxed"
                   >
-                    <span className="text-white opacity-40 mt-1">•</span>
+                    <div className="mt-1.5 w-1.5 h-1.5 bg-white/60 rounded-full flex-shrink-0"></div>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -101,14 +122,14 @@ export default function HowItWorks() {
 
               {/* Connector Arrow (except last) */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2 text-white opacity-30 text-4xl">
+                <div className="hidden md:block absolute top-1/2 -right-4 lg:-right-6 transform -translate-y-1/2 text-white/30 text-2xl lg:text-3xl">
                   →
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,13 +1,21 @@
+/* Import Poppins font with all weights - must be before @tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Import condensed bold font */
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * {
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
   
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #000000;
     color: #ffffff;
   }
@@ -22,13 +30,6 @@
       cursor: none !important;
     }
   }
-
-  * {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
 }
 
 @layer utilities {
@@ -36,7 +37,7 @@
  
   /* Monospace font for timestamp */
   .mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Poppins', sans-serif;
   }
 
   /* Performance optimizations for smooth transitions */
@@ -81,6 +82,48 @@
   /* Smooth animations */
   .transition-all-smooth {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Design System - Container */
+  .container-content {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-content {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Design System - Section Padding */
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 7.5rem;
+      padding-bottom: 7.5rem;
+    }
+  }
+
+  /* Design System - Typography Scale */
+  .text-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Premium easing */
+  .ease-premium {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   /* Custom Cursor */

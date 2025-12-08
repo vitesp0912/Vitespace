@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function EmailPopup({ isOpen, onClose }) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -38,14 +41,20 @@ export default function EmailPopup({ isOpen, onClose }) {
     // Reset after 2 seconds and close
     setTimeout(() => {
       setSubmitted(false);
+      setName('');
+      setPhone('');
       setEmail('');
+      setMessage('');
       onClose();
     }, 2000);
   };
 
   const handleClose = () => {
     if (!isSubmitting) {
+      setName('');
+      setPhone('');
       setEmail('');
+      setMessage('');
       setSubmitted(false);
       onClose();
     }
@@ -75,7 +84,7 @@ export default function EmailPopup({ isOpen, onClose }) {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-black border-2 border-white/20 rounded-2xl p-8 md:p-12 max-w-md w-full shadow-2xl backdrop-blur-xl"
+              className="bg-black border-2 border-white/20 rounded-2xl p-8 md:p-12 max-w-lg w-full shadow-2xl backdrop-blur-xl"
             >
               {!submitted ? (
                 <>
@@ -94,10 +103,33 @@ export default function EmailPopup({ isOpen, onClose }) {
                     Let's Connect
                   </h2>
                   <p className="text-white/70 mb-8">
-                    Enter your email and we'll get back to you within 24 hours.
+                    Fill in your details and we'll get back to you within 24 hours.
                   </p>
 
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Name Field */}
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your Name"
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                    />
+
+                    {/* Phone Number Field */}
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Phone Number"
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                    />
+
+                    {/* Email Field */}
                     <input
                       type="email"
                       value={email}
@@ -105,13 +137,24 @@ export default function EmailPopup({ isOpen, onClose }) {
                       placeholder="your.email@example.com"
                       required
                       disabled={isSubmitting}
-                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 mb-6 transition-colors disabled:opacity-50"
+                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                    />
+
+                    {/* Message Field */}
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Tell us about your project or how we can help..."
+                      rows={4}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50 resize-none"
                     />
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-black font-bold text-lg uppercase tracking-wider py-4 rounded-lg hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-white text-black font-bold text-lg uppercase tracking-wider py-4 rounded-full hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">

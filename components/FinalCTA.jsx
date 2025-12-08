@@ -1,73 +1,85 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import EmailPopup from './EmailPopup';
 
 export default function FinalCTA() {
-  const sectionRef = useRef(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-20">
-      <motion.div 
-        className="w-full max-w-5xl mx-auto text-center"
-        style={{ y, opacity }}
-      >
-        {/* Main CTA Title */}
-        <motion.h2
-          className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white uppercase tracking-tight mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          Ready to
-        </motion.h2>
-        <motion.h3
-          className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white uppercase tracking-tight mb-16 opacity-60"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.6 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-        >
-          HUSTLE?
-        </motion.h3>
-
-        {/* CTA Button */}
+    <section className="section-padding min-h-screen flex flex-col justify-center">
+      <div className="container-content max-w-4xl mx-auto text-center">
+        {/* Label */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-4"
         >
-          <button 
-            onClick={() => setIsPopupOpen(true)}
-            className="group relative bg-white text-black font-bold text-xl md:text-2xl uppercase tracking-wider px-16 py-6 rounded-full hover:bg-gray-200 transition-all duration-300 overflow-hidden"
-          >
-            <span className="relative z-10">Start a Project</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
+          <span className="text-eyebrow text-white/60">NEXT STEP</span>
         </motion.div>
+
+        {/* Main Heading */}
+        <motion.h2
+          className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6 uppercase"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          Ready to bring your business online the right way?
+        </motion.h2>
 
         {/* Subtext */}
         <motion.p
-          className="text-white opacity-60 text-lg mt-8 max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.6 }}
+          className="text-white/80 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          Let's build something great together
+          Tell us where you are stuck, we'll show you a clear, simple plan.
         </motion.p>
-      </motion.div>
+
+        {/* Primary CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6"
+        >
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="group relative px-10 py-5 bg-white text-black font-semibold text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium"
+          >
+            <span className="relative z-10">Book Your Free Strategy Call</span>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={false}
+            />
+          </button>
+        </motion.div>
+
+        {/* Secondary Link */}
+        <motion.p
+          className="text-white/60 text-sm"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          Just need to talk first?{' '}
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="underline underline-offset-4 hover:text-white/80 transition-colors"
+          >
+            Contact us
+          </button>
+        </motion.p>
+      </div>
 
       {/* Email Popup */}
       <EmailPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

@@ -26,7 +26,6 @@ export default function MenuOverlay({ isOpen, onClose }) {
   // Section links for smooth scrolling
   const menuItems = [
     { label: 'HOME', href: '#home' },
-    { label: 'SOLUTIONS', href: '#solutions' },
     { label: 'SERVICES', href: '#services' },
     { label: 'ABOUT', href: '#about' },
     { label: 'CONTACT', href: '#contact' },

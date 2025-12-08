@@ -29,7 +29,7 @@ export default function CoreOffering() {
       >
         {/* Main Title (non-card text animations, re-trigger on view) */}
         <motion.h2
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-6 drop-shadow-[0_0_20px_white]"
+          className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-6"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -63,7 +63,7 @@ export default function CoreOffering() {
       "
     >
       <div className="mb-4 flex justify-center text-white">
-        <feature.icon className="w-16 h-16 text-white brightness-200 drop-shadow-[0_0_10px_white]" />
+        <feature.icon className="w-16 h-16 text-white" />
       </div>
       <h4 className="text-2xl font-bold text-white tracking-wide uppercase mb-2">
         {feature.title}

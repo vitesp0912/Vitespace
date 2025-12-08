@@ -1,7 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { CheckShieldIcon, ConsultationIcon, PackageIcon, HeartHandshakeIcon } from '@/components/Icons';
 
 const iconMap = {
@@ -12,15 +11,6 @@ const iconMap = {
 };
 
 export default function Benefits() {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   const benefits = [
     {
       icon: 'speed',
@@ -48,80 +38,91 @@ export default function Benefits() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
   return (
-    <section ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-20">
-      <motion.div 
-        className="w-full max-w-7xl mx-auto"
-        style={{ y, opacity }}
-      >
-        {/* Section Title */}
+    <section className="section-padding">
+      <div className="container-content">
+        {/* Centered Heading Section */}
         <motion.div
-          className="mb-20 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-12 md:mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-<h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-  Why Choose
-</h2>
-<h3 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-8 drop-shadow-[0_0_30px_rgba(255,255,255,0.35)]">
-  VITESPACE
-</h3>
-<p className="text-white/80 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
-  VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
-</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 uppercase">
+            Our Core Values
+          </h2>
+          <p className="text-white/80 text-base leading-relaxed max-w-3xl mx-auto">
+            VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
+          </p>
         </motion.div>
 
-        {/* Benefits Grid (no card animations) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Benefits Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+        >
           {benefits.map((benefit, index) => {
             const Icon = iconMap[benefit.icon];
             return (
-              <div
+              <motion.div
                 key={index}
-                className="
-                  bg-black/70 
-                  border border-white/15 
-                  backdrop-blur-lg 
-                  rounded-2xl 
-                  p-12
-                  hover:bg-black/80
-                  hover:border-white/25
-                  transition-all duration-300
-                "
+                variants={itemVariants}
+                className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/8 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 ease-premium"
               >
                 {/* Icon */}
                 {Icon && (
-                  <div className="text-white opacity-60 mb-6">
-                    <Icon className="w-14 h-14" />
+                  <div className="text-white/60 mb-4">
+                    <Icon className="w-10 h-10" />
                   </div>
                 )}
-                
+
                 {/* Title */}
-                <h3 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] mb-4">
+                <h3 className="text-xl font-semibold text-white mb-2 uppercase">
                   {benefit.title}
                 </h3>
-                
+
                 {/* Description */}
-                <p className="text-white/70 text-lg leading-relaxed tracking-tight mb-6">
+                <p className="text-white/70 text-sm leading-relaxed mb-4">
                   {benefit.description}
                 </p>
-                
+
                 {/* How Section */}
-                <div className="pt-6 border-t border-white/10">
-                  <h4 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-3">
-                    How we do this:
-                  </h4>
-                  <p className="text-white/60 text-base leading-relaxed">
+                <div className="pt-4 border-t border-white/10">
+                  <p className="text-white/60 text-sm leading-relaxed">
                     {benefit.how}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
