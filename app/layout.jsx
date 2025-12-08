@@ -46,11 +46,6 @@ export const metadata = {
   publisher: siteName,
   applicationName: siteName,
   referrer: 'origin-when-cross-origin',
-  colorScheme: 'dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#000000' },
-    { media: '(prefers-color-scheme: light)', color: '#000000' },
-  ],
   formatDetection: {
     email: false,
     address: false,
@@ -127,6 +122,17 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    { media: '(prefers-color-scheme: light)', color: '#000000' },
+  ],
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -134,8 +140,6 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon_io%20(3)/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon_io%20(3)/apple-touch-icon.png" />
         <link rel="canonical" href={siteUrl} />
-        <meta name="theme-color" content="#000000" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="IN" />
         <meta name="language" content="English" />
