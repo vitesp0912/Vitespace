@@ -21,12 +21,12 @@ export default function TheProblem() {
       icon: SettingsIcon,
       category: 'MARKETING',
       title: 'Marketing fails because the website isn\'t set up for it.',
-      description: 'No tracking, no landing pages, no SEO foundation — results feel random.',
+      description: 'No tracking, no landing pages, no SEO foundation - results feel random.',
     },
     {
       icon: BotIcon,
       category: 'OPERATIONS',
-      title: 'Every enquiry needs manual follow-up — most get missed.',
+      title: 'Every enquiry needs manual follow-up - most get missed.',
       description: 'Without CRM or automation, leads slip away every day.',
     },
   ];

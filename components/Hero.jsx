@@ -53,7 +53,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              We handle everything your business needs to go digital—so you can focus on running the business, not handling the tech.
+              We handle everything your business needs to go digital - so you can focus on running the business, not handling the tech.
             </motion.p>
 
             {/* CTA Row */}

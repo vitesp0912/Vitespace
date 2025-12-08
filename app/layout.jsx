@@ -1,6 +1,7 @@
 import './globals.css';
 import CustomCursor from '@/assets/CustomCursor';
 import StructuredData from '@/components/StructuredData';
+import { Analytics } from '@vercel/analytics/react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
 const siteName = 'VITESPACE';
@@ -100,14 +101,14 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon_io (3)/favicon.ico', sizes: 'any' },
-      { url: '/favicon_io (3)/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon_io (3)/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon_io (3)/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/favicon_io (3)/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon_io%20(3)/favicon.ico', sizes: 'any' },
+      { url: '/favicon_io%20(3)/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon_io%20(3)/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon_io%20(3)/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon_io%20(3)/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
-      { url: '/favicon_io (3)/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon_io%20(3)/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   verification: {
@@ -130,8 +131,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon_io (3)/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon_io (3)/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon_io%20(3)/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon_io%20(3)/apple-touch-icon.png" />
         <link rel="canonical" href={siteUrl} />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -148,6 +149,8 @@ export default function RootLayout({ children }) {
         {children}
         {/* Site-wide custom cursor */}
         <CustomCursor />
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
