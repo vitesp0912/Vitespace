@@ -23,7 +23,7 @@ export default function FinalCTA() {
 
         {/* Main Heading */}
         <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6 uppercase"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight mb-4 sm:mb-6 uppercase px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -34,7 +34,7 @@ export default function FinalCTA() {
 
         {/* Subtext */}
         <motion.p
-          className="text-white/80 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-white/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -49,11 +49,11 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6"
+          className="mb-4 sm:mb-6 px-4"
         >
           <button
             onClick={() => setIsPopupOpen(true)}
-            className="group relative px-10 py-5 bg-white text-black font-semibold text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium"
+            className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-black font-semibold text-sm sm:text-base md:text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto"
           >
             <span className="relative z-10">Book Your Free Strategy Call</span>
             <motion.div
@@ -72,12 +72,12 @@ export default function FinalCTA() {
           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           Just need to talk first?{' '}
-          <button
-            onClick={() => setIsPopupOpen(true)}
+          <a
+            href="tel:8700117495"
             className="underline underline-offset-4 hover:text-white/80 transition-colors"
           >
             Contact us
-          </button>
+          </a>
         </motion.p>
       </div>
 

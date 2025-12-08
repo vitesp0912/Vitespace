@@ -71,10 +71,10 @@ export default function Benefits() {
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-3 sm:mb-4 uppercase px-4">
             Our Core Values
           </h2>
-          <p className="text-white/80 text-base leading-relaxed max-w-3xl mx-auto">
+          <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto px-4">
             VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
           </p>
         </motion.div>
@@ -93,28 +93,28 @@ export default function Benefits() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/8 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 ease-premium"
+                className="bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/8 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 ease-premium"
               >
                 {/* Icon */}
                 {Icon && (
-                  <div className="text-white/60 mb-4">
-                    <Icon className="w-10 h-10" />
+                  <div className="text-white/60 mb-3 sm:mb-4">
+                    <Icon className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
                 )}
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-2 uppercase">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-1.5 sm:mb-2 uppercase">
                   {benefit.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/70 text-sm leading-relaxed mb-4">
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                   {benefit.description}
                 </p>
 
                 {/* How Section */}
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-white/60 text-sm leading-relaxed">
+                <div className="pt-3 sm:pt-4 border-t border-white/10">
+                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
                     {benefit.how}
                   </p>
                 </div>

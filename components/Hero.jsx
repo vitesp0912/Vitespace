@@ -25,13 +25,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-24 pb-20 relative">
+    <section className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 pt-20 sm:pt-24 pb-16 sm:pb-20 relative">
       <div className="container-content w-full max-w-4xl mx-auto">
-        {/* Centered Content */}
-        <div className="space-y-8 text-center">
+        {/* Left Aligned Content */}
+        <div className="space-y-6 sm:space-y-8 text-left">
             {/* Main Headline */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -45,7 +45,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <motion.p
-              className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto"
+              className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -55,7 +55,7 @@ export default function Hero() {
 
             {/* CTA Row */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 items-center justify-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-start sm:justify-start px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -63,7 +63,7 @@ export default function Hero() {
               <button
                 ref={primaryButtonRef}
                 onClick={() => setIsPopupOpen(true)}
-                className="px-6 py-3 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium w-full sm:w-auto"
               >
                 Book a Free Strategy Call
               </button>
@@ -75,7 +75,7 @@ export default function Hero() {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className="px-6 py-3 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium sm:w-auto"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium sm:w-auto"
                 style={buttonWidth ? { width: `${buttonWidth}px` } : {}}
               >
                 View Services

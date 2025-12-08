@@ -162,10 +162,10 @@ export default function Services() {
           <div className="mb-4">
             <span className="text-eyebrow text-white/60">SERVICES</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-3 sm:mb-4 uppercase px-4">
             Everything you need to go digital - under one roof.
           </h2>
-          <p className="text-white/70 text-base max-w-2xl">
+          <p className="text-white/70 text-sm sm:text-base max-w-2xl px-4">
             From websites to automation, we handle it all so you can focus on your business.
           </p>
         </motion.div>

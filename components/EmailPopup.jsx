@@ -32,21 +32,43 @@ export default function EmailPopup({ isOpen, onClose }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call - replace with your actual email submission logic
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      const data = await response.json();
 
-    // Reset after 2 seconds and close
-    setTimeout(() => {
-      setSubmitted(false);
-      setName('');
-      setPhone('');
-      setEmail('');
-      setMessage('');
-      onClose();
-    }, 2000);
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setIsSubmitting(false);
+      setSubmitted(true);
+
+      // Reset after 2 seconds and close
+      setTimeout(() => {
+        setSubmitted(false);
+        setName('');
+        setPhone('');
+        setEmail('');
+        setMessage('');
+        onClose();
+      }, 2000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      alert('Failed to send message. Please try again or contact us directly.');
+    }
   };
 
   const handleClose = () => {
@@ -84,29 +106,29 @@ export default function EmailPopup({ isOpen, onClose }) {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-black border-2 border-white/20 rounded-2xl p-8 md:p-12 max-w-lg w-full shadow-2xl backdrop-blur-xl"
+              className="bg-black border-2 border-white/20 rounded-2xl p-5 md:p-6 max-w-md w-full mx-4 shadow-2xl backdrop-blur-xl relative"
             >
               {!submitted ? (
                 <>
                   {/* Close button */}
                   <button
                     onClick={handleClose}
-                    className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+                    className="absolute top-3 right-3 text-white/60 hover:text-white transition-colors z-10"
                     disabled={isSubmitting}
                   >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
 
-                  <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-tight mb-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2 pr-8">
                     Let's Connect
                   </h2>
-                  <p className="text-white/70 mb-8">
+                  <p className="text-white/70 text-sm md:text-base mb-5">
                     Fill in your details and we'll get back to you within 24 hours.
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
                     {/* Name Field */}
                     <input
                       type="text"
@@ -115,7 +137,7 @@ export default function EmailPopup({ isOpen, onClose }) {
                       placeholder="Your Name"
                       required
                       disabled={isSubmitting}
-                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
                     />
 
                     {/* Phone Number Field */}
@@ -126,7 +148,7 @@ export default function EmailPopup({ isOpen, onClose }) {
                       placeholder="Phone Number"
                       required
                       disabled={isSubmitting}
-                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
                     />
 
                     {/* Email Field */}
@@ -137,7 +159,7 @@ export default function EmailPopup({ isOpen, onClose }) {
                       placeholder="your.email@example.com"
                       required
                       disabled={isSubmitting}
-                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
                     />
 
                     {/* Message Field */}
@@ -145,16 +167,16 @@ export default function EmailPopup({ isOpen, onClose }) {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tell us about your project or how we can help..."
-                      rows={4}
+                      rows={3}
                       required
                       disabled={isSubmitting}
-                      className="w-full px-6 py-4 rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50 resize-none"
+                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50 resize-none"
                     />
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-black font-bold text-lg uppercase tracking-wider py-4 rounded-full hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-white text-black font-bold text-sm md:text-base uppercase tracking-wider py-2.5 md:py-3 rounded-full hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">
@@ -174,15 +196,15 @@ export default function EmailPopup({ isOpen, onClose }) {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-8"
+                  className="text-center py-6"
                 >
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Success!</h3>
-                  <p className="text-white/70">We'll be in touch soon.</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Success!</h3>
+                  <p className="text-white/70 text-sm md:text-base">We'll be in touch soon.</p>
                 </motion.div>
               )}
             </div>

@@ -64,10 +64,10 @@ export default function HowItConnects() {
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight text-center uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight text-center uppercase px-4">
             How It All Connects
           </h2>
-          <p className="text-white/70 text-base text-center mt-4 max-w-2xl mx-auto">
+          <p className="text-white/70 text-sm sm:text-base text-center mt-3 sm:mt-4 max-w-2xl mx-auto px-4">
             A complete system that grows with your business
           </p>
         </motion.div>

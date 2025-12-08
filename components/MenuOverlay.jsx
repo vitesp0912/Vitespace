@@ -93,31 +93,34 @@ export default function MenuOverlay({ isOpen, onClose }) {
             })}
           </div>
 
-          {/* BOTTOM-LEFT COPYRIGHT */}
-          <div className="absolute bottom-10 left-10 text-xs tracking-wider text-gray-300">
-            ©2024 ALL RIGHTS RESERVED
-          </div>
+          {/* BOTTOM SECTION - Stacked on mobile, side by side on desktop */}
+          <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between gap-4 sm:gap-0">
+            {/* COPYRIGHT */}
+            <div className="text-xs tracking-wider text-gray-300 text-center sm:text-left order-2 sm:order-1">
+              ©2025 ALL RIGHTS RESERVED
+            </div>
 
-          {/* BOTTOM-RIGHT SOCIAL LINKS */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="absolute bottom-10 right-10 flex gap-8 text-xs tracking-wider"
-          >
-            {socialLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-gray-300 hover:text-white"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {link.name}
-              </a>
-            ))}
-          </motion.div>
+            {/* SOCIAL LINKS */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex gap-6 sm:gap-8 text-xs tracking-wider justify-center sm:justify-start order-1 sm:order-2"
+            >
+              {socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

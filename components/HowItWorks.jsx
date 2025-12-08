@@ -70,10 +70,10 @@ export default function HowItWorks() {
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-3 sm:mb-4 uppercase px-4">
             How we work with you
           </h2>
-          <p className="text-white/70 text-base max-w-2xl mx-auto">
+          <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto px-4">
             A simple, transparent process from discovery to launch
           </p>
         </motion.div>
@@ -90,29 +90,29 @@ export default function HowItWorks() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative bg-white/5 border border-white/10 rounded-xl p-6 lg:p-8 hover:bg-white/8 hover:border-white/20 hover:scale-[1.02] transition-all duration-300 ease-premium"
+              className="group relative bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 lg:p-8 hover:bg-white/8 hover:border-white/20 hover:scale-[1.02] transition-all duration-300 ease-premium"
             >
               {/* Step Number */}
-              <div className="absolute top-6 right-6 text-5xl lg:text-6xl font-extrabold text-white/10 group-hover:text-white/15 transition-colors">
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white/10 group-hover:text-white/15 transition-colors">
                 {step.number}
               </div>
 
               {/* Icon */}
-              <div className="mb-6 text-white/60 group-hover:text-white/80 transition-colors">
-                <step.icon className="w-12 h-12" />
+              <div className="mb-4 sm:mb-6 text-white/60 group-hover:text-white/80 transition-colors">
+                <step.icon className="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
 
               {/* Title */}
-              <h3 className="text-xl lg:text-2xl font-semibold text-white mb-4 uppercase">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-3 sm:mb-4 uppercase pr-12 sm:pr-16">
                 {step.title}
               </h3>
 
               {/* Items List */}
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {step.items.map((item, itemIndex) => (
                   <li
                     key={itemIndex}
-                    className="flex items-start gap-3 text-white/80 text-sm leading-relaxed"
+                    className="flex items-start gap-2 sm:gap-3 text-white/80 text-xs sm:text-sm leading-relaxed"
                   >
                     <div className="mt-1.5 w-1.5 h-1.5 bg-white/60 rounded-full flex-shrink-0"></div>
                     <span>{item}</span>

@@ -20,7 +20,7 @@ export default function Navigation({ onMenuClick }) {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-12 py-4 sm:py-6">
       {/* Vignette Overlay */}
       {isScrolled && (
         <>
@@ -44,17 +44,17 @@ export default function Navigation({ onMenuClick }) {
       )}
       <div className="relative flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="text-xl md:text-2xl font-semibold tracking-wider text-white">
+        <div className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-white">
           VITESPACE
         </div>
 
         {/* Center: Menu Button */}
         <button
           onClick={onMenuClick}
-          className="relative p-4 hover:opacity-70 transition-opacity"
+          className="relative p-3 sm:p-4 hover:opacity-70 transition-opacity"
           aria-label="Toggle menu"
         >
-          <div className="relative w-5 h-5">
+          <div className="relative w-4 h-4 sm:w-5 sm:h-5">
             {/* Top dot */}
             <span className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full"></span>
             {/* Left dot */}
@@ -69,7 +69,7 @@ export default function Navigation({ onMenuClick }) {
         {/* Right: Contact Button */}
         <button 
           onClick={() => setIsPopupOpen(true)}
-          className="glass-button px-6 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wider"
+          className="glass-button px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-xs md:text-sm font-medium tracking-wider"
         >
           CONTACT NOW
         </button>
