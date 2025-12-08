@@ -44,8 +44,15 @@ export default function Navigation({ onMenuClick }) {
       )}
       <div className="relative flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-white">
-          VITESPACE
+        <div className="flex items-center gap-3">
+          <img 
+            src="/logo.png" 
+            alt="VITESPACE Logo" 
+            className="hidden md:block h-8 w-auto"
+          />
+          <div className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-white">
+            VITESPACE
+          </div>
         </div>
 
         {/* Center: Menu Button */}
