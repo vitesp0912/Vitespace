@@ -1,10 +1,10 @@
 'use client';
 
-import { GlobeIcon, SettingsIcon, ZapIcon } from '@/components/Icons';
+import { GlobeIcon, TargetIcon, ZapIcon } from '@/components/Icons';
 
 const iconMap = {
   globe: GlobeIcon,
-  settings: SettingsIcon,
+  settings: TargetIcon,
   zap: ZapIcon,
 };
 
@@ -12,10 +12,10 @@ export default function ServiceColumn({ icon, title, subtitle, description, item
   const IconComponent = iconMap[icon];
   
   return (
-    <div className="flex flex-col items-start space-y-6 group bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
+    <div className="flex flex-col items-start space-y-6 bg-white/10 backdrop-blur-sm rounded-2xl p-8">
       {/* Icon indicator */}
       <div className="flex items-center gap-4">
-        <div className="text-white opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+        <div className="text-white opacity-30">
           {IconComponent && <IconComponent className="w-16 h-16 md:w-20 md:h-20" />}
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function ServiceColumn({ icon, title, subtitle, description, item
       </p>
 
       {/* Divider line */}
-      <div className="w-12 h-[2px] bg-white opacity-30 group-hover:w-20 group-hover:opacity-60 transition-all duration-500"></div>
+      <div className="w-12 h-[2px] bg-white opacity-30"></div>
 
       {/* Description */}
       {description && (
@@ -45,7 +45,7 @@ export default function ServiceColumn({ icon, title, subtitle, description, item
         {items.map((item, index) => (
           <li
             key={index}
-            className="flex flex-col gap-1 text-sm md:text-base opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            className="flex flex-col gap-1 text-sm md:text-base opacity-80"
           >
             <span className="font-semibold text-white">{item.label}:</span>
             <span className="text-white/70 text-sm">{item.detail}</span>

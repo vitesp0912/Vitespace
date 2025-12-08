@@ -51,28 +51,33 @@ export default function Services() {
           className="mb-16 md:mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-4">
+          <motion.h2
+            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.5 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             One-Stop
-          </h2>
-          <h3 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white uppercase tracking-tight opacity-60">
+          </motion.h2>
+          <motion.h3
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white uppercase tracking-tight opacity-60"
+            initial={{ opacity: 0, y: -15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.08, ease: 'easeOut' }}
+          >
             Digital Solution
-          </h3>
+          </motion.h3>
         </motion.div>
 
-        {/* Three-Column Service Section */}
+        {/* Three-Column Service Section (no card animations) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="flex justify-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.08, ease: 'easeOut' }}
-            >
+            <div key={index} className="flex justify-center">
               <ServiceColumn
                 icon={service.icon}
                 title={service.title}
@@ -80,7 +85,7 @@ export default function Services() {
                 description={service.description}
                 items={service.items}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

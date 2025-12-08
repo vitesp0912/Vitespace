@@ -2,9 +2,27 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function MenuOverlay({ isOpen, onClose }) {
+  // Close menu on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   // Section links for smooth scrolling
   const menuItems = [
     { label: 'HOME', href: '#home' },

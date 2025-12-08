@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { ConsultationIcon, BuildIcon, LaunchIcon } from './Icons';
+import { ConsultationIcon, BuildIcon, RocketIcon } from './Icons';
 
 export default function HowItWorks() {
   const sectionRef = useRef(null);
@@ -18,20 +18,32 @@ export default function HowItWorks() {
     {
       number: '01',
       title: 'Consultation',
-      description: 'We listen to your needs and goals',
       icon: ConsultationIcon,
+      items: [
+        '45-60 minute discovery call',
+        'Needs analysis and goal setting',
+        'Preliminary strategy and timeline',
+      ],
     },
     {
       number: '02',
       title: 'Build',
-      description: 'We craft your solution with care',
       icon: BuildIcon,
+      items: [
+        'Regular progress updates (weekly/bi-weekly)',
+        'Feedback loops and revisions',
+        'Testing and optimization phase',
+      ],
     },
     {
       number: '03',
       title: 'Launch',
-      description: 'You go live and start growing',
-      icon: LaunchIcon,
+      icon: RocketIcon,
+      items: [
+        'Final review and training',
+        'Go-live support',
+        'Post-launch optimization and analytics setup',
+      ],
     },
   ];
 
@@ -46,22 +58,18 @@ export default function HowItWorks() {
           className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white uppercase tracking-tight mb-20 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: typeof window !== 'undefined' && window.innerWidth < 768, amount: 0.5 }}
+          viewport={{ amount: 0.5 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           How We Work
         </motion.h2>
 
-        {/* Steps */}
+        {/* Steps (no card animations) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 hover:bg-white/15 transition-all duration-300 relative"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: typeof window !== 'undefined' && window.innerWidth < 768, amount: 0.4 }}
-              transition={{ duration: 0.8, delay: 0.15 * index, ease: 'easeOut' }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 relative hover:bg-white/15 transition-all duration-300"
             >
               {/* Step Number */}
               <div className="text-6xl font-extrabold text-white opacity-20 mb-4">
@@ -69,19 +77,27 @@ export default function HowItWorks() {
               </div>
               
               {/* Icon */}
-              <div className="mb-6 flex justify-start text-white">
+              <div className="mb-6 flex justify-start text-white opacity-60">
                 <step.icon className="w-16 h-16" />
               </div>
               
               {/* Title */}
-              <h3 className="text-3xl md:text-4xl font-bold text-white uppercase mb-4">
+              <h3 className="text-3xl md:text-4xl font-bold text-white uppercase mb-6">
                 {step.title}
               </h3>
               
-              {/* Description */}
-              <p className="text-white opacity-80 text-lg leading-relaxed">
-                {step.description}
-              </p>
+              {/* Items List */}
+              <ul className="space-y-3">
+                {step.items.map((item, itemIndex) => (
+                  <li
+                    key={itemIndex}
+                    className="flex items-start gap-3 text-white opacity-80 text-base leading-relaxed"
+                  >
+                    <span className="text-white opacity-40 mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
               {/* Connector Arrow (except last) */}
               {index < steps.length - 1 && (
@@ -89,7 +105,7 @@ export default function HowItWorks() {
                   →
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </motion.div>

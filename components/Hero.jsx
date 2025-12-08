@@ -12,7 +12,7 @@ export default function Hero() {
           style={{ fontSize: '15vw', lineHeight: '0.8' }}
           initial={{ opacity: 0, y: -60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.6 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
         >
           VITESPACE
@@ -24,7 +24,7 @@ export default function Hero() {
           style={{ fontSize: '4.8vw', lineHeight: '1' }}
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.6 }}
           transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
         >
           Digital Presence, Made Easy
@@ -36,7 +36,7 @@ export default function Hero() {
           style={{ fontSize: '1.2vw' }}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.6 }}
           transition={{ duration: 0.9, delay: 0.25, ease: 'easeOut' }}
         >
           Websites, systems, and automation — everything your business needs in one place

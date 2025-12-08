@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import EmailPopup from './EmailPopup';
 
 export default function Navigation({ onMenuClick }) {
   const [time, setTime] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -48,17 +50,15 @@ export default function Navigation({ onMenuClick }) {
 
         {/* Right: Contact Button */}
         <button 
-          onClick={() => {
-            const element = document.querySelector('#contact');
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }}
+          onClick={() => setIsPopupOpen(true)}
           className="glass-button px-6 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wider"
         >
           CONTACT NOW
         </button>
       </div>
+
+      {/* Email Popup */}
+      <EmailPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </nav>
   );
 }

@@ -1,159 +1,251 @@
 VITESPACE WEBSITE CONTENT
 ================================
+Complete section-by-section breakdown of all content on the website
+
 
 SECTION 1: HERO SECTION
-------------------------
+========================
 Main Title: VITESPACE
 Subtitle: Digital Presence, Made Easy
 Description: Websites, systems, and automation — everything your business needs in one place
 
 
-SECTION 2: CORE OFFERING (Modern Websites for Modern Businesses)
------------------------------------------------------------------
-Main Title: Modern Websites for
-Secondary Title: Modern Businesses
+SECTION 2: CORE OFFERING
+=========================
+Main Section Title: Modern Websites for Modern Businesses
 
-Cards (4 Feature Cards):
+Heading 1: Modern Websites for
+Heading 2: Modern Businesses
 
-Card 1:
-- Title: SPEED
+Feature Cards (4 cards in grid layout):
+
+Card 1 - SPEED:
+- Icon: Speed Icon
+- Title: Speed
 - Description: Lightning-fast load times
 
-Card 2:
-- Title: DESIGN
+Card 2 - DESIGN:
+- Icon: Design Icon
+- Title: Design
 - Description: Beautiful, modern interfaces
 
-Card 3:
-- Title: MOBILE-FIRST
+Card 3 - MOBILE-FIRST:
+- Icon: Mobile Icon
+- Title: Mobile-First
 - Description: Perfect on every device
 
-Card 4:
-- Title: SEO-READY
+Card 4 - SEO-READY:
+- Icon: SEO Icon
+- Title: SEO-Ready
 - Description: Built to be found
 
 
 SECTION 3: SERVICES (One-Stop Digital Solution)
-------------------------------------------------
+================================================
 Main Title: One-Stop
 Secondary Title: Digital Solution
 
-Service Columns (3 Columns):
+Service Columns (3 main service pillars):
 
-Column 1 - PRESENCE:
-- Number: 01
-- Title: Presence
-- Subtitle: Website Engineering
-- Services:
-  • Websites
-  • SEO
-  • Modernization
-  • Brand-ready online identity
+COLUMN 1 - PRESENCE (Website Engineering):
+------------------------------------------
+Icon: Globe Icon
+Title: Presence
+Subtitle: Website Engineering
+Full Description: We build more than just websites — we create digital foundations. Starting with understanding your brand and audience, we engineer sites that convert visitors into customers while establishing your authority online.
 
-Column 2 - SYSTEMS:
-- Number: 02
-- Title: Systems
-- Subtitle: Digital Systems
-- Services:
-  • CRM
-  • Operational tools
-  • Booking engines
-  • Dashboards
+Service Items:
+1. Websites
+   - Detail: Custom WordPress, Webflow, or coded solutions
+   
+2. SEO
+   - Detail: Technical SEO, on-page optimization, local SEO
+   
+3. Modernization
+   - Detail: Update old sites with modern tech and design
+   
+4. Brand-ready
+   - Detail: Consistent visual identity across all pages
 
-Column 3 - AUTOMATION:
-- Number: 03
-- Title: Automation
-- Subtitle: Business Automation
-- Services:
-  • WhatsApp flows
-  • Email sequences
-  • Lead nurturing
-  • Internal task automation
+
+COLUMN 2 - SYSTEMS (Digital Systems):
+-------------------------------------
+Icon: Settings Icon
+Title: Systems
+Subtitle: Digital Systems
+Full Description: Streamline your operations with tailored digital systems that eliminate manual work and centralize your business data.
+
+Service Items:
+1. CRM
+   - Detail: HubSpot, Salesforce, or custom solutions
+   
+2. Operational tools
+   - Detail: Inventory, scheduling, project management
+   
+3. Booking engines
+   - Detail: Integrated appointment systems
+   
+4. Dashboards
+   - Detail: Real-time KPI tracking and reporting
+
+
+COLUMN 3 - AUTOMATION (Business Automation):
+--------------------------------------------
+Icon: Zap Icon
+Title: Automation
+Subtitle: Business Automation
+Full Description: Turn repetitive tasks into automated workflows that save hours each week and ensure nothing falls through the cracks.
+
+Service Items:
+1. WhatsApp flows
+   - Detail: Automated customer support and follow-ups
+   
+2. Email sequences
+   - Detail: Drip campaigns for lead nurturing
+   
+3. Lead nurturing
+   - Detail: Automated scoring and follow-up systems
+   
+4. Internal automation
+   - Detail: Report generation, notification systems
 
 
 SECTION 4: WHAT WE HELP YOU WITH
----------------------------------
+=================================
 Main Title: What We Help You With
 
-Service Cards (6 Cards):
+Service Cards (6 cards in grid layout):
 
-Card 1:
-- Title: WEBSITES
-- Description: Custom-built digital presence
+Card 1 - WEBSITES:
+- Icon: Code Icon
+- Title: Websites
+- Description: Custom-built websites with CMS, e-commerce capabilities, and conversion-focused design
 
-Card 2:
+Card 2 - SEO:
+- Icon: Search Plus Icon
 - Title: SEO
-- Description: Get found by your customers
+- Description: Technical audits, keyword strategy, and ongoing optimization to rank higher
 
-Card 3:
-- Title: AUTOMATION
-- Description: Save time, scale faster
+Card 3 - AUTOMATION:
+- Icon: Bot Icon
+- Title: Automation
+- Description: Zapier/Make integrations, custom bots, and workflow automation
 
-Card 4:
-- Title: CRM / DASHBOARDS
-- Description: Track what matters
+Card 4 - CRM / DASHBOARDS:
+- Icon: Database Icon
+- Title: CRM / Dashboards
+- Description: Sales pipeline setup, customer database systems, and performance dashboards
 
-Card 5:
-- Title: ADS & MARKETING
-- Description: Reach the right audience
+Card 5 - ADS & MARKETING:
+- Icon: Megaphone Icon
+- Title: Ads & Marketing
+- Description: Google Ads, Facebook/Instagram campaigns, and conversion tracking
 
-Card 6:
-- Title: ADS & MARKETING
-- Description: Reach the right audience
+Card 6 - CONTENT STRATEGY:
+- Icon: Pen Tool Icon
+- Title: Content Strategy
+- Description: Blog content, social media planning, and email marketing campaigns
 
 
-SECTION 5: BENEFITS (Why Choose VITESPACE)
--------------------------------------------
+SECTION 5: WHY CHOOSE VITESPACE
+================================
 Main Title: Why Choose
 Secondary Title: VITESPACE
 
-Benefit Cards (4 Cards):
+Introduction Paragraph:
+VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
 
-Card 1:
-- Title: NO COMPLEXITY
+Benefit Cards (4 cards in 2x2 grid):
+
+Card 1 - NO COMPLEXITY:
+- Icon: Check Shield Icon
+- Title: No Complexity
 - Description: Simple, straightforward solutions that just work
+- How We Do This: We explain everything in plain language, provide single-point contact, and handle all technical details so you can focus on your business
 
-Card 2:
-- Title: CLEAR COMMUNICATION
+Card 2 - CLEAR COMMUNICATION:
+- Icon: Consultation Icon
+- Title: Clear Communication
 - Description: Always in the loop, no surprises
+- How We Do This: Weekly updates, transparent pricing, and accessible support via your preferred channel (Slack, email, or calls)
 
-Card 3:
-- Title: EVERYTHING HANDLED
+Card 3 - EVERYTHING HANDLED:
+- Icon: Package Icon
+- Title: Everything Handled
 - Description: From start to finish, we take care of it all
+- How We Do This: End-to-end project management including hosting setup, domain configuration, security, and maintenance
 
-Card 4:
-- Title: PARTNER, NOT AGENCY
+Card 4 - PARTNER, NOT AGENCY:
+- Icon: Heart Handshake Icon
+- Title: Partner, Not Agency
 - Description: We grow with you, not just deliver and disappear
+- How We Do This: Ongoing support packages, regular check-ins, and strategic advice as your business evolves
 
 
 SECTION 6: HOW WE WORK
------------------------
+======================
 Main Title: How We Work
 
-Process Steps (3 Steps):
+Process Steps (3 steps with details):
 
-Step 1:
+STEP 1 - CONSULTATION:
 - Number: 01
-- Title: CONSULTATION
-- Description: We listen to your needs and goals
+- Icon: Consultation Icon
+- Title: Consultation
+- Details:
+  • 45-60 minute discovery call
+  • Needs analysis and goal setting
+  • Preliminary strategy and timeline
 
-Step 2:
+STEP 2 - BUILD:
 - Number: 02
-- Title: BUILD
-- Description: We craft your solution with care
+- Icon: Build Icon
+- Title: Build
+- Details:
+  • Regular progress updates (weekly/bi-weekly)
+  • Feedback loops and revisions
+  • Testing and optimization phase
 
-Step 3:
+STEP 3 - LAUNCH:
 - Number: 03
-- Title: LAUNCH
-- Description: You go live and start growing
+- Icon: Rocket Icon
+- Title: Launch
+- Details:
+  • Final review and training
+  • Go-live support
+  • Post-launch optimization and analytics setup
 
 
 SECTION 7: FINAL CTA (Call to Action)
---------------------------------------
+======================================
 Main Title: Ready to
 Secondary Title: HUSTLE?
-Button Text: Start a Project
+Call-to-Action Button: Start a Project
 Subtext: Let's build something great together
 
+Note: Button opens an email popup for project inquiries
+
+
+================================
+SUMMARY OF WEBSITE STRUCTURE
+================================
+Total Sections: 7
+1. Hero - Brand introduction
+2. Core Offering - 4 key features
+3. Services - 3 main service pillars with detailed breakdowns
+4. What We Help - 6 specific service offerings
+5. Benefits - 4 reasons to choose VITESPACE
+6. Process - 3-step workflow
+7. Final CTA - Project start invitation
+
+Total Cards/Items Across Site:
+- Hero: 1 main section
+- Core Offering: 4 feature cards
+- Services: 3 service columns (each with 4 sub-items = 12 total items)
+- What We Help: 6 service cards
+- Benefits: 4 benefit cards
+- How We Work: 3 process steps
+- Final CTA: 1 call-to-action
 
 ================================
 END OF WEBSITE CONTENT
