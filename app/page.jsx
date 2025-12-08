@@ -86,8 +86,10 @@ export default function Home() {
         >
           <img 
             src="/synth.png" 
-            alt="Hero background" 
+            alt="VITESPACE - Digital solutions background showcasing modern technology and business growth" 
             className="w-full h-full object-cover brightness-[0.75] contrast-[1.35]"
+            loading="eager"
+            fetchPriority="high"
           />
         </motion.div>
         {/* Particles Layer */}

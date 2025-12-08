@@ -11,17 +11,20 @@ export default function Hero() {
 
   useEffect(() => {
     const updateButtonWidth = () => {
-      if (primaryButtonRef.current && window.innerWidth < 640) {
+      if (primaryButtonRef.current) {
         const width = primaryButtonRef.current.offsetWidth;
         setButtonWidth(width);
-      } else {
-        setButtonWidth(null);
       }
     };
 
-    updateButtonWidth();
+    // Wait for component to render
+    const timer = setTimeout(updateButtonWidth, 0);
     window.addEventListener('resize', updateButtonWidth);
-    return () => window.removeEventListener('resize', updateButtonWidth);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateButtonWidth);
+    };
   }, []);
 
   return (
@@ -31,7 +34,7 @@ export default function Hero() {
         <div className="space-y-6 sm:space-y-8 text-left">
             {/* Main Headline */}
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase px-2"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -45,7 +48,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <motion.p
-              className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl px-4"
+              className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -55,7 +58,7 @@ export default function Hero() {
 
             {/* CTA Row */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-start sm:justify-start px-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-start sm:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -63,7 +66,7 @@ export default function Hero() {
               <button
                 ref={primaryButtonRef}
                 onClick={() => setIsPopupOpen(true)}
-                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium w-full sm:w-auto"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium whitespace-nowrap"
               >
                 Book a Free Strategy Call
               </button>
@@ -75,7 +78,7 @@ export default function Hero() {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium sm:w-auto"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-premium whitespace-nowrap"
                 style={buttonWidth ? { width: `${buttonWidth}px` } : {}}
               >
                 View Services
