@@ -131,7 +131,7 @@ export default function Home() {
 
       {/* 5. Benefits - Solid Black Background */}
       <div ref={benefitsRef} id="about" className="relative bg-black z-20">
-        <Benefits />
+          <Benefits />
       </div>
 
       {/* 6. How It Works - Solid Background */}

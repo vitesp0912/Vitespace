@@ -52,18 +52,18 @@ export default function EmailPopup({ isOpen, onClose }) {
         throw new Error(data.error || 'Failed to send message');
       }
 
-      setIsSubmitting(false);
-      setSubmitted(true);
+    setIsSubmitting(false);
+    setSubmitted(true);
 
-      // Reset after 2 seconds and close
-      setTimeout(() => {
-        setSubmitted(false);
+    // Reset after 2 seconds and close
+    setTimeout(() => {
+      setSubmitted(false);
         setName('');
         setPhone('');
-        setEmail('');
+      setEmail('');
         setMessage('');
-        onClose();
-      }, 2000);
+      onClose();
+    }, 2000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);

@@ -96,17 +96,17 @@ export default function HowItWorks() {
               <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white/10 group-hover:text-white/15 transition-colors">
                 {step.number}
               </div>
-
+              
               {/* Icon */}
               <div className="mb-4 sm:mb-6 text-white/60 group-hover:text-white/80 transition-colors">
                 <step.icon className="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
-
+              
               {/* Title */}
               <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-3 sm:mb-4 uppercase pr-12 sm:pr-16">
                 {step.title}
               </h3>
-
+              
               {/* Items List */}
               <ul className="space-y-2 sm:space-y-3">
                 {step.items.map((item, itemIndex) => (
@@ -129,7 +129,7 @@ export default function HowItWorks() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+        </div>
     </section>
   );
 }

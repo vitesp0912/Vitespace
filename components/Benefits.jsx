@@ -73,10 +73,10 @@ export default function Benefits() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-3 sm:mb-4 uppercase px-4">
             Our Core Values
-          </h2>
+</h2>
           <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto px-4">
-            VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
-          </p>
+  VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
+</p>
         </motion.div>
 
         {/* Benefits Grid */}
@@ -101,17 +101,17 @@ export default function Benefits() {
                     <Icon className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
                 )}
-
+                
                 {/* Title */}
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-1.5 sm:mb-2 uppercase">
                   {benefit.title}
                 </h3>
-
+                
                 {/* Description */}
                 <p className="text-white/70 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                   {benefit.description}
                 </p>
-
+                
                 {/* How Section */}
                 <div className="pt-3 sm:pt-4 border-t border-white/10">
                   <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
@@ -122,7 +122,7 @@ export default function Benefits() {
             );
           })}
         </motion.div>
-      </div>
+        </div>
     </section>
   );
 }

@@ -98,28 +98,28 @@ export default function MenuOverlay({ isOpen, onClose }) {
             {/* COPYRIGHT */}
             <div className="text-xs tracking-wider text-gray-300 text-center sm:text-left order-2 sm:order-1">
               ©2025 ALL RIGHTS RESERVED
-            </div>
+          </div>
 
             {/* SOCIAL LINKS */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
               className="flex gap-6 sm:gap-8 text-xs tracking-wider justify-center sm:justify-start order-1 sm:order-2"
-            >
-              {socialLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="text-gray-300 hover:text-white"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {link.name}
-                </a>
-              ))}
-            </motion.div>
+          >
+            {socialLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-gray-300 hover:text-white"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {link.name}
+              </a>
+            ))}
+          </motion.div>
           </div>
         </motion.div>
       )}

@@ -58,30 +58,30 @@ export default function Navigation({ onMenuClick }) {
         {/* Right: Menu Button (mobile) / Center (desktop) */}
         <div className="flex items-center gap-4">
           {/* Menu Button - Right on mobile, center on desktop */}
-          <button
-            onClick={onMenuClick}
+        <button
+          onClick={onMenuClick}
             className="relative p-4 sm:p-5 hover:opacity-70 transition-opacity md:absolute md:left-1/2 md:-translate-x-1/2"
-            aria-label="Toggle menu"
-          >
+          aria-label="Toggle menu"
+        >
             <div className="relative w-6 h-6 sm:w-7 sm:h-7">
-              {/* Top dot */}
+            {/* Top dot */}
               <span className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full"></span>
-              {/* Left dot */}
+            {/* Left dot */}
               <span className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></span>
-              {/* Right dot */}
+            {/* Right dot */}
               <span className="absolute top-1/2 right-0 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></span>
-              {/* Bottom dot */}
+            {/* Bottom dot */}
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full"></span>
-            </div>
-          </button>
+          </div>
+        </button>
 
           {/* Right: Contact Button - Hidden on mobile, visible on desktop */}
-          <button 
-            onClick={() => setIsPopupOpen(true)}
+        <button 
+          onClick={() => setIsPopupOpen(true)}
             className="hidden md:block glass-button px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-xs md:text-sm font-medium tracking-wider"
-          >
-            CONTACT NOW
-          </button>
+        >
+          CONTACT NOW
+        </button>
         </div>
       </div>
 

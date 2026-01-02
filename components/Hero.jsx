@@ -33,7 +33,7 @@ export default function Hero() {
         {/* Left Aligned on Mobile, Center on Desktop */}
         <div className="space-y-6 sm:space-y-8 text-left md:text-center">
             {/* Main Headline */}
-            <motion.h1
+        <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -44,17 +44,17 @@ export default function Hero() {
                 online
               </span>{' '}
               without the tech overwhelm
-            </motion.h1>
+        </motion.h1>
 
             {/* Subheadline */}
-            <motion.p
+        <motion.p
               className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl md:mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
+        >
               We handle everything your business needs to go digital - so you can focus on running the business, not handling the tech.
-            </motion.p>
+        </motion.p>
 
             {/* CTA Row */}
             <motion.div
@@ -85,7 +85,7 @@ export default function Hero() {
               </button>
             </motion.div>
           </div>
-        </div>
+      </div>
 
       {/* Email Popup */}
       <EmailPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

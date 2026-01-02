@@ -288,7 +288,7 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* CTA Link */}
+              {/* CTA Button */}
               <div className="mt-6">
                 <button
                   onClick={() => {
@@ -297,9 +297,21 @@ export default function Services() {
                       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }}
-                  className="text-sm font-medium text-white underline underline-offset-4 hover:text-white/80 transition-colors"
+                  className="group relative px-6 py-3 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto flex items-center justify-center gap-2"
                 >
-                  Talk to us about this →
+                  <span className="relative z-10">Talk to us about this</span>
+                  <svg 
+                    className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={false}
+                  />
                 </button>
               </div>
             </motion.div>
@@ -406,7 +418,7 @@ export default function Services() {
                           </div>
                         </div>
 
-                        {/* CTA Link */}
+                        {/* CTA Button */}
                         <div className="mt-6">
                           <button
                             onClick={() => {
@@ -415,9 +427,21 @@ export default function Services() {
                                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                               }
                             }}
-                            className="text-sm font-medium text-white underline underline-offset-4 hover:text-white/80 transition-colors"
+                            className="group relative px-6 py-3 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full flex items-center justify-center gap-2"
                           >
-                            Talk to us about this →
+                            <span className="relative z-10">Talk to us about this</span>
+                            <svg 
+                              className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                              fill="none" 
+                              viewBox="0 0 24 24" 
+                              stroke="currentColor"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                              initial={false}
+                            />
                           </button>
                         </div>
                       </div>

@@ -11,7 +11,7 @@ export default function FinalCTA() {
     <section className="section-padding min-h-screen flex flex-col justify-center">
       <div className="container-content max-w-4xl mx-auto text-center">
         {/* Label */}
-        <motion.div
+      <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -51,7 +51,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="mb-4 sm:mb-6 px-4"
         >
-          <button
+          <button 
             onClick={() => setIsPopupOpen(true)}
             className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-black font-semibold text-sm sm:text-base md:text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto"
           >
@@ -62,23 +62,6 @@ export default function FinalCTA() {
             />
           </button>
         </motion.div>
-
-        {/* Secondary Link */}
-        <motion.p
-          className="text-white/60 text-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Just need to talk first?{' '}
-          <a
-            href="tel:8700117495"
-            className="underline underline-offset-4 hover:text-white/80 transition-colors"
-          >
-            Contact us
-          </a>
-        </motion.p>
       </div>
 
       {/* Email Popup */}
