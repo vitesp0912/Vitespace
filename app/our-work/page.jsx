@@ -77,7 +77,7 @@ export default function PortfolioPage() {
       <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <div className="relative z-10 text-white noise-bg">
-        <section className="section-padding pt-28 md:pt-36">
+        <section className="pt-40 sm:pt-44 md:pt-36 pb-12 sm:pb-16 md:pb-20">
           <div className="container-content max-w-5xl mx-auto">
             {/* Intro - centered */}
             <div className="text-center mb-12 md:mb-16">
