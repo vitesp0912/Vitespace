@@ -55,7 +55,7 @@ export default function FinalCTA() {
             onClick={() => setIsPopupOpen(true)}
             className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-black font-semibold text-sm sm:text-base md:text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto"
           >
-            <span className="relative z-10">Book Your Free Strategy Call</span>
+            <span className="relative z-10">Book Your Free Consultation Call</span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               initial={false}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function EmailPopup({ isOpen, onClose }) {
@@ -82,7 +83,7 @@ export default function EmailPopup({ isOpen, onClose }) {
     }
   };
 
-  return (
+  const popupContent = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -92,7 +93,8 @@ export default function EmailPopup({ isOpen, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50"
+            className="fixed inset-0 bg-black/90 backdrop-blur-md"
+            style={{ zIndex: 2147483647 }}
           />
 
           {/* Popup */}
@@ -101,7 +103,8 @@ export default function EmailPopup({ isOpen, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 flex items-center justify-center p-6"
+            style={{ zIndex: 2147483647 }}
             onClick={handleClose}
           >
             <div
@@ -213,4 +216,10 @@ export default function EmailPopup({ isOpen, onClose }) {
       )}
     </AnimatePresence>
   );
+
+  // Render into document.body so popup is always on top (homepage + our-work)
+  if (typeof document !== 'undefined') {
+    return createPortal(popupContent, document.body);
+  }
+  return popupContent;
 }

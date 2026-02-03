@@ -23,12 +23,12 @@ export default function MenuOverlay({ isOpen, onClose }) {
     };
   }, [isOpen, onClose]);
 
-  // Section links for smooth scrolling
+  // Section links - use full path so they work from any page (e.g. /our-work)
   const menuItems = [
-    { label: 'HOME', href: '#home' },
-    { label: 'SERVICES', href: '#services' },
-    { label: 'ABOUT', href: '#about' },
-    { label: 'CONTACT', href: '#contact' },
+    { label: 'HOME', href: '/#home' },
+    { label: 'SERVICES', href: '/#services' },
+    { label: 'ABOUT', href: '/#about' },
+    { label: 'CONTACT', href: '/#contact' },
   ];
 
   const socialLinks = [
@@ -46,8 +46,9 @@ export default function MenuOverlay({ isOpen, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
-          className="fixed inset-0 z-[999] bg-black text-white overflow-hidden"
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black text-white overflow-hidden"
+          style={{ zIndex: 2147483647 }}
         >
           {/* Close button (center top) */}
           <button
@@ -64,22 +65,22 @@ export default function MenuOverlay({ isOpen, onClose }) {
               return (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + i * 0.04 }}
+                  transition={{ duration: 0.25, delay: 0.05 + i * 0.03 }}
                   className="leading-[0.9] font-extrabold uppercase"
                   style={{
                     fontSize: '8vw',
-                    color: '#fff',
+                    color: '#ffffff',
                   }}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      const element = document.querySelector(item.href);
+                      const hash = item.href.split('#')[1];
+                      const element = hash ? document.querySelector(`#${hash}`) : null;
                       if (element) {
+                        e.preventDefault();
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }
                       if (typeof onClose === 'function') onClose();
@@ -87,7 +88,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
                     className="inline-block hover:opacity-70 transition-opacity"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -102,9 +103,9 @@ export default function MenuOverlay({ isOpen, onClose }) {
 
             {/* SOCIAL LINKS */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25, delay: 0.2 }}
               className="flex gap-6 sm:gap-8 text-xs tracking-wider justify-center sm:justify-start order-1 sm:order-2"
           >
             {socialLinks.map((link) => (

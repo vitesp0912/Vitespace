@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import EmailPopup from './EmailPopup';
 
 export default function Navigation({ onMenuClick }) {
@@ -43,8 +44,8 @@ export default function Navigation({ onMenuClick }) {
         </>
       )}
       <div className="relative flex items-center justify-between">
-        {/* Left: Logo */}
-        <div className="flex items-center gap-2 md:gap-3">
+        {/* Left: Logo - links to home */}
+        <Link href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-90 transition-opacity">
           <img 
             src="/logo.png" 
             alt="VITESPACE Logo" 
@@ -53,7 +54,7 @@ export default function Navigation({ onMenuClick }) {
           <div className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wider text-white">
             VITESPACE
           </div>
-        </div>
+        </Link>
 
         {/* Right: Menu Button (mobile) / Center (desktop) */}
         <div className="flex items-center gap-4">
