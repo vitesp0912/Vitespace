@@ -153,19 +153,19 @@ export default function Services() {
       <div className="container-content">
         {/* Section Header */}
         <motion.div
-          className="mb-12 md:mb-16"
+          className="mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="mb-4">
+          <div className="mb-3 sm:mb-4">
             <span className="text-eyebrow text-white/60">SERVICES</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-3 sm:mb-4 uppercase px-4">
+          <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-2 sm:mb-4 uppercase px-2 sm:px-4">
             Everything you need to go digital - under one roof.
           </h2>
-          <p className="text-white/70 text-sm sm:text-base max-w-2xl px-4">
+          <p className="text-white/70 text-xs sm:text-sm md:text-base max-w-2xl px-2 sm:px-4">
             From websites to automation, we handle it all so you can focus on your business.
           </p>
         </motion.div>

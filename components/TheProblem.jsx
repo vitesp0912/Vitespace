@@ -58,16 +58,16 @@ export default function TheProblem() {
       <div className="container-content">
         {/* Section Header */}
         <motion.div
-          className="mb-12 md:mb-16"
+          className="mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="mb-4">
+          <div className="mb-3 sm:mb-4">
             <span className="text-eyebrow text-white/60">THE REALITY</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight max-w-3xl uppercase">
+          <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight max-w-3xl uppercase">
             Going digital shouldn't feel this hard.
           </h2>
         </motion.div>
@@ -86,7 +86,7 @@ export default function TheProblem() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 ease-premium cursor-pointer"
+                className="group bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 ease-premium cursor-pointer min-w-0"
               >
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="text-white/60 group-hover:text-white/80 transition-colors flex-shrink-0">
@@ -96,7 +96,7 @@ export default function TheProblem() {
                     <h3 className="text-xs sm:text-sm font-semibold text-white/80 mb-1.5 sm:mb-2 uppercase tracking-wider">
                       {point.category}
                     </h3>
-                    <h4 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">
+                    <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-1.5 sm:mb-2">
                       {point.title}
                     </h4>
                     <p className="text-white/70 text-xs sm:text-sm leading-relaxed">

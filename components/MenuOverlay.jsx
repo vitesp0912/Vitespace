@@ -48,7 +48,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           className="fixed inset-0 bg-black text-white overflow-hidden"
-          style={{ zIndex: 2147483647 }}
+          style={{ zIndex: 999999 }}
         >
           {/* Close button (center top) */}
           <button

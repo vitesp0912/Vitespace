@@ -77,7 +77,7 @@ export default function PortfolioPage() {
       <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <div className="relative z-10 text-white noise-bg">
-        <section className="pt-40 sm:pt-44 md:pt-36 pb-12 sm:pb-16 md:pb-20">
+        <section className="pt-44 sm:pt-48 md:pt-40 pb-12 sm:pb-16 md:pb-20">
           <div className="container-content max-w-5xl mx-auto">
             {/* Intro - centered */}
             <div className="text-center mb-12 md:mb-16">
@@ -91,7 +91,7 @@ export default function PortfolioPage() {
               </motion.span>
 
               <motion.h1
-                className="font-semibold text-white uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 md:mb-6"
+                className="font-semibold text-white uppercase text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 md:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.05 }}
@@ -100,7 +100,7 @@ export default function PortfolioPage() {
               </motion.h1>
 
               <motion.p
-                className="text-white/70 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto"
+                className="text-white/70 text-sm sm:text-xl md:text-2xl max-w-2xl mx-auto px-2 sm:px-0"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -110,7 +110,7 @@ export default function PortfolioPage() {
             </div>
 
             {/* Project Cards - left-aligned */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
               {projects.map((project, index) => (
                 <motion.a
                   key={project.id}

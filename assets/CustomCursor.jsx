@@ -1,11 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+
+const CURSOR_Z_INDEX = 2147483647; // Max z-index so cursor is always on top of popups/menu
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     // Check if device is desktop (non-touch)
@@ -55,9 +61,9 @@ export default function CustomCursor() {
   }, [isDesktop]);
 
   // Don't render on mobile/tablet or touch devices
-  if (!isDesktop) return null;
+  if (!isDesktop || !mounted) return null;
 
-  return (
+  const cursorEl = (
     <div
       className={`custom-cursor ${isPointer ? 'custom-cursor-pointer' : ''}`}
       style={{
@@ -70,11 +76,14 @@ export default function CustomCursor() {
         backgroundColor: '#ffffff',
         border: 'none',
         pointerEvents: 'none',
-        zIndex: 2147483646,
+        zIndex: CURSOR_Z_INDEX,
         transform: 'translate(-50%, -50%)',
         transition: 'transform 0.15s ease-out, width 0.2s ease, height 0.2s ease',
         mixBlendMode: 'difference',
       }}
     />
   );
+
+  // Portal to body so cursor is last in DOM and always on top of popups/menu
+  return createPortal(cursorEl, document.body);
 }

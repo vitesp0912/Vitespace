@@ -23,7 +23,7 @@ export default function FinalCTA() {
 
         {/* Main Heading */}
         <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight mb-4 sm:mb-6 uppercase px-4"
+          className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight mb-3 sm:mb-6 uppercase px-2 sm:px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -34,7 +34,7 @@ export default function FinalCTA() {
 
         {/* Subtext */}
         <motion.p
-          className="text-white/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+          className="text-white/80 text-xs sm:text-sm md:text-lg mb-5 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.5 }}
@@ -53,7 +53,7 @@ export default function FinalCTA() {
         >
           <button 
             onClick={() => setIsPopupOpen(true)}
-            className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-black font-semibold text-sm sm:text-base md:text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto"
+            className="group relative px-5 sm:px-8 md:px-10 py-2.5 sm:py-4 md:py-5 bg-white text-black font-semibold text-xs sm:text-sm md:text-lg rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-premium w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0"
           >
             <span className="relative z-10">Book Your Free Consultation Call</span>
             <motion.div

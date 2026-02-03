@@ -94,7 +94,7 @@ export default function EmailPopup({ isOpen, onClose }) {
             exit={{ opacity: 0 }}
             onClick={handleClose}
             className="fixed inset-0 bg-black/90 backdrop-blur-md"
-            style={{ zIndex: 2147483647 }}
+            style={{ zIndex: 999999 }}
           />
 
           {/* Popup */}
@@ -103,13 +103,13 @@ export default function EmailPopup({ isOpen, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-0 flex items-center justify-center p-6"
-            style={{ zIndex: 2147483647 }}
+            className="fixed inset-0 flex items-center justify-center p-3 sm:p-6"
+            style={{ zIndex: 999999 }}
             onClick={handleClose}
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-black border-2 border-white/20 rounded-2xl p-5 md:p-6 max-w-md w-full mx-4 shadow-2xl backdrop-blur-xl relative"
+              className="bg-black border-2 border-white/20 rounded-2xl p-4 sm:p-5 md:p-6 max-w-md w-full mx-2 sm:mx-4 shadow-2xl backdrop-blur-xl relative max-h-[90vh] overflow-y-auto"
             >
               {!submitted ? (
                 <>
@@ -124,14 +124,14 @@ export default function EmailPopup({ isOpen, onClose }) {
                     </svg>
                   </button>
 
-                  <h2 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2 pr-8">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-1.5 sm:mb-2 pr-8">
                     Let's Connect
                   </h2>
-                  <p className="text-white/70 text-sm md:text-base mb-5">
+                  <p className="text-white/70 text-xs sm:text-sm md:text-base mb-4 sm:mb-5">
                     Fill in your details and we'll get back to you within 24 hours.
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3">
                     {/* Name Field */}
                     <input
                       type="text"

@@ -84,13 +84,20 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Design System - Container */
+  /* Design System - Container (mobile-first) */
   .container-content {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  @media (min-width: 380px) {
+    .container-content {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
   }
 
   @media (min-width: 640px) {
@@ -107,10 +114,10 @@
     }
   }
 
-  /* Design System - Section Padding */
+  /* Design System - Section Padding (mobile-first) */
   .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   @media (min-width: 640px) {
@@ -121,6 +128,13 @@
   }
 
   @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .section-padding {
       padding-top: 7.5rem;
       padding-bottom: 7.5rem;
@@ -140,7 +154,7 @@
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Custom Cursor */
+  /* Custom Cursor - z-index so it stays above popups/menu on all pages */
   .custom-cursor {
     position: fixed;
     width: 20px;
@@ -149,7 +163,7 @@
     background-color: #ffffff; /* solid white for consistent difference blend */
     border: none; /* remove border to avoid blend artifacts */
     pointer-events: none;
-    z-index: 9999;
+    z-index: 2147483647;
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
     mix-blend-mode: difference;
