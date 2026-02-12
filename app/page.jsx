@@ -24,7 +24,7 @@ export default function Home() {
       <div className="relative z-10 text-white">
         
         {/* 1. HERO SECTION */}
-        <section className="relative min-h-screen flex flex-col justify-center">
+        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden noise-bg">
           <div className="absolute inset-0 w-full h-full pointer-events-none">
             <div className="absolute inset-0 w-full h-full opacity-80" style={{ mixBlendMode: 'screen' }}>
               <FloatingLines
@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             <div className="absolute inset-0 w-full h-full bg-black/40" aria-hidden />
           </div>
-          <div className="container-content w-full max-w-4xl mx-auto text-center relative z-10 px-4 sm:px-6 md:px-12 pt-20 sm:pt-24 pb-12 sm:pb-16 md:pb-20">
+          <div className="container-content w-full max-w-4xl mx-auto text-center relative z-20 px-4 sm:px-6 md:px-12 pt-20 sm:pt-24 pb-12 sm:pb-16 md:pb-20">
             <motion.h1
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight uppercase mb-6 sm:mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -68,22 +68,22 @@ export default function Home() {
             >
               <Link
                 href="/contact"
-                className="px-5 sm:px-7 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 uppercase tracking-wide"
+                className="px-5 sm:px-7 py-2.5 sm:py-3 bg-white text-black font-semibold text-xs sm:text-sm rounded-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
               >
-                Schedule a Strategy Consultation
+                Schedule a Free Consultation
               </Link>
               <Link
                 href="/solutions"
-                className="px-5 sm:px-7 py-2.5 sm:py-3 bg-transparent border-2 border-white/30 text-white font-semibold text-xs sm:text-sm rounded-full hover:border-white/60 hover:bg-white/5 transition-all duration-300 uppercase tracking-wide"
+                className="px-5 sm:px-7 py-2.5 sm:py-3 bg-transparent border-2 border-white/30 text-white font-semibold text-xs sm:text-sm rounded-full hover:border-white/60 hover:bg-white/5 transition-all duration-300"
               >
-                Discuss Your Business Infrastructure
+                Explore Our Solutions
               </Link>
             </motion.div>
           </div>
         </section>
 
         {/* 2. THE BUSINESS PROBLEM */}
-        <section className="section-padding bg-black/60 border-t border-white/10">
+        <section className="section-padding bg-gradient-to-b from-black via-cyan-950/10 to-black">
           <div className="container-content max-w-5xl">
             <motion.div
               className="text-center mb-12 sm:mb-16"
@@ -150,7 +150,7 @@ export default function Home() {
         </section>
 
         {/* 3. INFRASTRUCTURE FRAMEWORK */}
-        <section className="section-padding border-t border-white/10">
+        <section className="section-padding bg-gradient-to-b from-black via-cyan-900/10 to-black">
           <div className="container-content max-w-6xl">
             <motion.div
               className="text-center mb-12 sm:mb-16"
@@ -237,7 +237,7 @@ export default function Home() {
         </section>
 
         {/* 4. FLAGSHIP HIGHLIGHT - AI VOICE AGENTS */}
-        <section className="section-padding bg-black/60 border-t border-white/10">
+        <section className="section-padding bg-gradient-to-b from-black via-cyan-950/10 to-black">
           <div className="container-content max-w-5xl">
             <motion.div
               className="bg-gradient-to-br from-cyan-400/10 to-transparent border border-cyan-400/20 rounded-2xl p-8 sm:p-10 md:p-12"
@@ -289,7 +289,7 @@ export default function Home() {
         </section>
 
         {/* 5. WHY CONSULTATION FIRST */}
-        <section className="section-padding border-t border-white/10">
+        <section className="section-padding bg-gradient-to-b from-black via-cyan-950/10 to-black">
           <div className="container-content max-w-4xl">
             <motion.div
               className="text-center mb-12"
@@ -334,7 +334,7 @@ export default function Home() {
         </section>
 
         {/* 6. FINAL CTA */}
-        <section className="py-14 sm:py-16 md:py-20 flex flex-col justify-center border-t border-white/10 noise-bg">
+        <section className="py-14 sm:py-16 md:py-20 flex flex-col justify-center bg-gradient-to-b from-black via-cyan-950/10 to-black noise-bg">
           <div className="container-content max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

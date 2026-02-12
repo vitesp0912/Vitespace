@@ -292,51 +292,6 @@ export default function AIVoiceAgentsPage() {
           </div>
         </section>
 
-        {/* Implementation Model Section */}
-        <section className="section-padding bg-black/60 border-t border-white/10">
-          <div className="container-content max-w-4xl">
-            <motion.div
-              className="text-center mb-12 sm:mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-eyebrow text-white/60 block mb-3">PROCESS</span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase">
-                Implementation Process
-              </h2>
-            </motion.div>
-
-            <div className="space-y-6">
-              {implementationSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-cyan-400/30 transition-all duration-300"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-cyan-400/10 border border-cyan-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-xl font-bold text-cyan-400">{step.number}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-white uppercase mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Use Cases / Demo Section */}
         <section id="demo" className="section-padding border-t border-white/10">
           <div className="container-content max-w-5xl">
@@ -390,6 +345,51 @@ export default function AIVoiceAgentsPage() {
                       <source src={useCase.audio} type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Implementation Model Section */}
+        <section className="section-padding bg-black/60 border-t border-white/10">
+          <div className="container-content max-w-4xl">
+            <motion.div
+              className="text-center mb-12 sm:mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-eyebrow text-white/60 block mb-3">PROCESS</span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase">
+                Implementation Process
+              </h2>
+            </motion.div>
+
+            <div className="space-y-6">
+              {implementationSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white/5 border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-cyan-400/30 transition-all duration-300"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-cyan-400/10 border border-cyan-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-cyan-400">{step.number}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white uppercase mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
