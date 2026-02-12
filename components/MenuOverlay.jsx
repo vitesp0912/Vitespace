@@ -23,12 +23,12 @@ export default function MenuOverlay({ isOpen, onClose }) {
     };
   }, [isOpen, onClose]);
 
-  // Section links - use full path so they work from any page (e.g. /our-work)
+  // Main navigation links
   const menuItems = [
-    { label: 'HOME', href: '/#home' },
-    { label: 'SERVICES', href: '/#services' },
-    { label: 'ABOUT', href: '/#about' },
-    { label: 'CONTACT', href: '/#contact' },
+    { label: 'HOME', href: '/' },
+    { label: 'SOLUTIONS', href: '/solutions' },
+    { label: 'ABOUT', href: '/about' },
+    { label: 'CONTACT', href: '/contact' },
   ];
 
   const socialLinks = [
@@ -76,13 +76,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
                 >
                   <Link
                     href={item.href}
-                    onClick={(e) => {
-                      const hash = item.href.split('#')[1];
-                      const element = hash ? document.querySelector(`#${hash}`) : null;
-                      if (element) {
-                        e.preventDefault();
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }
+                    onClick={() => {
                       if (typeof onClose === 'function') onClose();
                     }}
                     className="inline-block hover:opacity-70 transition-opacity"

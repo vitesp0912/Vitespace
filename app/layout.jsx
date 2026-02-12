@@ -1,6 +1,7 @@
 import './globals.css';
 import CustomCursor from '@/assets/CustomCursor';
 import StructuredData from '@/components/StructuredData';
+import SiteFooter from '@/components/SiteFooter';
 import { Analytics } from '@vercel/analytics/react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
@@ -151,6 +152,7 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning>
         {children}
+        <SiteFooter />
         {/* Site-wide custom cursor */}
         <CustomCursor />
         {/* Vercel Analytics */}

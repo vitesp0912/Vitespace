@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import MenuOverlay from '@/components/MenuOverlay';
 import FinalCTA from '@/components/FinalCTA';
+
+const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
 
 const PLACEHOLDER_HERO = '/portfolio/placeholder-hero.svg';
 
@@ -77,8 +80,25 @@ export default function PortfolioPage() {
       <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <div className="relative z-10 text-white noise-bg">
-        <section className="pt-44 sm:pt-48 md:pt-40 pb-12 sm:pb-16 md:pb-20">
-          <div className="container-content max-w-5xl mx-auto">
+        <section className="relative pt-44 sm:pt-48 md:pt-40 pb-12 sm:pb-16 md:pb-20 overflow-hidden">
+          
+          <div className="absolute inset-0 w-full h-full pointer-events-none">
+            <div className="absolute inset-0 w-full h-full opacity-75" style={{ mixBlendMode: 'screen' }}>
+              <FloatingLines
+                enabledWaves={['top', 'middle', 'bottom']}
+                lineCount={5}
+                lineDistance={5}
+                bendRadius={5}
+                bendStrength={-0.5}
+                interactive={false}
+                parallax={false}
+                linesGradient={['#312e81', '#4338ca', '#6366f1', '#22d3ee']}
+                mixBlendMode="screen"
+              />
+            </div>
+            <div className="absolute inset-0 w-full h-full bg-black/45" aria-hidden />
+          </div>
+<div className="container-content max-w-5xl mx-auto relative z-10">
             {/* Intro - centered */}
             <div className="text-center mb-12 md:mb-16">
               <motion.span

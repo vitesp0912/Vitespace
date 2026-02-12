@@ -1,11 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import EmailPopup from './EmailPopup';
 
 export default function Navigation({ onMenuClick }) {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -77,17 +75,14 @@ export default function Navigation({ onMenuClick }) {
         </button>
 
           {/* Right: Contact Button - Hidden on mobile, visible on desktop */}
-        <button 
-          onClick={() => setIsPopupOpen(true)}
+        <Link
+          href="/contact"
             className="hidden md:block glass-button px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-xs md:text-sm font-medium tracking-wider"
         >
           CONTACT NOW
-        </button>
+        </Link>
         </div>
       </div>
-
-      {/* Email Popup */}
-      <EmailPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </nav>
   );
 }
