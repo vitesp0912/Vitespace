@@ -12,8 +12,6 @@ export default function sitemap() {
     '/solutions/growth-marketing',
     '/about',
     '/contact',
-    '/our-work',
-    '/ai-calling-agent',
   ];
 
   const priorities = {
@@ -26,8 +24,6 @@ export default function sitemap() {
     '/solutions/growth-marketing': 0.88,
     '/about': 0.7,
     '/contact': 0.85,
-    '/our-work': 0.7,
-    '/ai-calling-agent': 0.75,
   };
 
   const frequencies = {
@@ -40,8 +36,6 @@ export default function sitemap() {
     '/solutions/growth-marketing': 'weekly',
     '/about': 'monthly',
     '/contact': 'monthly',
-    '/our-work': 'monthly',
-    '/ai-calling-agent': 'monthly',
   };
 
   return [
