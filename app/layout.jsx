@@ -6,8 +6,9 @@ import { Analytics } from '@vercel/analytics/react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
 const siteName = 'VITESPACE';
-const siteDescription = 'Complete digital solutions for your business - websites, CRM, SEO, automation & chatbots. We handle everything so you can focus on running your business.';
-const siteTitle = `${siteName} - Digital Solutions for Your Business`;
+const siteDescription =
+  'Stop losing leads to slow systems. VIESPACE builds AI voice agents, automation, digital infrastructure, and growth engines that scale revenue.';
+const siteTitle = `${siteName} - AI Systems That Scale Revenue`;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
