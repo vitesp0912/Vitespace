@@ -66,6 +66,15 @@ const projects = [
     inProgress: true,
     heroImage: '/portfolio/visitmyayodhya.png',
   },
+  {
+    id: 7,
+    name: 'Petrofi',
+    niche: 'Petrol pump management software',
+    url: 'https://petrofi.in',
+    displayUrl: 'petrofi.in',
+    inProgress: false,
+    heroImage: '/portfolio/PETROFI.png',
+  },
 ];
 
 export default function PortfolioPage() {

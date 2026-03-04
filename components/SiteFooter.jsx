@@ -25,7 +25,7 @@ export default function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           <div>
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Viespace logo" className="h-12 sm:h-14 w-auto" />
+              <img src="/logo.png" alt="VITESPACE logo" className="h-12 sm:h-14 w-auto" />
               <span className="text-white text-2xl sm:text-3xl font-semibold tracking-wider">VITESPACE</span>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-center text-center">
-          <p className="text-white/45 text-xs">© {new Date().getFullYear()} VIESPACE. All rights reserved.</p>
+          <p className="text-white/45 text-xs">© {new Date().getFullYear()} VITESPACE. All rights reserved.</p>
         </div>
       </div>
     </footer>
