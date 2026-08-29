@@ -1,18 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ease = [0.16, 1, 0.3, 1];
 
 export default function LogoReveal() {
+  const pathname = usePathname();
   const [show, setShow] = useState(true);
   const [progress, setProgress] = useState(1);
 
   useEffect(() => {
+    setShow(true);
+    setProgress(1);
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const duration = reduce ? 200 : 1900;
-    const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     const start = performance.now();
@@ -37,9 +41,8 @@ export default function LogoReveal() {
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(exitTimer);
-      document.body.style.overflow = prev;
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = '';
@@ -55,12 +58,12 @@ export default function LogoReveal() {
           transition={{ duration: 0.9, ease }}
           aria-hidden
         >
-          <div className="flex flex-col items-center">
+          <div key={pathname} className="flex flex-col items-center">
             <div className="overflow-hidden">
               <motion.img
                 src="/logo.png"
                 alt=""
-                className="h-16 sm:h-20 w-auto"
+                className="h-20 sm:h-24 w-auto"
                 initial={{ y: '115%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.85, ease }}
@@ -69,7 +72,7 @@ export default function LogoReveal() {
 
             <div className="overflow-hidden mt-5">
               <motion.p
-                className="text-white font-medium tracking-[0.32em] text-[11px] sm:text-sm"
+                className="text-white font-medium tracking-[0.32em] text-sm sm:text-base"
                 initial={{ y: '120%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.75, delay: 0.28, ease }}
