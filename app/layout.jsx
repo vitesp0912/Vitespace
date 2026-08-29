@@ -1,14 +1,14 @@
 import './globals.css';
-import CustomCursor from '@/assets/CustomCursor';
 import StructuredData from '@/components/StructuredData';
 import SiteFooter from '@/components/SiteFooter';
+import LogoReveal from '@/components/LogoReveal';
 import { Analytics } from '@vercel/analytics/react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
 const siteName = 'VITESPACE';
 const siteDescription =
-  'Stop losing leads to slow systems. VIESPACE builds AI voice agents, automation, digital infrastructure, and growth engines that scale revenue.';
-const siteTitle = `${siteName} - AI Systems That Scale Revenue`;
+  'Custom websites and business software, built in weeks. VITESPACE designs and ships sites, dashboards, and automation your team can actually use.';
+const siteTitle = `${siteName} — Custom websites and business software`;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -152,10 +152,9 @@ export default function RootLayout({ children }) {
         <StructuredData />
       </head>
       <body suppressHydrationWarning>
+        <LogoReveal />
         {children}
         <SiteFooter />
-        {/* Site-wide custom cursor */}
-        <CustomCursor />
         {/* Vercel Analytics */}
         <Analytics />
       </body>

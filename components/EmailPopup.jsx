@@ -1,225 +1,255 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+
+const ease = [0.16, 1, 0.3, 1];
+
+const fieldClass =
+  'w-full px-4 py-3 text-sm rounded-xl border border-white/12 bg-white/[0.04] text-white placeholder-white/30 focus:border-cyan-400/50 focus:outline-none transition-colors disabled:opacity-50';
+
+const services = [
+  'Business websites',
+  'Web & mobile apps',
+  'Custom software systems',
+  'ERPs & CRMs',
+  'Internal dashboards and tools',
+  'Search Engine Optimization',
+  'Google Ads',
+  'Meta Ads',
+  'Brand & creative work',
+  'Offline marketing',
+  'AI chatbots',
+  'Voice agents',
+  'Automated workflows',
+  'Lead qualification',
+  'Business process automation',
+  'Something else',
+];
 
 export default function EmailPopup({ isOpen, onClose }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [service, setService] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  // Handle Escape key press
+  useEffect(() => setMounted(true), []);
+
+  const reset = useCallback(() => {
+    setName('');
+    setPhone('');
+    setEmail('');
+    setService('');
+    setSubmitted(false);
+    setError('');
+  }, []);
+
+  const handleClose = useCallback(() => {
+    if (isSubmitting) return;
+    reset();
+    onClose();
+  }, [isSubmitting, onClose, reset]);
+
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape' && isOpen && !isSubmitting) {
-        handleClose();
-      }
+    if (!isOpen) return undefined;
+
+    const onKey = (e) => {
+      if (e.key === 'Escape' && !isSubmitting) handleClose();
     };
 
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-    }
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
     };
-  }, [isOpen, isSubmitting]);
+  }, [isOpen, isSubmitting, handleClose]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          email,
-          message,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, message: service }),
       });
 
       const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Failed to send message');
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-    setIsSubmitting(false);
-    setSubmitted(true);
-
-    // Reset after 2 seconds and close
-    setTimeout(() => {
-      setSubmitted(false);
-        setName('');
-        setPhone('');
-      setEmail('');
-        setMessage('');
-      onClose();
-    }, 2000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      alert('Failed to send message. Please try again or contact us directly.');
+      setSubmitted(true);
+
+      setTimeout(() => {
+        reset();
+        onClose();
+      }, 2200);
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setIsSubmitting(false);
+      setError('Could not send. Please try again.');
     }
   };
 
-  const handleClose = () => {
-    if (!isSubmitting) {
-      setName('');
-      setPhone('');
-      setEmail('');
-      setMessage('');
-      setSubmitted(false);
-      onClose();
-    }
-  };
+  if (!mounted) return null;
 
-  const popupContent = (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <>
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 sm:p-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 bg-black/80 backdrop-blur-md"
             onClick={handleClose}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md"
-            style={{ zIndex: 999999 }}
+            aria-hidden
           />
 
-          {/* Popup */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-0 flex items-center justify-center p-3 sm:p-6"
-            style={{ zIndex: 999999 }}
-            onClick={handleClose}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="build-form-title"
+            initial={{ opacity: 0, y: 16, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.35, ease }}
+            className="relative w-full max-w-[440px] rounded-[22px] border border-white/[0.1] p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(18,18,18,0.98) 0%, rgba(8,8,8,0.98) 100%)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 80px rgba(0,0,0,0.55)',
+            }}
           >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="bg-black border-2 border-white/20 rounded-2xl p-4 sm:p-5 md:p-6 max-w-md w-full mx-2 sm:mx-4 shadow-2xl backdrop-blur-xl relative max-h-[90vh] overflow-y-auto"
+            <button
+              type="button"
+              onClick={handleClose}
+              disabled={isSubmitting}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-white/10 text-white/45 hover:text-white hover:border-white/25 transition-colors disabled:opacity-40"
+              aria-label="Close"
             >
-              {!submitted ? (
-                <>
-                  {/* Close button */}
-                  <button
-                    onClick={handleClose}
-                    className="absolute top-3 right-3 text-white/60 hover:text-white transition-colors z-10"
-                    disabled={isSubmitting}
-                  >
-                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
+              <span className="block leading-none text-lg">×</span>
+            </button>
 
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-1.5 sm:mb-2 pr-8">
-                    Let's Connect
-                  </h2>
-                  <p className="text-white/70 text-xs sm:text-sm md:text-base mb-4 sm:mb-5">
-                    Fill in your details and we'll get back to you within 24 hours.
-                  </p>
-
-                  <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3">
-                    {/* Name Field */}
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your Name"
-                      required
-                      disabled={isSubmitting}
-                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
-                    />
-
-                    {/* Phone Number Field */}
-                    <input
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="Phone Number"
-                      required
-                      disabled={isSubmitting}
-                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
-                    />
-
-                    {/* Email Field */}
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your.email@example.com"
-                      required
-                      disabled={isSubmitting}
-                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50"
-                    />
-
-                    {/* Message Field */}
-                    <textarea
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us about your project or how we can help..."
-                      rows={3}
-                      required
-                      disabled={isSubmitting}
-                      className="w-full px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border-2 border-white/30 bg-white/5 focus:border-white focus:outline-none text-white placeholder-white/40 transition-colors disabled:opacity-50 resize-none"
-                    />
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-white text-black font-bold text-sm md:text-base uppercase tracking-wider py-2.5 md:py-3 rounded-full hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Submitting...
-                        </span>
-                      ) : (
-                        'Submit'
-                      )}
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-6"
+            {!submitted ? (
+              <>
+                <p className="text-eyebrow text-cyan-300/80 mb-3">Start a project</p>
+                <h2
+                  id="build-form-title"
+                  className="text-2xl sm:text-[1.75rem] font-semibold text-white tracking-tight mb-2"
                 >
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Success!</h3>
-                  <p className="text-white/70 text-sm md:text-base">We'll be in touch soon.</p>
-                </motion.div>
-              )}
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
+                  Let’s build.
+                </h2>
+                <p className="text-sm text-white/50 mb-7 leading-relaxed">
+                  A few details. We’ll get back to you soon.
+                </p>
 
-  // Render into document.body so popup is always on top (homepage + our-work)
-  if (typeof document !== 'undefined') {
-    return createPortal(popupContent, document.body);
-  }
-  return popupContent;
+                <form onSubmit={handleSubmit} className="space-y-3.5">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    required
+                    disabled={isSubmitting}
+                    autoComplete="name"
+                    className={fieldClass}
+                  />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    required
+                    disabled={isSubmitting}
+                    autoComplete="email"
+                    className={fieldClass}
+                  />
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Phone"
+                    required
+                    disabled={isSubmitting}
+                    autoComplete="tel"
+                    className={fieldClass}
+                  />
+                  <div className="relative">
+                    <select
+                      value={service}
+                      onChange={(e) => setService(e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                      className={`${fieldClass} appearance-none pr-10 cursor-pointer ${
+                        service ? 'text-white' : 'text-white/30'
+                      }`}
+                    >
+                      <option value="" disabled>
+                        What do you need?
+                      </option>
+                      {services.map((item) => (
+                        <option key={item} value={item} className="bg-[#111] text-white">
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/40" aria-hidden>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+
+                  {error && <p className="text-sm text-red-400/90">{error}</p>}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full mt-1 py-3.5 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.01] transition-all duration-300 ease-premium disabled:opacity-50 disabled:hover:scale-100"
+                  >
+                    {isSubmitting ? 'Sending…' : 'Send'}
+                  </button>
+                </form>
+
+                <p className="mt-5 text-center text-xs text-white/35">
+                  Need a longer brief?{' '}
+                  <Link
+                    href="/contact"
+                    onClick={handleClose}
+                    className="text-white/60 hover:text-cyan-300 transition-colors"
+                  >
+                    Open the full form
+                  </Link>
+                </p>
+              </>
+            ) : (
+              <div className="py-10 text-center">
+                <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center mx-auto mb-5">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Got it.</h3>
+                <p className="text-sm text-white/50">We’ll be in touch soon.</p>
+              </div>
+            )}
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
 }

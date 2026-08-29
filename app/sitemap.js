@@ -4,6 +4,7 @@ export default function sitemap() {
 
   const routes = [
     '/',
+    '/our-work',
     '/solutions',
     '/solutions/ai-voice-agents',
     '/solutions/ai-chatbots',
@@ -16,6 +17,7 @@ export default function sitemap() {
 
   const priorities = {
     '/': 1.0,
+    '/our-work': 0.9,
     '/solutions': 0.95,
     '/solutions/ai-voice-agents': 0.9,
     '/solutions/ai-chatbots': 0.88,
@@ -28,6 +30,7 @@ export default function sitemap() {
 
   const frequencies = {
     '/': 'weekly',
+    '/our-work': 'weekly',
     '/solutions': 'weekly',
     '/solutions/ai-voice-agents': 'weekly',
     '/solutions/ai-chatbots': 'weekly',

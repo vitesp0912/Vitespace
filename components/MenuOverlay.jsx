@@ -26,6 +26,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
   // Main navigation links
   const menuItems = [
     { label: 'HOME', href: '/' },
+    { label: 'WORK', href: '/our-work' },
     { label: 'SOLUTIONS', href: '/solutions' },
     { label: 'ABOUT', href: '/about' },
     { label: 'CONTACT', href: '/contact' },
@@ -70,7 +71,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
                   transition={{ duration: 0.25, delay: 0.05 + i * 0.03 }}
                   className="leading-[0.9] font-extrabold uppercase"
                   style={{
-                    fontSize: '8vw',
+                    fontSize: 'clamp(2.4rem, 6.6vw, 5.4rem)',
                     color: '#ffffff',
                   }}
                 >
