@@ -1,5 +1,4 @@
 export const metadata = {
-  title: 'Work | VITESPACE',
   robots: {
     index: false,
     follow: false,
@@ -8,11 +7,10 @@ export const metadata = {
       index: false,
       follow: false,
       noimageindex: true,
-      nosnippet: true,
     },
   },
 };
 
-export default function OurWorkLayout({ children }) {
+export default function DumpLayout({ children }) {
   return children;
 }

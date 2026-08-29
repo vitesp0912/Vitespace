@@ -4,7 +4,6 @@ export default function sitemap() {
 
   const routes = [
     '/',
-    '/our-work',
     '/solutions',
     '/solutions/ai-voice-agents',
     '/solutions/ai-chatbots',
@@ -13,11 +12,11 @@ export default function sitemap() {
     '/solutions/growth-marketing',
     '/about',
     '/contact',
+    '/ai-calling-agent',
   ];
 
   const priorities = {
     '/': 1.0,
-    '/our-work': 0.9,
     '/solutions': 0.95,
     '/solutions/ai-voice-agents': 0.9,
     '/solutions/ai-chatbots': 0.88,
@@ -26,11 +25,11 @@ export default function sitemap() {
     '/solutions/growth-marketing': 0.88,
     '/about': 0.7,
     '/contact': 0.85,
+    '/ai-calling-agent': 0.8,
   };
 
   const frequencies = {
     '/': 'weekly',
-    '/our-work': 'weekly',
     '/solutions': 'weekly',
     '/solutions/ai-voice-agents': 'weekly',
     '/solutions/ai-chatbots': 'weekly',
@@ -39,6 +38,7 @@ export default function sitemap() {
     '/solutions/growth-marketing': 'weekly',
     '/about': 'monthly',
     '/contact': 'monthly',
+    '/ai-calling-agent': 'monthly',
   };
 
   return [

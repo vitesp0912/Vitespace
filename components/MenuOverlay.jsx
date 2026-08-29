@@ -26,7 +26,6 @@ export default function MenuOverlay({ isOpen, onClose }) {
   // Main navigation links
   const menuItems = [
     { label: 'HOME', href: '/' },
-    { label: 'WORK', href: '/our-work' },
     { label: 'SOLUTIONS', href: '/solutions' },
     { label: 'ABOUT', href: '/about' },
     { label: 'CONTACT', href: '/contact' },

@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Discover the exact AI systems, digital infrastructure, and growth engines built to increase conversion and scale revenue.',
   alternates: { canonical: '/solutions' },
+  openGraph: { url: '/solutions' },
 };
 
 export default function SolutionsLayout({ children }) {

@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Drive predictable growth through performance marketing, funnel optimization, and strategic brand amplification campaigns.',
   alternates: { canonical: '/solutions/growth-marketing' },
+  openGraph: { url: '/solutions/growth-marketing' },
 };
 
 export default function GrowthMarketingLayout({ children }) {

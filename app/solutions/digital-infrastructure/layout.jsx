@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Build faster, conversion-focused websites and platforms with SEO-ready architecture, analytics integration, and scalable backend systems.',
   alternates: { canonical: '/solutions/digital-infrastructure' },
+  openGraph: { url: '/solutions/digital-infrastructure' },
 };
 
 export default function DigitalInfrastructureLayout({ children }) {

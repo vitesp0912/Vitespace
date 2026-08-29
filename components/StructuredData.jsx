@@ -8,9 +8,8 @@ export default function StructuredData() {
     name: 'VITESPACE',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
-    description: 'Complete digital solutions for your business - websites, CRM, SEO, automation & chatbots.',
-    email: 'vitespace5@gmail.com',
-    telephone: '+91-8700117495',
+    description: 'Websites, apps, and custom software that help businesses attract customers, streamline operations, and grow.',
+    email: 'support@vitespace.com',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IN',
@@ -23,9 +22,8 @@ export default function StructuredData() {
     ],
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+91-8700117495',
       contactType: 'Customer Service',
-      email: 'vitespace5@gmail.com',
+      email: 'support@vitespace.com',
       availableLanguage: 'English',
     },
   };
@@ -105,14 +103,13 @@ export default function StructuredData() {
     '@type': 'WebSite',
     name: 'VITESPACE',
     url: siteUrl,
-    description: siteUrl,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteUrl}/?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
+    description:
+      'Websites, apps, and software built to grow your business. VITESPACE designs and builds digital solutions that help you attract customers and run your business better.',
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Organization',
+      name: 'VITESPACE',
+      url: siteUrl,
     },
   };
 

@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Automate lead routing, follow-ups, CRM updates, and reporting with AI systems engineered for speed, accuracy, and scale.',
   alternates: { canonical: '/solutions/ai-automation-systems' },
+  openGraph: { url: '/solutions/ai-automation-systems' },
 };
 
 export default function AIAutomationSystemsLayout({ children }) {

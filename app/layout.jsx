@@ -7,8 +7,8 @@ import { Analytics } from '@vercel/analytics/react';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
 const siteName = 'VITESPACE';
 const siteDescription =
-  'Custom websites and business software, built in weeks. VITESPACE designs and ships sites, dashboards, and automation your team can actually use.';
-const siteTitle = `${siteName} — Custom websites and business software`;
+  'Websites, apps, and software built to grow your business. VITESPACE designs and builds digital solutions that help you attract customers and run your business better.';
+const siteTitle = `${siteName} | Websites, apps, and software built to grow your business`;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,10 +55,6 @@ export const metadata = {
   },
   alternates: {
     canonical: '/',
-    languages: {
-      'en-US': '/',
-      'en': '/',
-    },
   },
   openGraph: {
     type: 'website',
@@ -69,11 +65,11 @@ export const metadata = {
     siteName: siteName,
     images: [
       {
-        url: `${siteUrl}/og-image.jpg`,
+        url: `${siteUrl}/vitespacehero.png`,
         width: 1200,
         height: 630,
-        alt: `${siteName} - Digital Solutions for Your Business`,
-        type: 'image/jpeg',
+        alt: `${siteName} - Websites, apps, and software built to grow your business`,
+        type: 'image/png',
       },
     ],
   },
@@ -83,7 +79,7 @@ export const metadata = {
     description: siteDescription,
     creator: '@vitespace',
     site: '@vitespace',
-    images: [`${siteUrl}/og-image.jpg`],
+    images: [`${siteUrl}/vitespacehero.png`],
   },
   robots: {
     index: true,
@@ -141,7 +137,6 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/favicon_io%20(3)/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon_io%20(3)/apple-touch-icon.png" />
-        <link rel="canonical" href={siteUrl} />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="IN" />
         <meta name="language" content="English" />
