@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Book Your Free Consultation with Vitespace',
+  title: 'Contact',
   description:
-    'Tell us your growth challenges and get a clear action plan for AI systems, infrastructure, and scalable execution.',
+    'Give us the basics. Vitespace will come back with what we would recommend, what it would take, and what happens next.',
   alternates: { canonical: '/contact' },
   openGraph: { url: '/contact' },
 };
