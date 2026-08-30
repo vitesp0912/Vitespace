@@ -38,7 +38,7 @@ export default function SiteFooter() {
               </span>
             </Link>
             <p className="mt-5 text-white/50 text-sm leading-relaxed max-w-xs">
-              Custom websites and business software. Built with care. Shipped in weeks.
+              Websites, apps, software, marketing and automation for growing businesses.
             </p>
             <Link
               href="/contact"

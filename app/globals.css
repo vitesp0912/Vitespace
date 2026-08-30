@@ -8,10 +8,6 @@
 @layer base {
   * {
     font-family: 'Poppins', sans-serif;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
   }
   
   body {
@@ -134,13 +130,101 @@
   .text-eyebrow {
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+  }
+
+  /* Homepage type ladder
+     display > closing > section > feature > card > lede > body > meta */
+  .home-display {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.96;
+    font-size: 2.05rem;
+  }
+
+  .home-closing-title {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    font-size: 2.5rem;
+  }
+
+  .home-section-title {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    font-size: 2rem;
+  }
+
+  .home-feature-title {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    font-size: 2rem;
+  }
+
+  .home-card-title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    font-size: 1.5rem;
+  }
+
+  .home-lede {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .home-body {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 400px) {
+    .home-display { font-size: 2.25rem; }
+  }
+
+  @media (min-width: 640px) {
+    .home-display { font-size: 2.75rem; }
+    .home-closing-title { font-size: 3rem; }
+    .home-section-title { font-size: 2.375rem; }
+    .home-feature-title { font-size: 2.25rem; }
+    .home-card-title { font-size: 1.7rem; }
+    .home-lede { font-size: 1.0625rem; }
+    .home-body { font-size: 1rem; }
+  }
+
+  @media (min-width: 768px) {
+    .home-display { font-size: 3.25rem; }
+    .home-closing-title { font-size: 3.5rem; }
+    .home-section-title { font-size: 2.625rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .home-display { font-size: 3.5rem; }
+    .home-closing-title { font-size: 4rem; }
+    .home-section-title { font-size: 3rem; }
+    .home-feature-title { font-size: 2.5rem; }
+    .home-card-title { font-size: 1.85rem; }
+  }
+
+  @media (min-width: 1280px) {
+    .home-display { font-size: 4rem; }
   }
 
   /* Premium easing */
   .ease-premium {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   /* Homepage — luxury rhythm */
@@ -280,28 +364,13 @@
     background-color: rgba(255, 255, 255, 0.04);
   }
 
-  .industry-card {
-    transition:
-      border-color 0.3s ease-out,
-      background-color 0.3s ease-out;
+  .industry-feature-panel {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
-  .industry-card .industry-icon,
-  .industry-card .industry-title {
-    transition: transform 0.3s ease-out;
-  }
-
-  .industry-card:hover {
-    border-color: rgba(255, 255, 255, 0.16);
-    background-color: rgba(255, 255, 255, 0.035);
-  }
-
-  .industry-card:hover .industry-icon {
-    transform: translateY(-2px);
-  }
-
-  .industry-card:hover .industry-title {
-    transform: translateY(-1px);
+  .industry-mock {
+    aspect-ratio: 1672 / 941;
+    width: 100%;
   }
 
   .footer-mark {
@@ -326,9 +395,8 @@
       transform: none;
     }
 
-    .industry-card:hover .industry-icon,
-    .industry-card:hover .industry-title {
-      transform: none;
+    .industry-nav-row {
+      transition: none;
     }
   }
 }

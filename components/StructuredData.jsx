@@ -104,7 +104,7 @@ export default function StructuredData() {
     name: 'VITESPACE',
     url: siteUrl,
     description:
-      'Websites, apps, and software built to grow your business. VITESPACE designs and builds digital solutions that help you attract customers and run your business better.',
+      'Websites, apps, and software built to grow your business. Vitespace designs and builds digital solutions that help you attract customers and run your business better.',
     inLanguage: 'en',
     publisher: {
       '@type': 'Organization',

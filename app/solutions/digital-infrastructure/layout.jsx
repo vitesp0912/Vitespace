@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'High-Performance Digital Infrastructure for Growth | VITESPACE',
+  title: 'Build | Websites, apps, and business software',
   description:
-    'Build faster, conversion-focused websites and platforms with SEO-ready architecture, analytics integration, and scalable backend systems.',
+    'From your first website to the software your team uses every day, Vitespace builds around how you actually work, not a fixed template.',
   alternates: { canonical: '/solutions/digital-infrastructure' },
   openGraph: { url: '/solutions/digital-infrastructure' },
 };

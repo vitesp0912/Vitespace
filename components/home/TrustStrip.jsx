@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1];
 const items = [
   {
     title: '15–20 Days',
-    text: 'Average project delivery',
+    text: 'Typical delivery for websites and smaller projects.',
     icon: LightningIcon,
   },
   {
@@ -97,31 +97,30 @@ export default function TrustStrip() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, ease }}
         >
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 lg:grid-cols-4">
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
                 <li
                   key={item.title}
                   className={[
-                    'group px-8 py-[30px] sm:px-9 sm:py-8',
-                    i > 0 ? 'border-t border-white/[0.08] sm:border-t-0' : '',
-                    i % 2 === 1 ? 'sm:border-l sm:border-white/[0.08]' : '',
-                    i >= 2 ? 'sm:border-t sm:border-white/[0.08] lg:border-t-0' : '',
+                    'group px-4 py-5 sm:px-7 sm:py-7 lg:px-9 lg:py-8',
+                    i % 2 === 1 ? 'border-l border-white/[0.08]' : '',
+                    i >= 2 ? 'border-t border-white/[0.08] lg:border-t-0' : '',
                     i > 0 ? 'lg:border-l lg:border-white/[0.08]' : '',
                   ]
                     .filter(Boolean)
                     .join(' ')}
                 >
-                  <div className="flex items-start gap-4 transition-transform duration-300 ease-premium group-hover:-translate-y-[3px]">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-[10px] border border-white/[0.08] bg-white/[0.04] text-cyan-300/85 flex items-center justify-center transition-all duration-300 ease-premium group-hover:border-cyan-400/30 group-hover:shadow-[0_0_18px_rgba(34,211,238,0.14)]">
+                  <div className="flex flex-col items-start gap-3 lg:flex-row lg:gap-4 transition-transform duration-300 ease-premium group-hover:-translate-y-[3px]">
+                    <span className="flex-shrink-0 w-9 h-9 lg:w-10 lg:h-10 rounded-[10px] border border-white/[0.08] bg-white/[0.04] text-cyan-300/85 flex items-center justify-center transition-all duration-300 ease-premium group-hover:border-cyan-400/30 group-hover:shadow-[0_0_18px_rgba(34,211,238,0.14)]">
                       <Icon />
                     </span>
-                    <div className="min-w-0 pt-0.5">
-                      <p className="text-xl sm:text-[1.35rem] font-semibold text-white tracking-tight leading-none">
+                    <div className="min-w-0 lg:pt-0.5">
+                      <p className="text-[1.05rem] sm:text-[1.2rem] lg:text-[1.25rem] font-semibold text-white tracking-tight leading-none">
                         {item.title}
                       </p>
-                      <p className="mt-2 text-sm text-white/45 leading-snug">
+                      <p className="mt-2 text-[12px] sm:text-[13px] lg:text-sm text-white/45 leading-snug">
                         {item.text}
                       </p>
                     </div>

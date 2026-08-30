@@ -68,7 +68,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              About VITESPACE
+              About Vitespace
             </motion.span>
 
             <motion.h1
@@ -87,7 +87,7 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <p>
-                VITESPACE operates at the intersection of AI engineering, digital infrastructure, and growth strategy.
+                Vitespace operates at the intersection of AI engineering, digital infrastructure, and growth strategy.
               </p>
               <p className="text-white font-semibold">
                 Lean team. Execution-focused. Technology-first.

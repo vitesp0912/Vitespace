@@ -18,7 +18,7 @@ export default function HomeCTA() {
       />
       <div className="home-shell relative text-center">
         <motion.p
-          className="text-eyebrow text-cyan-300/70 mb-6"
+          className="text-eyebrow text-cyan-300/70 mb-5"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -27,7 +27,7 @@ export default function HomeCTA() {
           Next step
         </motion.p>
         <motion.h2
-          className="font-semibold text-white tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 sm:mb-8"
+          className="home-closing-title text-white mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
@@ -38,13 +38,13 @@ export default function HomeCTA() {
           you are.
         </motion.h2>
         <motion.p
-          className="text-white/55 text-base sm:text-lg max-w-md mx-auto mb-10 sm:mb-12 leading-relaxed"
+          className="home-lede text-white/55 max-w-xl mx-auto mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.12, ease }}
         >
-          Tell us what you need. We’ll reply with a plan.
+          Give us the basics. We&apos;ll come back with what we&apos;d recommend, what it would take, and what happens next.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -54,7 +54,7 @@ export default function HomeCTA() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-10 py-4 sm:py-5 bg-white text-black font-semibold text-sm sm:text-base rounded-full hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(255,255,255,0.2)] transition-all duration-300 ease-premium"
+            className="inline-flex items-center justify-center px-10 py-4 sm:py-5 bg-white text-black font-semibold text-sm rounded-full hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(255,255,255,0.2)] transition-all duration-300 ease-premium"
           >
             Start your project
           </Link>

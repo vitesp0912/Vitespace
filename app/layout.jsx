@@ -7,7 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
 const siteName = 'VITESPACE';
 const siteDescription =
-  'Websites, apps, and software built to grow your business. VITESPACE designs and builds digital solutions that help you attract customers and run your business better.';
+  'Websites, apps, and software built to grow your business. Vitespace designs and builds digital solutions that help you attract customers and run your business better.';
 const siteTitle = `${siteName} | Websites, apps, and software built to grow your business`;
 
 export const metadata = {

@@ -73,7 +73,7 @@ export async function POST(request) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px;">
-            <p>This email was sent from the VITESPACE contact form.</p>
+            <p>This email was sent from the Vitespace contact form.</p>
             <p>You can reply directly to this email to respond to ${escapedName}.</p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export async function POST(request) {
         ${message}
         
         ---
-        This email was sent from the VITESPACE contact form.
+        This email was sent from the Vitespace contact form.
       `,
     };
 

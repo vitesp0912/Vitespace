@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Scale Faster with Growth & Brand Marketing | VITESPACE',
+  title: 'Grow | Search, ads, and marketing',
   description:
-    'Drive predictable growth through performance marketing, funnel optimization, and strategic brand amplification campaigns.',
+    'A good website only helps if people can find it. Vitespace combines search, ads and marketing, online and offline, to reach the right customers.',
   alternates: { canonical: '/solutions/growth-marketing' },
   openGraph: { url: '/solutions/growth-marketing' },
 };

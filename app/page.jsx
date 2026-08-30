@@ -26,8 +26,8 @@ export default function Home() {
         <HomeHero />
         <TrustStrip />
         <ServicePillars />
-        <ProcessEditorial />
         <IndustriesGrid />
+        <ProcessEditorial />
         <Testimonials />
         <FAQAccordion />
         <HomeCTA />

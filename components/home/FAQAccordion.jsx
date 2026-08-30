@@ -12,19 +12,19 @@ const faqs = [
   },
   {
     q: 'What do you actually build?',
-    a: 'Websites, business software, dashboards, and automation. If your team uses it on a screen, we can likely build it.',
+    a: 'We build business websites, mobile apps, custom software, ERPs, CRMs, dashboards and other digital systems. We also provide SEO, Google Ads, Meta Ads, offline marketing and automation.',
   },
   {
     q: 'Do we own the work?',
-    a: 'Yes. The site, the code, and the accounts. They are yours.',
+    a: 'Yes. Once the agreed project is fully paid for, you own the final website, software, design assets and business data created for your project, subject to any third-party licences.',
   },
   {
     q: 'What do you need from us?',
-    a: 'A few calls, your brand files if you have them, and clear answers. We handle the rest.',
+    a: "Mostly your business knowledge. We'll guide you through the information, content, access and decisions we need from your side before and during the project.",
   },
   {
     q: 'Can you help after launch?',
-    a: 'Yes. Fixes, updates, and growth work. As much or as little as you want.',
+    a: 'Yes. We provide ongoing support, updates, improvements, marketing and additional development based on what your business needs.',
   },
   {
     q: 'How much does it cost?',
@@ -46,8 +46,8 @@ export default function FAQAccordion() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.7, ease }}
           >
-            <p className="text-eyebrow text-white/45 mb-4">FAQ</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.05]">
+            <p className="text-eyebrow text-white/40 mb-5">FAQ</p>
+            <h2 className="home-section-title text-white">
               Straight answers.
             </h2>
           </motion.div>
@@ -70,7 +70,7 @@ export default function FAQAccordion() {
                     className="w-full flex items-start justify-between gap-6 py-5 sm:py-6 text-left group"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-base sm:text-lg text-white font-medium tracking-tight group-hover:text-cyan-200 transition-colors">
+                    <span className="text-[16px] sm:text-[17px] text-white font-medium tracking-tight group-hover:text-cyan-200 transition-colors">
                       {item.q}
                     </span>
                     <span
@@ -91,7 +91,7 @@ export default function FAQAccordion() {
                         transition={{ duration: 0.35, ease }}
                         className="overflow-hidden"
                       >
-                        <p className="pb-6 sm:pb-7 text-sm sm:text-base text-white/55 leading-relaxed max-w-xl">
+                        <p className="home-body pb-6 sm:pb-7 text-white/55 max-w-xl">
                           {item.a}
                         </p>
                       </motion.div>

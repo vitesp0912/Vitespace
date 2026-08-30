@@ -75,7 +75,7 @@ export default function Benefits() {
             Our Core Values
 </h2>
           <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto px-4">
-  VITESPACE was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
+  Vitespace was founded on a simple principle: technology should empower businesses, not complicate them. We're a team of developers, designers, and strategists who bridge the gap between complex digital solutions and business owners who just want things to work.
 </p>
         </motion.div>
 

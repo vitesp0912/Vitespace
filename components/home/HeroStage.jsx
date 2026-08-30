@@ -104,7 +104,7 @@ export default function HeroStage() {
         <BrowserFrame
           url="theaamaltair.com"
           src="/portfolio/aamaltair.png"
-          alt="Hospitality website by VITESPACE"
+          alt="Hospitality website by Vitespace"
           className="opacity-70"
         />
       </div>
@@ -114,7 +114,7 @@ export default function HeroStage() {
         <BrowserFrame
           url="celesteabode.com"
           src="/portfolio/celeste.png"
-          alt="Real estate website by VITESPACE"
+          alt="Real estate website by Vitespace"
         />
       </div>
 

@@ -34,7 +34,7 @@ export default function Navigation({ onMenuClick }) {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-12 py-4 sm:py-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-12 py-3.5 sm:py-6">
       {isScrolled && (
         <>
           <div
@@ -59,9 +59,9 @@ export default function Navigation({ onMenuClick }) {
           <img
             src="/logo.png"
             alt="VITESPACE Logo"
-            className="h-8 md:h-10 w-auto"
+            className="h-7 sm:h-8 md:h-10 w-auto"
           />
-          <div className="text-xl sm:text-2xl md:text-3xl font-medium tracking-wider text-white">
+          <div className="text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.16em] sm:tracking-wider text-white">
             VITESPACE
           </div>
         </Link>
@@ -93,7 +93,7 @@ export default function Navigation({ onMenuClick }) {
           </button>
           <button
             onClick={onMenuClick}
-            className="relative p-4 sm:p-5 hover:opacity-70 transition-opacity md:hidden"
+            className="relative -mr-1 p-2.5 hover:opacity-70 transition-opacity md:hidden"
             aria-label="Toggle menu"
           >
             <div className="relative w-6 h-6 sm:w-7 sm:h-7">

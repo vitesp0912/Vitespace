@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Eliminate Manual Work with AI Automation Systems | VITESPACE',
+  title: 'Automate | AI, workflows, and less repeat work',
   description:
-    'Automate lead routing, follow-ups, CRM updates, and reporting with AI systems engineered for speed, accuracy, and scale.',
+    'Not every task needs a person behind it. Vitespace builds practical AI for conversations, follow-ups and workflows so your team can focus on what matters.',
   alternates: { canonical: '/solutions/ai-automation-systems' },
   openGraph: { url: '/solutions/ai-automation-systems' },
 };
