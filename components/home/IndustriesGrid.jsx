@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import EmailPopup from '@/components/EmailPopup';
@@ -59,6 +59,49 @@ const industries = [
 ];
 
 const contentEase = { duration: 0.4, ease };
+const loadedShots = new Set();
+
+function FrameLoader() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]" aria-hidden>
+      <span className="h-6 w-6 rounded-full border border-white/15 border-t-cyan-300/80 animate-spin" />
+    </div>
+  );
+}
+
+function IndustryShot({ src, className = '' }) {
+  const imgRef = useRef(null);
+  const [loaded, setLoaded] = useState(() => loadedShots.has(src));
+
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth > 0) {
+      loadedShots.add(src);
+      setLoaded(true);
+      return;
+    }
+    setLoaded(loadedShots.has(src));
+  }, [src]);
+
+  return (
+    <div className={`industry-mock relative overflow-hidden bg-[#0a0a0a] ${className}`}>
+      {!loaded && <FrameLoader />}
+      <img
+        ref={imgRef}
+        src={src}
+        alt=""
+        onLoad={() => {
+          loadedShots.add(src);
+          setLoaded(true);
+        }}
+        onError={() => setLoaded(true)}
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+          loaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
+  );
+}
 
 function IndustryPreview({ item, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -116,11 +159,9 @@ function IndustryPreview({ item, onClose }) {
             >
               <span className="block text-lg leading-none">×</span>
             </button>
-            <img
-              src={item.image}
-              alt=""
-              className="block w-full h-auto rounded-[14px]"
-            />
+            <div className="overflow-hidden rounded-[14px] bg-[#0a0a0a]">
+              <IndustryShot src={item.image} />
+            </div>
             <div className="flex items-baseline gap-3 px-1 pt-3 pb-0.5">
               <span className="text-[12px] tabular-nums tracking-[0.08em] text-cyan-300/80">{item.n}</span>
               <p className="text-sm font-medium tracking-tight text-white">{item.title}</p>
@@ -164,9 +205,9 @@ function FeatureContent({ item, compact = false, onOpen }) {
         <button
           type="button"
           onClick={() => onOpen(item)}
-          className="group relative block w-full overflow-hidden rounded-[14px] border border-white/[0.10] bg-[#070707] text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-cyan-300/45"
+          className="group relative block w-full overflow-hidden rounded-[14px] border border-white/[0.10] bg-[#0a0a0a] text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-cyan-300/45"
         >
-          <img src={item.image} alt="" className="block h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]" />
+          <IndustryShot src={item.image} />
           <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
           <span className="pointer-events-none absolute bottom-3 right-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 text-[11px] tracking-tight text-white/75 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             View
@@ -182,6 +223,14 @@ export default function IndustriesGrid() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [preview, setPreview] = useState(null);
   const active = industries.find((item) => item.id === activeId) || industries[0];
+
+  useEffect(() => {
+    industries.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+      img.onload = () => loadedShots.add(item.image);
+    });
+  }, []);
 
   const onNavKeyDown = (event, index) => {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
