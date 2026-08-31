@@ -21,7 +21,7 @@ export default function HomeCTA() {
           className="text-eyebrow text-cyan-300/70 mb-5"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, ease }}
         >
           Next step
@@ -30,7 +30,7 @@ export default function HomeCTA() {
           className="home-closing-title text-white mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.75, delay: 0.05, ease }}
         >
           Ready when
@@ -41,7 +41,7 @@ export default function HomeCTA() {
           className="home-lede text-white/55 max-w-xl mx-auto mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.12, ease }}
         >
           Give us the basics. We&apos;ll come back with what we&apos;d recommend, what it would take, and what happens next.
@@ -49,7 +49,7 @@ export default function HomeCTA() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.18, ease }}
         >
           <Link

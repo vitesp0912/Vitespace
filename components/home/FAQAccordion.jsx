@@ -43,7 +43,7 @@ export default function FAQAccordion() {
             className="lg:sticky lg:top-32 lg:self-start"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.7, ease }}
           >
             <p className="text-eyebrow text-white/40 mb-5">FAQ</p>

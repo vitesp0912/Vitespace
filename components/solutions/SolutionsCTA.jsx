@@ -26,7 +26,7 @@ export default function SolutionsCTA() {
           className="text-eyebrow text-cyan-300/70 mb-5"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.8, ease }}
         >
           Next step
@@ -35,7 +35,7 @@ export default function SolutionsCTA() {
           className="home-closing-title text-white mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 1, delay: 0.08, ease }}
         >
           Tell us what you need.
@@ -44,7 +44,7 @@ export default function SolutionsCTA() {
           className="home-lede text-white/55 max-w-xl mx-auto mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.85, delay: 0.16, ease }}
         >
           Tell us what you&apos;re trying to solve. We&apos;ll help you find the right next step.
@@ -52,7 +52,7 @@ export default function SolutionsCTA() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.85, delay: 0.24, ease }}
         >
           <button

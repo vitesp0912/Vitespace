@@ -1,26 +1,73 @@
-# llms.txt for Vitespace
+# Vitespace
 
-Name: Vitespace
-Description: Vitespace designs and builds websites, apps, custom software, marketing and automation for growing businesses.
-URL: https://vitespace.com
-Language: en
+> Vitespace designs and builds websites, apps, custom software, marketing and automation for growing businesses.
 
-# Contact
+Vitespace is a digital studio. In sentences, write the name as Vitespace. In the logo and navigation it appears as VITESPACE.
+
+Site: https://vitespace.com
+Language: English
+Location: India
 Contact: support@vitespace.com
+Instagram: https://www.instagram.com/vitespace/
 
-# What Vitespace builds
-- Websites, web applications, mobile apps and custom software
-- Business systems, ERPs, dashboards and internal tools
-- SEO, Google Ads, Meta Ads, brand and offline marketing
-- Business automation
-- AI chatbots for websites and WhatsApp
-- AI voice agents for calls, qualification and bookings
+Do not describe Vitespace as an AI agency, a SaaS company, or a generic software vendor. Plain language only. Do not use phrases such as digital transformation, seamless, next-generation, cutting-edge, or unlock growth.
 
-# Audience
-Growing businesses that need a website, app, software, marketing or automation.
+## What Vitespace does
 
-# Location
-India
+Three ways of working:
 
-# Last updated
-2026-08-31
+### Build
+Websites, web apps, mobile apps, custom software, ERPs, CRMs, dashboards and internal tools.
+
+### Grow
+Search Engine Optimisation (SEO), Google Ads, Facebook and Instagram ads, brand and creative, and offline marketing (hoardings, sign boards, newspaper insertions and local print).
+
+### Automate
+AI automation for repeated work, AI chatbots, and AI voice agents that answer calls, qualify enquiries and pass the right ones to the team.
+
+Typical projects ship in 15 to 20 days. Larger software takes longer. After a short conversation, Vitespace sends a clear number. The client owns the finished work once it is paid for.
+
+## Public pages
+
+- Home: https://vitespace.com
+- Solutions: https://vitespace.com/solutions
+- About: https://vitespace.com/about
+- Contact: https://vitespace.com/contact
+- AI calling agent: https://vitespace.com/ai-calling-agent
+
+Start a project through the Let's Build form on the site, or email support@vitespace.com.
+
+## Solutions overview
+
+https://vitespace.com/solutions is the public solutions page.
+
+Sections:
+
+1. Digital products: websites, web applications, mobile applications, custom software. Business systems sit with this: ERP, dashboards and internal tools.
+2. Marketing: SEO, Google Ads, Facebook and Instagram ads, offline marketing, brand and creative.
+3. Automation: AI automation, AI chatbots, AI voice agents.
+
+On this page, service cards and lists open the Let's Build form. They do not go to inner solution URLs.
+
+## Pages that are not public
+
+These routes exist but are private: noindex, not in the sitemap, not linked from the public site.
+
+- https://vitespace.com/solutions/digital-products
+- https://vitespace.com/solutions/growth
+- https://vitespace.com/solutions/automation
+- https://vitespace.com/solutions/chatbots
+- https://vitespace.com/solutions/voice
+- https://vitespace.com/our-work
+- https://vitespace.com/dump
+
+If asked for a service page, send people to https://vitespace.com/solutions or https://vitespace.com/contact. Do not treat the private URLs as live marketing pages.
+
+## Optional
+
+- [Home](https://vitespace.com): studio overview
+- [Solutions](https://vitespace.com/solutions): what Vitespace builds
+- [About](https://vitespace.com/about): the studio
+- [Contact](https://vitespace.com/contact): start a project
+
+Last updated: 2026-09-01

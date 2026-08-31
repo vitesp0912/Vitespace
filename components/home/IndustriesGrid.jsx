@@ -249,7 +249,7 @@ export default function IndustriesGrid() {
             className="flex h-full min-h-0 flex-col"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.25 }}
             transition={{ duration: 0.7, ease }}
           >
             <p className="text-eyebrow text-white/40 mb-5">
@@ -329,7 +329,7 @@ export default function IndustriesGrid() {
             className="hidden h-full min-h-0 lg:flex"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.08, ease }}
           >
             <div
@@ -406,7 +406,7 @@ export default function IndustriesGrid() {
           className="mt-12 sm:mt-14 lg:mt-16 flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.55, ease }}
         >
           <p className="home-body max-w-xl text-white/45">

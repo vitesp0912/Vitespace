@@ -167,7 +167,7 @@ export default function ServicePillars() {
           className="max-w-[38rem] mb-10 sm:mb-14 lg:mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="text-eyebrow text-white/40 mb-5">What we do</p>
@@ -223,7 +223,7 @@ export default function ServicePillars() {
               className="h-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.07, ease }}
             >
               <PillarCard pillar={pillar} />

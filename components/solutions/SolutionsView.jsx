@@ -18,13 +18,39 @@ import {
 } from '@/components/solutions/icons';
 
 const ease = [0.22, 1, 0.36, 1];
-const view = { once: true, amount: 0.32, margin: '0px 0px -10% 0px' };
+const view = { once: false, amount: 0.28 };
+const viewHold = { once: true, amount: 0.32, margin: '0px 0px -10% 0px' };
 
-const fadeUp = {
-  initial: { opacity: 0, y: 22 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: view,
-};
+function useScrollDirection() {
+  const dirRef = useRef(1);
+  const [dir, setDir] = useState(1);
+
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const next = y > last + 3 ? 1 : y < last - 3 ? -1 : dirRef.current;
+      last = y;
+      if (next !== dirRef.current) {
+        dirRef.current = next;
+        setDir(next);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return dir;
+}
+
+function useFadeUp() {
+  const dir = useScrollDirection();
+  return {
+    initial: { opacity: 0, y: 18 * dir },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: view,
+  };
+}
 
 const cellRise = {
   hidden: { opacity: 0, y: 16 },
@@ -44,7 +70,7 @@ function SoftShot({ children, className = '' }) {
         style={{ y }}
         initial={reduce ? false : { opacity: 0, scale: 1.03 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.28 }}
+        viewport={view}
         transition={{ duration: 1.15, ease }}
       >
         {children}
@@ -198,6 +224,7 @@ const automationRows = [
 ];
 
 function RevealWords({ text, className = '', delay = 0 }) {
+  const dir = useScrollDirection();
   const words = text.split(' ');
   return (
     <span className={className}>
@@ -205,9 +232,9 @@ function RevealWords({ text, className = '', delay = 0 }) {
         <motion.span
           key={`${word}-${i}`}
           className="inline-block mr-[0.28em]"
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 10 * dir }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.55, delay: delay + i * 0.05, ease }}
         >
           {word}
@@ -311,6 +338,7 @@ function SolutionsHero() {
 
 function NeedOrientation() {
   const [active, setActive] = useState(needs[0].id);
+  const fadeUp = useFadeUp();
 
   return (
     <section className="relative pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-14">
@@ -330,9 +358,13 @@ function NeedOrientation() {
           className="overflow-hidden rounded-[24px] border border-white/[0.12]"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.18 }}
+          viewport={view}
           variants={{
-            hidden: { opacity: 0, y: 20 },
+            hidden: {
+              opacity: 0,
+              y: 20,
+              transition: { duration: 0.45, ease, staggerChildren: 0.04, staggerDirection: -1 },
+            },
             show: {
               opacity: 1,
               y: 0,
@@ -393,6 +425,7 @@ function NeedOrientation() {
 function ProductCarousel({ onBuild }) {
   const scrollerRef = useRef(null);
   const [active, setActive] = useState(0);
+  const fadeUp = useFadeUp();
 
   const onScroll = useCallback(() => {
     const el = scrollerRef.current;
@@ -420,12 +453,10 @@ function ProductCarousel({ onBuild }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={view}
+      {...fadeUp}
       transition={{ duration: 0.9, ease }}
     >
-      <div className="mb-5 flex items-center justify-end">
+      <div className="mb-5 hidden lg:flex items-center justify-end">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -451,7 +482,7 @@ function ProductCarousel({ onBuild }) {
       <div
         ref={scrollerRef}
         onScroll={onScroll}
-        className="hide-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain gap-3 sm:gap-4 py-6 sm:py-8 -mx-4 px-4 sm:-mx-5 sm:px-5"
+        className="hide-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain lg:gap-4 lg:py-8 lg:-mx-5 lg:px-5"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {products.map((item) => (
@@ -460,7 +491,7 @@ function ProductCarousel({ onBuild }) {
             type="button"
             data-slide
             onClick={onBuild}
-            className="sol-product sol-carousel-card group relative flex w-[min(19.5rem,82vw)] sm:w-[28rem] lg:w-[34rem] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] border border-white/[0.12] bg-[#0B0B0B] px-6 py-6 sm:px-8 sm:py-8 text-left focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-cyan-300/45"
+            className="sol-product sol-carousel-card group relative flex w-full lg:w-[34rem] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] border border-white/[0.12] bg-[#0B0B0B] px-6 py-6 sm:px-8 sm:py-8 text-left focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-cyan-300/45"
           >
             <item.Icon className="h-11 w-11 sm:h-14 sm:w-14 text-white/40 transition-colors duration-300 group-hover:text-cyan-300" />
             <div className="mt-6 sm:mt-8">
@@ -487,8 +518,8 @@ function ProductCarousel({ onBuild }) {
             aria-selected={active === index}
             aria-label={item.title}
             onClick={() => goTo(index)}
-            className={`h-1 rounded-full transition-all duration-500 ease-premium ${
-              active === index ? 'w-7 bg-cyan-300/80' : 'w-2 bg-white/20 hover:bg-white/35'
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              active === index ? 'w-6 bg-cyan-300/85' : 'w-1.5 bg-white/25'
             }`}
           />
         ))}
@@ -498,6 +529,7 @@ function ProductCarousel({ onBuild }) {
 }
 
 function DigitalProducts({ onBuild }) {
+  const fadeUp = useFadeUp();
   return (
     <section id="digital-products" className="scroll-mt-24 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-14">
       <div className="home-shell">
@@ -532,6 +564,7 @@ function DigitalProducts({ onBuild }) {
 }
 
 function StatementStrip() {
+  const fadeUp = useFadeUp();
   return (
     <section className="relative py-20 sm:py-24 md:py-28">
       <div className="home-shell text-center">
@@ -544,9 +577,7 @@ function StatementStrip() {
         </h2>
         <motion.p
           className="home-lede mt-8 text-white/45 max-w-md mx-auto"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
+          {...fadeUp}
           transition={{ duration: 0.85, delay: 0.7, ease }}
         >
           Designed around the people who use it.
@@ -557,6 +588,7 @@ function StatementStrip() {
 }
 
 function BusinessSystems() {
+  const fadeUp = useFadeUp();
   return (
     <section id="business-systems" className="scroll-mt-24 pb-16 sm:pb-20 lg:pb-24">
       <div className="home-shell">
@@ -597,6 +629,7 @@ function BusinessSystems() {
 function GrowthBlock() {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(0);
+  const fadeUp = useFadeUp();
 
   return (
     <section id="growth" className="home-section scroll-mt-24">
@@ -639,7 +672,7 @@ function GrowthBlock() {
                   className={`relative ${i !== growthRows.length - 1 ? 'border-b border-white/[0.10]' : ''}`}
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={view}
+                  viewport={viewHold}
                   transition={{ duration: 0.7, delay: i * 0.06, ease }}
                 >
                   {isOpen && (
@@ -712,6 +745,7 @@ function GrowthBlock() {
 }
 
 function AutomationBlock({ onBuild }) {
+  const fadeUp = useFadeUp();
   return (
     <section id="automation" className="relative py-20 sm:py-24 lg:py-28 scroll-mt-24">
       <div className="home-shell">
@@ -750,7 +784,7 @@ function AutomationBlock({ onBuild }) {
                 key={item.title}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={view}
+                viewport={viewHold}
                 transition={{ duration: 0.7, delay: i * 0.07, ease }}
               >
                 <button

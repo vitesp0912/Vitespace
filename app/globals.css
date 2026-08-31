@@ -385,8 +385,16 @@
     transform: translateY(-2px);
   }
 
-  .sol-product.sol-carousel-card:hover {
-    transform: scale(1.025);
+  @media (max-width: 1023px) {
+    .sol-product.sol-carousel-card:hover {
+      transform: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sol-product.sol-carousel-card:hover {
+      transform: scale(1.025);
+    }
   }
 
   .sol-catalog {

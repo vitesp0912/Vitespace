@@ -74,7 +74,7 @@ export default function Testimonials() {
           className="mb-10 sm:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="text-eyebrow text-white/40 mb-5">After launch</p>
@@ -120,7 +120,7 @@ export default function Testimonials() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.25 }}
             transition={{ duration: 0.65, ease }}
           >
             <QuoteCard quote={quotes[0]} featured />
@@ -133,7 +133,7 @@ export default function Testimonials() {
                 className="flex-1"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.25 }}
                 transition={{ duration: 0.55, delay: 0.08 + i * 0.08, ease }}
               >
                 <QuoteCard quote={quote} />

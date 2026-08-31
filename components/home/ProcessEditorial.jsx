@@ -51,7 +51,7 @@ function SectionIntro({ className = '' }) {
       className={className}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.7, ease }}
     >
       <p className="text-eyebrow text-white/40 mb-5">How we work</p>
@@ -156,7 +156,7 @@ export default function ProcessEditorial() {
                   }`}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
+                  viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.55, delay: i * 0.06, ease }}
                 >
                   {lineClass && (
