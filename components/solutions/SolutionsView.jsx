@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { AutomationShot, GrowthShot, OperationsShot, prefetchSolutionShots } from '@/components/solutions/visuals';
 import SolutionsCTA from '@/components/solutions/SolutionsCTA';
 import EmailPopup from '@/components/EmailPopup';
@@ -89,7 +89,7 @@ const needs = [
   {
     id: 'growth',
     n: '05',
-    label: 'Growth',
+    label: 'Marketing',
     href: '#growth',
     line: 'SEO, ads and marketing that bring more customers.',
     Icon: IconGrowth,
@@ -138,37 +138,37 @@ const products = [
 const growthRows = [
   {
     n: '01',
-    title: 'Search Engine Optimization',
-    hook: 'Show up when people look for what you sell.',
-    line: 'Improve search visibility and bring the right people to your site.',
+    title: 'Search Engine Optimisation (SEO)',
+    hook: 'When someone searches for a business like yours, they should see you first.',
+    line: 'We set up your website so Google can show you. You do not pay for every visit.',
     href: paths.growth,
   },
   {
     n: '02',
     title: 'Google Ads',
-    hook: 'Reach people ready to search, compare and buy.',
-    line: 'Ads that put you in front of people already looking for what you sell.',
+    hook: 'Show up at the top of Google when someone is ready to enquire.',
+    line: 'You pay when they click. We write the ads, choose the searches, and keep spend under control.',
     href: paths.growth,
   },
   {
     n: '03',
-    title: 'Meta Ads',
-    hook: 'Reach the people most likely to care.',
-    line: 'Facebook and Instagram campaigns that reach the right audience.',
+    title: 'Facebook and Instagram ads',
+    hook: 'Reach people on the apps they already use every day.',
+    line: 'We make simple ads and show them to people who are likely to need your business.',
     href: paths.growth,
   },
   {
     n: '04',
     title: 'Offline marketing',
-    hook: 'Put your business where people can see it.',
-    line: 'Print, signage and campaigns that get you noticed in the real world.',
+    hook: 'Be visible where people still walk, wait and look around.',
+    line: 'Hoardings, sign boards, newspaper insertions and other local print, so people see you even when they are not online.',
     href: paths.growth,
   },
   {
     n: '05',
     title: 'Brand & creative',
-    hook: 'Look like a business people remember.',
-    line: 'Identity and creative that make you easier to recognise and trust.',
+    hook: 'Look and sound like a business people remember.',
+    line: 'Logo, colours, words and images that stay consistent, so people recognise you and trust you.',
     href: paths.growth,
   },
 ];
@@ -451,7 +451,7 @@ function ProductCarousel({ onBuild }) {
       <div
         ref={scrollerRef}
         onScroll={onScroll}
-        className="hide-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain gap-3 sm:gap-4 py-6 sm:py-8"
+        className="hide-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain gap-3 sm:gap-4 py-6 sm:py-8 -mx-4 px-4 sm:-mx-5 sm:px-5"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {products.map((item) => (
@@ -460,12 +460,10 @@ function ProductCarousel({ onBuild }) {
             type="button"
             data-slide
             onClick={onBuild}
-            className="sol-product sol-carousel-card group relative flex w-[min(19.5rem,82vw)] sm:w-[min(28rem,72%)] lg:w-[min(34rem,58%)] shrink-0 snap-start snap-always flex-col justify-between overflow-hidden rounded-[20px] border border-white/[0.12] bg-[#0B0B0B] px-6 py-6 sm:px-8 sm:py-8 min-h-[17rem] sm:min-h-[20rem] text-left focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-cyan-300/45"
+            className="sol-product sol-carousel-card group relative flex w-[min(19.5rem,82vw)] sm:w-[28rem] lg:w-[34rem] shrink-0 snap-start snap-always flex-col overflow-hidden rounded-[20px] border border-white/[0.12] bg-[#0B0B0B] px-6 py-6 sm:px-8 sm:py-8 text-left focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-cyan-300/45"
           >
-            <div className="flex items-start justify-end">
-              <item.Icon className="h-[18px] w-[18px] text-white/35 transition-colors duration-300 group-hover:text-cyan-300" />
-            </div>
-            <div className="mt-12 sm:mt-16">
+            <item.Icon className="h-11 w-11 sm:h-14 sm:w-14 text-white/40 transition-colors duration-300 group-hover:text-cyan-300" />
+            <div className="mt-6 sm:mt-8">
               <h3 className="text-[1.45rem] sm:text-[1.75rem] font-semibold tracking-tight leading-[1.1] text-white/90 transition-colors duration-300 group-hover:text-white">
                 {item.title}
               </h3>
@@ -596,8 +594,9 @@ function BusinessSystems() {
   );
 }
 
-function GrowthBlock({ onBuild }) {
-  const [showMore, setShowMore] = useState(false);
+function GrowthBlock() {
+  const reduce = useReducedMotion();
+  const [open, setOpen] = useState(0);
 
   return (
     <section id="growth" className="home-section scroll-mt-24">
@@ -608,7 +607,7 @@ function GrowthBlock({ onBuild }) {
             {...fadeUp}
             transition={{ duration: 0.85, ease }}
           >
-            Growth
+            Marketing
           </motion.p>
           <motion.h2
             className="home-section-title text-white"
@@ -632,43 +631,79 @@ function GrowthBlock({ onBuild }) {
           </SoftShot>
 
           <div className="order-2 overflow-hidden rounded-[20px] border border-white/[0.12] bg-[#0B0B0B]">
-            {growthRows.map((item, i) => (
-              <motion.div
-                key={item.title}
-                className={i >= 3 && !showMore ? 'hidden lg:block' : undefined}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={view}
-                transition={{ duration: 0.7, delay: i * 0.06, ease }}
-              >
-                <button
-                  type="button"
-                  onClick={onBuild}
-                  className={`sol-product group block w-full text-left px-5 py-4 sm:px-6 sm:py-5 ${
-                    i !== growthRows.length - 1 ? 'border-b border-white/[0.10]' : ''
-                  }`}
+            {growthRows.map((item, i) => {
+              const isOpen = open === i;
+              return (
+                <motion.div
+                  key={item.title}
+                  className={`relative ${i !== growthRows.length - 1 ? 'border-b border-white/[0.10]' : ''}`}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={view}
+                  transition={{ duration: 0.7, delay: i * 0.06, ease }}
                 >
-                    <h3 className="text-[1.05rem] sm:text-[1.15rem] font-semibold tracking-tight text-white/90 transition-colors duration-300 group-hover:text-white">
+                  {isOpen && (
+                    <span
+                      className="pointer-events-none absolute left-0 top-3 bottom-3 w-px bg-cyan-300/70"
+                      aria-hidden
+                    />
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    aria-expanded={isOpen}
+                    className="group flex w-full items-center gap-4 px-5 py-4 sm:px-6 sm:py-5 text-left"
+                  >
+                    <span
+                      className={`w-6 shrink-0 text-[11px] tabular-nums tracking-[0.14em] transition-colors duration-300 ${
+                        isOpen ? 'text-cyan-300/80' : 'text-white/28 group-hover:text-white/45'
+                      }`}
+                    >
+                      {item.n}
+                    </span>
+                    <span
+                      className={`min-w-0 flex-1 text-[1.05rem] sm:text-[1.15rem] font-semibold tracking-tight transition-colors duration-300 ${
+                        isOpen ? 'text-white' : 'text-white/75 group-hover:text-white'
+                      }`}
+                    >
                       {item.title}
-                    </h3>
-                    <p className="mt-1 text-[13px] sm:text-[14px] font-medium text-white/65 transition-colors duration-300 group-hover:text-white/80">
-                      {item.hook}
-                    </p>
-                    <p className="mt-1 text-[13px] sm:text-[14px] leading-relaxed text-white/40 transition-colors duration-300 group-hover:text-white/55">
-                      {item.line}
-                    </p>
-                </button>
-              </motion.div>
-            ))}
-            <button
-              type="button"
-              className={`lg:hidden w-full px-5 py-4 text-left text-[13px] tracking-[0.14em] uppercase text-white/40 transition-colors duration-300 hover:text-white/70 ${
-                showMore ? 'hidden' : ''
-              }`}
-              onClick={() => setShowMore(true)}
-            >
-              View more
-            </button>
+                    </span>
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center text-white/40 transition-all duration-300 ${
+                        isOpen
+                          ? 'rotate-180 text-cyan-300'
+                          : 'group-hover:text-white/70'
+                      }`}
+                      aria-hidden
+                    >
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+                      </svg>
+                    </span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={reduce ? false : { height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={reduce ? { opacity: 1 } : { height: 0, opacity: 0 }}
+                        transition={{ duration: reduce ? 0 : 0.42, ease }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 sm:px-6 sm:pb-6 pl-[3.25rem] sm:pl-[3.5rem] pr-14">
+                          <p className="text-[14px] sm:text-[15px] font-medium tracking-tight text-white/70">
+                            {item.hook}
+                          </p>
+                          <p className="mt-2 text-[13px] sm:text-[14px] leading-relaxed text-white/40">
+                            {item.line}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -760,7 +795,7 @@ export default function SolutionsView() {
       <DigitalProducts onBuild={onBuild} />
       <StatementStrip />
       <BusinessSystems />
-      <GrowthBlock onBuild={onBuild} />
+      <GrowthBlock />
       <AutomationBlock onBuild={onBuild} />
       <SolutionsCTA />
       <EmailPopup isOpen={isBuildOpen} onClose={() => setIsBuildOpen(false)} />

@@ -55,14 +55,16 @@ const pillars = [
 ];
 
 function PillarCard({ pillar, compact = false }) {
+  const [open, setOpen] = useState(false);
+  const visible = open ? pillar.services : pillar.services.slice(0, 3);
+
   return (
-    <Link
-      href={pillar.href}
-      className={`pillar-card group grid grid-rows-[minmax(0,6fr)_1px_minmax(0,4fr)] h-full rounded-[22px] border border-white/[0.08] bg-[#0c0c0c] overflow-hidden ${
+    <article
+            className={`pillar-card group grid grid-rows-[minmax(0,6fr)_1px_auto] rounded-[22px] border border-white/[0.08] bg-[#0c0c0c] overflow-hidden ${
         compact ? 'min-h-[440px]' : 'min-h-[520px] sm:min-h-[560px]'
       }`}
     >
-      <div className="relative min-h-0 overflow-hidden">
+      <Link href={pillar.href} className="relative min-h-0 overflow-hidden">
         <img
           src={pillar.image}
           alt=""
@@ -103,18 +105,18 @@ function PillarCard({ pillar, compact = false }) {
             {pillar.line}
           </p>
         </div>
-      </div>
+      </Link>
 
       <div className="h-px w-full bg-white/[0.08]" aria-hidden />
 
-      <div className="min-h-0 flex flex-col justify-center px-6 sm:px-7">
+      <div className="flex flex-col justify-center px-6 sm:px-7 pt-1 pb-4 sm:pb-5">
         <ul>
-          {pillar.services.map((item, idx) => (
+          {visible.map((item, idx) => (
             <li
               key={item}
               className={`flex items-center gap-3 text-sm text-white/70 ${
                 compact ? 'py-2.5' : 'py-3.5'
-              } ${idx < pillar.services.length - 1 ? 'border-b border-white/[0.06]' : ''}`}
+              } ${idx < visible.length - 1 ? 'border-b border-white/[0.06]' : ''}`}
             >
               <span className="tabular-nums text-[10px] tracking-[0.14em] text-white/25 w-4 shrink-0">
                 {String(idx + 1).padStart(2, '0')}
@@ -123,8 +125,18 @@ function PillarCard({ pillar, compact = false }) {
             </li>
           ))}
         </ul>
+        {pillar.services.length > 3 && (
+          <button
+            type="button"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            className="mt-1 self-end py-3 text-right text-[13px] tracking-[0.14em] uppercase text-white/40 transition-colors duration-300 hover:text-white/70"
+          >
+            {open ? 'Show less' : 'Show more'}
+          </button>
+        )}
       </div>
-    </Link>
+    </article>
   );
 }
 
@@ -204,18 +216,18 @@ export default function ServicePillars() {
           </div>
         </div>
 
-        <div className="hidden lg:grid grid-cols-3 gap-5 items-stretch">
+        <div className="hidden lg:grid grid-cols-3 gap-5 items-start">
           {pillars.map((pillar, i) => (
-            <motion.article
+            <motion.div
               key={pillar.key}
-              className="h-full"
+              className="h-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.07, ease }}
             >
               <PillarCard pillar={pillar} />
-            </motion.article>
+            </motion.div>
           ))}
         </div>
       </div>
