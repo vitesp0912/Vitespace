@@ -1,22 +1,16 @@
 /* TEAM */
-Developer: VITESPACE Team
-Contact: vitespace5@gmail.com
-Phone: +91 8700117495
+Studio: Vitespace
+Contact: support@vitespace.com
 Location: India
 
-/* THANKS */
-Clients: All businesses who trust us with their digital presence
-
 /* SITE */
-Last update: 2025/01/01
-Standards: HTML5, CSS3, JavaScript (ES6+)
-Components: React, Next.js, Framer Motion
-Software: VS Code, Node.js, npm
+Last update: 2026/08/31
+Standards: HTML5, CSS3, JavaScript
+Software: Next.js, React, Framer Motion
 
 /* SERVICES */
-- Website Development
-- SEO & Performance Marketing
-- CRM & Automation Systems
-- AI & Rule-Based Chatbots
-- Customised Software Solutions
-
+- Website, app and custom software development
+- SEO, ads and growth marketing
+- Business automation
+- AI chatbots
+- AI voice agents

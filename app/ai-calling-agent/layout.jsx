@@ -1,11 +1,13 @@
-export const metadata = {
-  title: 'AI Calling Agent That Captures Every Lead | VITESPACE',
-  description:
-    'Capture more revenue with a 24/7 AI calling agent that answers instantly, qualifies leads, books calls, and updates CRM.',
-  alternates: { canonical: '/ai-calling-agent' },
-  openGraph: { url: '/ai-calling-agent' },
-};
+import JsonLd from '@/components/JsonLd';
+import { createMetadata, pageSchemas, pages } from '@/lib/seo';
+
+export const metadata = createMetadata(pages.calling);
 
 export default function AICallingAgentLayout({ children }) {
-  return children;
+  return (
+    <>
+      <JsonLd data={pageSchemas(pages.calling)} />
+      {children}
+    </>
+  );
 }

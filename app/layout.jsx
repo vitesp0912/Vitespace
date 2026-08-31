@@ -3,83 +3,20 @@ import StructuredData from '@/components/StructuredData';
 import SiteFooter from '@/components/SiteFooter';
 import LogoReveal from '@/components/LogoReveal';
 import { Analytics } from '@vercel/analytics/react';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
-const siteName = 'VITESPACE';
-const siteDescription =
-  'Websites, apps, and software built to grow your business. Vitespace designs and builds digital solutions that help you attract customers and run your business better.';
-const siteTitle = `${siteName} | Websites, apps, and software built to grow your business`;
+import { SITE, createMetadata, pages } from '@/lib/seo';
 
 export const metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE.url),
+  ...createMetadata(pages.home, { root: true }),
   title: {
-    default: siteTitle,
-    template: `%s | ${siteName}`,
+    default: pages.home.title,
+    template: `%s | ${SITE.name}`,
   },
-  description: siteDescription,
-  keywords: [
-    'website development',
-    'web development services',
-    'CRM systems',
-    'customer relationship management',
-    'SEO services',
-    'search engine optimization',
-    'business automation',
-    'workflow automation',
-    'chatbots',
-    'AI chatbots',
-    'WhatsApp chatbots',
-    'digital solutions',
-    'performance marketing',
-    'Google Ads',
-    'Facebook Ads',
-    'custom software development',
-    'e-commerce websites',
-    'business websites',
-    'portfolio websites',
-    'booking websites',
-    'lead management',
-    'sales pipeline',
-    'business automation India',
-    'digital transformation',
-  ],
-  authors: [{ name: siteName, url: siteUrl }],
-  creator: siteName,
-  publisher: siteName,
-  applicationName: siteName,
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
-  },
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteUrl,
-    title: siteTitle,
-    description: siteDescription,
-    siteName: siteName,
-    images: [
-      {
-        url: `${siteUrl}/vitespacehero.png`,
-        width: 1200,
-        height: 630,
-        alt: `${siteName} - Websites, apps, and software built to grow your business`,
-        type: 'image/png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteTitle,
-    description: siteDescription,
-    creator: '@vitespace',
-    site: '@vitespace',
-    images: [`${siteUrl}/vitespacehero.png`],
   },
   robots: {
     index: true,
@@ -104,19 +41,12 @@ export const metadata = {
       { url: '/favicon_io%20(3)/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-  verification: {
-    // Add your verification codes here when available
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
-  },
-  category: 'Technology',
-  classification: 'Business Services',
+  category: 'Business Services',
   other: {
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black',
-    'apple-mobile-web-app-title': siteName,
+    'apple-mobile-web-app-title': SITE.name,
   },
 };
 
@@ -139,10 +69,6 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon_io%20(3)/apple-touch-icon.png" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="IN" />
-        <meta name="language" content="English" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="distribution" content="global" />
-        <meta name="rating" content="general" />
         <meta httpEquiv="content-language" content="en" />
         <StructuredData />
       </head>
@@ -150,7 +76,6 @@ export default function RootLayout({ children }) {
         <LogoReveal />
         {children}
         <SiteFooter />
-        {/* Vercel Analytics */}
         <Analytics />
       </body>
     </html>

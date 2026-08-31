@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vitespace.com';
+import { SITE } from '@/lib/seo';
 
 export default function robots() {
   return {
@@ -6,10 +6,21 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/dump/', '/our-work'],
+        disallow: [
+          '/api/',
+          '/dump',
+          '/dump/',
+          '/our-work',
+          '/our-work/',
+          '/solutions/digital-products',
+          '/solutions/growth',
+          '/solutions/automation',
+          '/solutions/chatbots',
+          '/solutions/voice',
+        ],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: `${SITE.url}/sitemap.xml`,
+    host: SITE.url,
   };
 }

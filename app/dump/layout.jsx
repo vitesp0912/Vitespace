@@ -1,4 +1,5 @@
 export const metadata = {
+  title: 'Internal',
   robots: {
     index: false,
     follow: false,
@@ -7,6 +8,7 @@ export const metadata = {
       index: false,
       follow: false,
       noimageindex: true,
+      nosnippet: true,
     },
   },
 };

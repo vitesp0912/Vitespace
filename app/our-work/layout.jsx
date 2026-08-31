@@ -1,17 +1,6 @@
-export const metadata = {
-  title: 'Work | VITESPACE',
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-      nosnippet: true,
-    },
-  },
-};
+import { createMetadata, pages } from '@/lib/seo';
+
+export const metadata = createMetadata(pages.work);
 
 export default function OurWorkLayout({ children }) {
   return children;

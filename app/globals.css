@@ -373,6 +373,115 @@
     width: 100%;
   }
 
+  .sol-product {
+    transition:
+      background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sol-product:hover {
+    background-color: rgba(255, 255, 255, 0.035);
+    transform: translateY(-2px);
+  }
+
+  .sol-product.sol-carousel-card:hover {
+    transform: scale(1.025);
+  }
+
+  .sol-catalog {
+    position: relative;
+  }
+
+  .sol-catalog::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: rgba(103, 232, 249, 0.4);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sol-catalog:hover::after {
+    transform: scaleX(1);
+  }
+
+  audio {
+    accent-color: rgb(103, 232, 249);
+  }
+
+  .suite-surface {
+    transition:
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease;
+  }
+
+  .suite-surface:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .suite-offer,
+  .suite-growth-row {
+    transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .suite-growth-row::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: rgba(103, 232, 249, 0.4);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .suite-growth-row:hover::after {
+    transform: scaleX(1);
+  }
+
+  @media (min-width: 640px) {
+    .suite-growth-row:hover {
+      padding-top: 2.15rem;
+      padding-bottom: 2.15rem;
+    }
+  }
+
+  .suite-link {
+    transition: color 0.3s ease;
+  }
+
+  .suite-wave {
+    animation: suite-wave 1.4s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  @keyframes suite-wave {
+    0%, 100% { transform: scaleY(0.72); }
+    50% { transform: scaleY(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .suite-surface:hover {
+      transform: none;
+    }
+
+    .suite-growth-row::after {
+      transition: none;
+    }
+
+    .suite-wave {
+      animation: none !important;
+    }
+  }
+
   .footer-mark {
     font-size: clamp(3.2rem, 14vw, 11rem);
     line-height: 0.85;
@@ -396,6 +505,10 @@
     }
 
     .industry-nav-row {
+      transition: none;
+    }
+
+    .sol-catalog::after {
       transition: none;
     }
   }

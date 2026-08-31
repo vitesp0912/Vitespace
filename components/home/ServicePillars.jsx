@@ -13,7 +13,7 @@ const pillars = [
     title: 'Build',
     line: 'Build the digital systems your business needs.',
     image: '/BUILD.png',
-    href: '/solutions/digital-infrastructure',
+    href: '/solutions#digital-products',
     services: [
       'Business websites',
       'Web & mobile apps',
@@ -28,7 +28,7 @@ const pillars = [
     title: 'Grow',
     line: 'We help more people find your business.',
     image: '/GROW.png',
-    href: '/solutions/growth-marketing',
+    href: '/solutions#growth',
     services: [
       'Search Engine Optimization',
       'Google Ads',
@@ -43,7 +43,7 @@ const pillars = [
     title: 'Automate',
     line: 'Systems that reduce repetitive work.',
     image: '/AUTOMATE.png',
-    href: '/solutions/ai-automation-systems',
+    href: '/solutions#automation',
     services: [
       'AI chatbots',
       'Voice agents',

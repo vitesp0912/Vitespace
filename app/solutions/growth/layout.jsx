@@ -1,12 +1,12 @@
 import JsonLd from '@/components/JsonLd';
 import { createMetadata, pageSchemas, pages } from '@/lib/seo';
 
-export const metadata = createMetadata(pages.about);
+export const metadata = createMetadata(pages.growth);
 
-export default function AboutLayout({ children }) {
+export default function GrowthLayout({ children }) {
   return (
     <>
-      <JsonLd data={pageSchemas(pages.about)} />
+      <JsonLd data={pageSchemas(pages.growth)} />
       {children}
     </>
   );

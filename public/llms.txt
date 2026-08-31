@@ -1,36 +1,26 @@
-# llms.txt - Information for AI/LLM crawlers about VITESPACE
+# llms.txt for Vitespace
 
-# Site Information
-Name: VITESPACE
-Description: Digital solutions provider offering websites, CRM systems, SEO, automation, and chatbots for businesses
+Name: Vitespace
+Description: Vitespace designs and builds websites, apps, custom software, marketing and automation for growing businesses.
 URL: https://vitespace.com
 Language: en
 
-# Contact Information
-Contact: vitespace5@gmail.com
-Phone: +91 8700117495
+# Contact
+Contact: support@vitespace.com
 
-# Services Offered
-Services:
-- Website Development (Static, Dynamic, E-commerce, Custom Web Applications)
-- SEO (On-Page, Technical, Off-Page, Local SEO, Keyword Research)
-- Performance Marketing (Google Ads, Meta Ads, Conversion Tracking)
-- CRM & Automation Systems (Custom CRM, Lead Management, Workflow Automation)
-- AI & Rule-Based Chatbots (WhatsApp, Website, Lead Qualification)
-- Customised Software Solutions
+# What Vitespace builds
+- Websites, web applications, mobile apps and custom software
+- Business systems, ERPs, dashboards and internal tools
+- SEO, Google Ads, Meta Ads, brand and offline marketing
+- Business automation
+- AI chatbots for websites and WhatsApp
+- AI voice agents for calls, qualification and bookings
 
-# Business Information
-Industry: Digital Services / Web Development / Business Automation
-Target Audience: Small and Mid-Size Businesses
-Location: India
+# Audience
+Growing businesses that need a website, app, software, marketing or automation.
 
-# Key Features
-- End-to-end digital solutions
-- No complexity approach
-- Clear communication
-- Everything handled
-- Long-term partnership
+# Location
+India
 
-# Last Updated
-Last-Modified: 2025-01-01
-
+# Last updated
+2026-08-31

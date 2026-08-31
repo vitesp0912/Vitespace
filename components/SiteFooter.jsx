@@ -10,11 +10,11 @@ export default function SiteFooter() {
   ];
 
   const solutions = [
-    { label: 'AI Voice Agents', href: '/solutions/ai-voice-agents' },
-    { label: 'AI Chatbots', href: '/solutions/ai-chatbots' },
-    { label: 'Automation', href: '/solutions/ai-automation-systems' },
-    { label: 'Digital infrastructure', href: '/solutions/digital-infrastructure' },
-    { label: 'Growth marketing', href: '/solutions/growth-marketing' },
+    { label: 'Digital products', href: '/solutions#digital-products' },
+    { label: 'Growth', href: '/solutions#growth' },
+    { label: 'Automation', href: '/solutions#automation' },
+    { label: 'Chatbots', href: '/solutions#automation' },
+    { label: 'Voice', href: '/solutions#automation' },
   ];
 
   return (
