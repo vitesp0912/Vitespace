@@ -61,7 +61,7 @@ export default function Navigation({ onMenuClick }) {
             alt="VITESPACE Logo"
             className="h-7 sm:h-8 md:h-10 w-auto"
           />
-          <div className="text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.16em] sm:tracking-wider text-white">
+          <div className="logo-word text-lg text-white sm:text-xl md:text-2xl">
             VITESPACE
           </div>
         </Link>
@@ -72,7 +72,7 @@ export default function Navigation({ onMenuClick }) {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              className={`relative text-sm tracking-tight transition-colors duration-300 ${
+              className={`relative text-sm uppercase tracking-[0.14em] transition-colors duration-300 ${
                 isActive(link.href)
                   ? 'text-white after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-px after:bg-white'
                   : 'text-white/55 hover:text-white'

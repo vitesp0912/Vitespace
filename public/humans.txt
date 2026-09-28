@@ -4,13 +4,13 @@ Contact: support@vitespace.com
 Location: India
 
 /* SITE */
-Last update: 2026/08/31
+Last update: 2026/09/29
 Standards: HTML5, CSS3, JavaScript
 Software: Next.js, React, Framer Motion
 
 /* SERVICES */
-- Website, app and custom software development
-- SEO, ads and growth marketing
+- Website, web app, mobile app and custom software development
+- SEO, Google Ads, Meta ads and offline marketing
 - Business automation
-- AI chatbots
-- AI voice agents
+- AI chatbots for website and WhatsApp
+- AI voice agents and an AI calling agent

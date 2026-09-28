@@ -498,7 +498,7 @@ function ProductCarousel({ onBuild }) {
               <h3 className="text-[1.45rem] sm:text-[1.75rem] font-semibold tracking-tight leading-[1.1] text-white/90 transition-colors duration-300 group-hover:text-white">
                 {item.title}
               </h3>
-              <p className="mt-3 text-[15px] sm:text-[16px] font-medium tracking-tight text-white/65 transition-colors duration-300 group-hover:text-white/85">
+              <p className="mt-3 text-[15px] sm:text-[16px] font-light tracking-tight text-white/65 transition-colors duration-300 group-hover:text-white/85">
                 {item.hook}
               </p>
               <p className="mt-2 home-body text-white/40 max-w-sm transition-colors duration-300 group-hover:text-white/55">
@@ -724,7 +724,7 @@ function GrowthBlock() {
                         className="overflow-hidden"
                       >
                         <div className="px-5 pb-5 sm:px-6 sm:pb-6 pl-[3.25rem] sm:pl-[3.5rem] pr-14">
-                          <p className="text-[14px] sm:text-[15px] font-medium tracking-tight text-white/70">
+                          <p className="text-[14px] sm:text-[15px] font-light tracking-tight text-white/70">
                             {item.hook}
                           </p>
                           <p className="mt-2 text-[13px] sm:text-[14px] leading-relaxed text-white/40">
@@ -797,7 +797,7 @@ function AutomationBlock({ onBuild }) {
                   <h3 className="text-[1.15rem] sm:text-[1.25rem] font-semibold tracking-tight text-white/90 transition-colors duration-300 group-hover:text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-[14px] sm:text-[15px] font-medium text-white/65 transition-colors duration-300 group-hover:text-white/80">
+                  <p className="mt-2 text-[14px] sm:text-[15px] font-light text-white/65 transition-colors duration-300 group-hover:text-white/80">
                     {item.hook}
                   </p>
                   <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-white/40 transition-colors duration-300 group-hover:text-white/55">

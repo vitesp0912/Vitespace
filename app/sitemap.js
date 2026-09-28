@@ -1,34 +1,26 @@
-import { SITE, pages } from '@/lib/seo';
+import { SITE, contentUpdated, indexablePages } from '@/lib/seo';
+
+const priorities = {
+  '/': 1,
+  '/solutions': 0.9,
+  '/ai-calling-agent': 0.8,
+  '/contact': 0.7,
+  '/about': 0.6,
+};
+
+const frequencies = {
+  '/': 'weekly',
+  '/solutions': 'weekly',
+  '/about': 'monthly',
+  '/contact': 'monthly',
+  '/ai-calling-agent': 'monthly',
+};
 
 export default function sitemap() {
-  const publicPages = [
-    pages.home,
-    pages.solutions,
-    pages.about,
-    pages.contact,
-    pages.calling,
-  ];
-
-  const priorities = {
-    '/': 1.0,
-    '/solutions': 0.95,
-    '/about': 0.7,
-    '/contact': 0.85,
-    '/ai-calling-agent': 0.75,
-  };
-
-  const frequencies = {
-    '/': 'weekly',
-    '/solutions': 'weekly',
-    '/about': 'monthly',
-    '/contact': 'monthly',
-    '/ai-calling-agent': 'monthly',
-  };
-
-  return publicPages.map((page) => ({
+  return indexablePages().map((page) => ({
     url: page.path === '/' ? SITE.url : `${SITE.url}${page.path}`,
-    lastModified: new Date(),
-    changeFrequency: frequencies[page.path],
-    priority: priorities[page.path],
+    lastModified: contentUpdated,
+    changeFrequency: frequencies[page.path] || 'monthly',
+    priority: priorities[page.path] ?? 0.5,
   }));
 }

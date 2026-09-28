@@ -72,7 +72,7 @@ export default function LogoReveal() {
 
             <div className="overflow-hidden mt-5">
               <motion.p
-                className="text-white font-medium tracking-[0.32em] text-sm sm:text-base"
+                className="logo-word text-sm text-white sm:text-base"
                 initial={{ y: '120%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.75, delay: 0.28, ease }}

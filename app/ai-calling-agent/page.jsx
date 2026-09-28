@@ -204,7 +204,7 @@ export default function AICallingAgentPage() {
               ))}
             </div>
             <motion.p
-              className="text-sm sm:text-base md:text-lg text-white/90 font-medium text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
+              className="text-sm sm:text-base md:text-lg text-white/90 font-light text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.4 }}
@@ -387,7 +387,7 @@ export default function AICallingAgentPage() {
               </table>
             </motion.div>
             <motion.p
-              className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-white/90 font-medium text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
+              className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-white/90 font-light text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.3 }}
@@ -464,7 +464,7 @@ export default function AICallingAgentPage() {
               ))}
             </div>
             <motion.p
-              className="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg text-white/90 font-medium text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
+              className="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg text-white/90 font-light text-center max-w-2xl mx-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-cyan-400/10 border border-cyan-400/20"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.3 }}

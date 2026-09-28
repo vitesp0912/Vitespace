@@ -2,35 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { faqs } from '@/lib/seo';
 
 const ease = [0.16, 1, 0.3, 1];
-
-const faqs = [
-  {
-    q: 'How long does a project take?',
-    a: 'Most websites and tools ship in 15 to 20 days. Bigger software takes longer. We tell you the date before we start.',
-  },
-  {
-    q: 'What do you actually build?',
-    a: 'We build business websites, mobile apps, custom software, ERPs, CRMs, dashboards and other digital systems. We also provide SEO, Google Ads, Meta Ads, offline marketing and automation.',
-  },
-  {
-    q: 'Do we own the work?',
-    a: 'Yes. Once the agreed project is fully paid for, you own the final website, software, design assets and business data created for your project, subject to any third-party licences.',
-  },
-  {
-    q: 'What do you need from us?',
-    a: "Mostly your business knowledge. We'll guide you through the information, content, access and decisions we need from your side before and during the project.",
-  },
-  {
-    q: 'Can you help after launch?',
-    a: 'Yes. We provide ongoing support, updates, improvements, marketing and additional development based on what your business needs.',
-  },
-  {
-    q: 'How much does it cost?',
-    a: 'It depends on the work. After a short call we send a clear number. No hourly fog.',
-  },
-];
 
 export default function FAQAccordion() {
   const [open, setOpen] = useState(0);

@@ -67,6 +67,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/favicon_io%20(3)/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon_io%20(3)/apple-touch-icon.png" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="IN" />
         <meta httpEquiv="content-language" content="en" />

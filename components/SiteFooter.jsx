@@ -10,11 +10,12 @@ export default function SiteFooter() {
   ];
 
   const solutions = [
-    { label: 'Digital products', href: '/solutions#digital-products' },
-    { label: 'Growth', href: '/solutions#growth' },
+    { label: 'All solutions', href: '/solutions' },
+    { label: 'Websites and software', href: '/solutions#digital-products' },
+    { label: 'SEO and ads', href: '/solutions#growth' },
     { label: 'Automation', href: '/solutions#automation' },
-    { label: 'Chatbots', href: '/solutions#automation' },
-    { label: 'Voice', href: '/solutions#automation' },
+    { label: 'AI chatbots', href: '/solutions#automation' },
+    { label: 'AI voice agents', href: '/solutions#automation' },
   ];
 
   return (
@@ -33,7 +34,7 @@ export default function SiteFooter() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
               <img src="/logo.png" alt="VITESPACE" className="h-10 sm:h-11 w-auto" />
-              <span className="text-white text-xl sm:text-2xl font-medium tracking-[0.18em]">
+              <span className="logo-word text-xl text-white sm:text-2xl">
                 VITESPACE
               </span>
             </Link>

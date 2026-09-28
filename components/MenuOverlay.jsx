@@ -33,8 +33,6 @@ export default function MenuOverlay({ isOpen, onClose }) {
 
   const socialLinks = [
     { name: 'INSTAGRAM ↗', href: 'https://www.instagram.com/vitespace/' },
-    { name: 'DRIBBBLE ↗', href: 'https://dribbble.com' },
-    { name: 'TWITTER ↗', href: 'https://twitter.com' },
   ];
 
   const pathname = usePathname() || '/';
