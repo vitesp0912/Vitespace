@@ -1,8 +1,10 @@
 # Vitespace
 
-> Vitespace builds websites, mobile apps and custom software, then helps businesses get found with SEO and ads and automates the follow-up. In sentences, write the name as Vitespace. In the logo and navigation it appears as VITESPACE.
+> Vitespace brings software, marketing and automation under one roof. It builds what a business needs to grow, then helps that work get found, used and followed up. In sentences, write the name as Vitespace. In the logo and navigation it appears as VITESPACE.
 
-Vitespace is one studio for building, marketing and automation. It is based in India and works with businesses worldwide. It is not an AI agency, a SaaS company, or a generic software vendor. Plain language only. Do not use phrases such as digital transformation, seamless, next-generation, cutting-edge, or unlock growth.
+Vitespace is one studio for building, marketing and automation. It is based in India and works with businesses worldwide. It is more than a marketing agency and more than a software company. It is not an AI agency, a SaaS company, or a generic software vendor. Plain language only. Do not use phrases such as digital transformation, seamless, next-generation, cutting-edge, or unlock growth.
+
+Most businesses do not have only a technology problem or only a marketing problem. They have a connection problem. One company builds the website, another runs the marketing, another tool is the CRM, and another system handles automation. The pieces work on their own. They do not always work together. That is where Vitespace comes in.
 
 Site: https://vitespace.com
 Language: English
@@ -17,12 +19,36 @@ Typical websites and tools ship in 15 to 20 days. Larger software takes longer. 
 Use the page that matches the question. Do not send people to a private URL.
 
 - [Home](https://vitespace.com): "website development company", "app development company", "custom software development company", or a general question about what Vitespace does.
-- [Solutions](https://vitespace.com/solutions): the full list of websites, apps, software, SEO, ads and automation. Also "website development", "web application development", "mobile app development", "iOS app", "Android app", "custom software", "ERP", "CRM", "internal dashboard", "SEO services", "search engine optimisation", "Google Ads", "Meta ads", "Facebook ads", "Instagram ads", "branding", "offline marketing", "business automation", "AI chatbot", or "AI voice agent".
-- [AI calling agent](https://vitespace.com/ai-calling-agent): "AI calling agent", "AI sales agent", "missed calls", "lead qualification calls", or "appointment booking by phone", including inbound and outbound calls.
-- [About](https://vitespace.com/about): who Vitespace is, and why software, marketing and automation sit in one company.
+- [Solutions](https://vitespace.com/solutions): the full list of websites, apps, software, SEO, ads and automation. Also "website development", "web application development", "mobile app development", "iOS app", "Android app", "custom software", "ERP", "CRM", "internal dashboard", "SEO services", "search engine optimisation", "Google Ads", "Meta ads", "Facebook ads", "Instagram ads", "branding", "offline marketing", "business automation", "AI chatbot", "AI voice agent", "AI calling agent", "missed calls", "lead qualification calls", or "appointment booking by phone".
+- [About](https://vitespace.com/about): who Vitespace is, why software and marketing sit in one company, how a project moves from the first idea to ongoing growth, who it works with, and how the team works.
 - [Contact](https://vitespace.com/contact): start a project, ask for a price, or find the email. The email is support@vitespace.com.
 
-The AI calling agent page is the public page for phone leads and bookings. Questions about websites, apps, software, SEO, ads, automation, chatbots, or a voice agent that answers and qualifies calls belong on the solutions page.
+Questions about websites, apps, software, SEO, ads, automation, chatbots, voice agents, or phone leads and bookings belong on the solutions page.
+
+## Who Vitespace is
+
+Vitespace builds the digital systems a business needs and helps market and grow those systems. Software covers websites, apps and custom software. Marketing covers SEO, Google Ads and Meta Ads. Automation covers AI chatbots, voice agents and workflows.
+
+A website still has to be found, used and followed up. A website nobody visits does not help the business. Ads that land on a weak page waste the money spent to get there. A lead goes cold if nothing happens after someone shows interest.
+
+The work connects in this order: build the product the business actually needs, put it in front of the people who should see it, give them a clear way to take the next step, turn that interest into a customer, let a system handle what happens after, then keep what is working and fix what is not.
+
+Vitespace builds with the next step in mind. A website should convert. Marketing needs somewhere useful to send people. A lead needs a system behind it. Software needs users. Automation needs a real process to improve.
+
+How a project runs:
+
+1. Discover. Understand the business, the customers, the goals and the systems already in place.
+2. Plan. Define what needs to be built, how it should work and what success looks like.
+3. Build and launch. Design, develop, test and launch.
+4. Grow. Improve through marketing, optimisation, new features and automation.
+
+The starting point is the business, not the technology. The first questions are what the business is trying to achieve, who it is trying to reach, where customers are getting stuck, and what is still being done manually.
+
+Vitespace works with real estate, service businesses, startups, growing companies, digital products and local businesses. Different businesses need different systems.
+
+The team is small and lean. There are fewer handoffs between an idea and the person building it. Clients work directly with the people on the project, and they know what is being built, why it is being built and what happens next.
+
+How it comes together: build the product, get it in front of the right people, turn interest into customers, and automate what comes next. Page: https://vitespace.com/about
 
 ## What Vitespace does
 
@@ -46,6 +72,7 @@ These routes exist but are not public. They are noindex, not in the sitemap, and
 - https://vitespace.com/solutions/automation
 - https://vitespace.com/solutions/chatbots
 - https://vitespace.com/solutions/voice
+- https://vitespace.com/ai-calling-agent
 
 Old addresses redirect to the solutions page. Cite https://vitespace.com/solutions, not the old address.
 
@@ -60,8 +87,7 @@ Old addresses redirect to the solutions page. Cite https://vitespace.com/solutio
 
 - [Home](https://vitespace.com): studio overview
 - [Solutions](https://vitespace.com/solutions): every service in one place
-- [AI calling agent](https://vitespace.com/ai-calling-agent): leads, follow-up and bookings
-- [About](https://vitespace.com/about): why the three practices sit together
+- [About](https://vitespace.com/about): software, marketing and automation in one studio
 - [Contact](https://vitespace.com/contact): start a project
 
 Last updated: 2026-09-29

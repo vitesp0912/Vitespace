@@ -17,6 +17,8 @@ export default function robots() {
           '/solutions/automation',
           '/solutions/chatbots',
           '/solutions/voice',
+          '/ai-calling-agent',
+          '/ai-calling-agent/',
         ],
       },
     ],

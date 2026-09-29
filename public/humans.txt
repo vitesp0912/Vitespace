@@ -13,4 +13,4 @@ Software: Next.js, React, Framer Motion
 - SEO, Google Ads, Meta ads and offline marketing
 - Business automation
 - AI chatbots for website and WhatsApp
-- AI voice agents and an AI calling agent
+- AI voice agents
