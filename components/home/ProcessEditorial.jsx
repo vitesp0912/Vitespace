@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -67,7 +67,46 @@ function SectionIntro({ className = '' }) {
   );
 }
 
+function layoutCenter(el, root) {
+  const point = {
+    x: el.offsetLeft + el.offsetWidth / 2,
+    y: el.offsetTop + el.offsetHeight / 2,
+    r: el.offsetWidth / 2,
+  };
+  let node = el.offsetParent;
+
+  while (node && node !== root) {
+    point.x += node.offsetLeft;
+    point.y += node.offsetTop;
+    node = node.offsetParent;
+  }
+
+  return point;
+}
+
+function stepRoute(points) {
+  let d = `M ${points[0].x} ${points[0].y}`;
+
+  for (let i = 0; i < points.length - 1; i += 1) {
+    const a = points[i];
+    const b = points[i + 1];
+    const mx = (a.x + b.x) / 2;
+    const my = (a.y + b.y) / 2;
+    const sign = i % 2 === 0 ? 1 : -1;
+    d += ` Q ${mx} ${my + sign * 36} ${b.x} ${b.y}`;
+  }
+
+  return d;
+}
+
 export default function ProcessEditorial() {
+  const reduce = useReducedMotion();
+  const routeRef = useRef(null);
+  const circleRefs = useRef([]);
+  const [route, setRoute] = useState('');
+  const [points, setPoints] = useState([]);
+  const [frame, setFrame] = useState({ w: 0, h: 0 });
+  const routeInView = useInView(routeRef, { amount: 0.45 });
   const [active, setActive] = useState(0);
   const scrollerRef = useRef(null);
 
@@ -78,6 +117,27 @@ export default function ProcessEditorial() {
     if (!width) return;
     const next = Math.round(el.scrollLeft / width);
     setActive(Math.min(steps.length - 1, Math.max(0, next)));
+  }, []);
+
+  useLayoutEffect(() => {
+    const root = routeRef.current;
+    if (!root) return undefined;
+
+    const measure = () => {
+      const box = root.getBoundingClientRect();
+      const next = circleRefs.current.filter(Boolean).map((el) => layoutCenter(el, root));
+      if (next.length === 4 && box.width > 0 && box.height > 0) {
+        setPoints(next);
+        setRoute(stepRoute(next));
+        setFrame({ w: box.width, h: box.height });
+      }
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(root);
+    document.fonts?.ready.then(measure);
+    return () => observer.disconnect();
   }, []);
 
   const goTo = (index) => {
@@ -140,35 +200,63 @@ export default function ProcessEditorial() {
         <div className="hidden lg:block">
           <SectionIntro className="mb-16 xl:mb-20" />
 
-          <div className="grid grid-cols-4 gap-8 xl:gap-10">
+          <div ref={routeRef} className="relative">
+            {route && (
+              <svg
+                viewBox={`0 0 ${frame.w} ${frame.h}`}
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
+                aria-hidden
+              >
+                <defs>
+                  <mask id="home-process-route-mask">
+                    <rect x="0" y="0" width={frame.w} height={frame.h} fill="white" />
+                    {points.map((point) => (
+                      <circle key={`${point.x}-${point.y}`} cx={point.x} cy={point.y} r={point.r - 0.5} fill="black" />
+                    ))}
+                  </mask>
+                </defs>
+                <g mask="url(#home-process-route-mask)">
+                  <path d={route} fill="none" stroke="rgba(103,232,249,0.16)" strokeWidth="6" strokeLinecap="round" />
+                  <path d={route} fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.15" strokeLinecap="round" />
+                  {!reduce && routeInView && [0, 1, 2].map((i) => (
+                    <path
+                      key={`${route}-${i}`}
+                      d="M -10 -3.6 L 1.2 0 L -10 3.6"
+                      fill="none"
+                      stroke="#67e8f9"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <animateMotion
+                        dur="7.5s"
+                        begin={`${-i * 2.5}s`}
+                        repeatCount="indefinite"
+                        rotate="auto"
+                        path={route}
+                      />
+                    </path>
+                  ))}
+                </g>
+              </svg>
+            )}
+          <div className="relative z-10 grid grid-cols-4 gap-8 xl:gap-10">
             {steps.map((step, i) => {
-              const align = i === 0 ? 'left' : i === steps.length - 1 ? 'right' : 'center';
-              const lineClass = {
-                0: 'left-[18px] w-[calc(150%+2rem-18px)] xl:w-[calc(150%+2.5rem-18px)]',
-                1: 'left-1/2 w-[calc(100%+2rem)] xl:w-[calc(100%+2.5rem)]',
-                2: 'left-1/2 w-[calc(150%+2rem-18px)] xl:w-[calc(150%+2.5rem-18px)]',
-              }[i];
               return (
                 <motion.article
                   key={step.n}
-                  className={`group relative ${
-                    align === 'right' ? 'text-right' : align === 'center' ? 'text-center' : 'text-left'
-                  }`}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  className="group relative text-center"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: false, amount: 0.25 }}
                   transition={{ duration: 0.55, delay: i * 0.06, ease }}
                 >
-                  {lineClass && (
-                    <span
-                      className={`pointer-events-none absolute top-[18px] z-0 h-px bg-white/[0.10] ${lineClass}`}
-                      aria-hidden
-                    />
-                  )}
                   <span
-                    className={`relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.14] bg-black text-[11px] tabular-nums tracking-[0.12em] text-cyan-300/80 transition-colors duration-300 group-hover:border-cyan-300/40 ${
-                      align === 'right' ? 'ml-auto' : align === 'center' ? 'mx-auto' : ''
-                    }`}
+                    ref={(node) => {
+                      circleRefs.current[i] = node;
+                    }}
+                    className="relative z-10 mx-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.14] bg-black text-[11px] tabular-nums tracking-[0.12em] text-cyan-300/80 transition-colors duration-300 group-hover:border-cyan-300/40"
                   >
                     {step.n}
                   </span>
@@ -182,6 +270,7 @@ export default function ProcessEditorial() {
                 </motion.article>
               );
             })}
+          </div>
           </div>
         </div>
       </div>

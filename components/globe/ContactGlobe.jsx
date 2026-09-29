@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 import {
-  AdditiveBlending,
   AmbientLight,
   CanvasTexture,
   CatmullRomCurve3,
   Color,
+  ConeGeometry,
   DirectionalLight,
   FrontSide,
   Group,
@@ -28,13 +28,13 @@ import {
 
 const R = 1;
 const INDIA_POINT = { lat: 21.5, lon: 78.5 };
-const INDIA_FILL = '#22d3ee';
-const INDIA_EDGE = '#111111';
 const ARC_COLOR = '#ffffff';
 const DOT_COLOR = '#ffffff';
 const ORIGIN_COLOR = '#ffffff';
 const OCEAN = '#0b1f3a';
 const LAND = '#e8e4db';
+const INDIA_FILL = '#22d3ee';
+const INDIA_EDGE = '#111111';
 const BORDER = 'rgba(68, 78, 86, 0.28)';
 const VIEW_CENTER = { lat: 23.6, lon: 78 };
 const REST = {
@@ -46,14 +46,12 @@ const SNAP_MS = 900;
 
 const ROUTES = [
   { id: 'uk', lat: 52.5, lon: -1.5, h: 0.085, bulge: -0.008, opacity: 0.8 },
-  { id: 'nigeria', lat: 9.6, lon: 7.5, h: 0.06, bulge: 0.005, opacity: 0.76 },
-  { id: 'southafrica', lat: -28.7, lon: 24.7, h: 0.075, bulge: 0.006, opacity: 0.78 },
   { id: 'usa', lat: 39.5, lon: -98.0, h: 0.12, bulge: 0.012, opacity: 0.8 },
+  { id: 'africa', lat: 2.2, lon: 18.5, h: 0.055, bulge: 0.004, opacity: 0.78 },
   { id: 'brazil', lat: -14.2, lon: -51.9, h: 0.11, bulge: -0.01, opacity: 0.78 },
   { id: 'siberia', lat: 61.0, lon: 105.0, h: 0.07, bulge: -0.01, opacity: 0.68 },
   { id: 'china', lat: 34.3, lon: 108.9, h: 0.045, bulge: 0.004, opacity: 0.74 },
-  { id: 'japan', lat: 36.2, lon: 138.2, h: 0.07, bulge: -0.008, opacity: 0.84 },
-  { id: 'philippines', lat: 12.4, lon: 122.0, h: 0.045, bulge: 0.005, opacity: 0.72 },
+  { id: 'southafrica', lat: -28.7, lon: 24.7, h: 0.078, bulge: 0.006, opacity: 0.78 },
   { id: 'australia', lat: -25.3, lon: 133.8, h: 0.085, bulge: -0.008, opacity: 0.82 },
 ];
 
@@ -198,6 +196,58 @@ function strokePolys(ctx, polys, w, h) {
   ctx.stroke();
 }
 
+const INDIA_ZOOM = 1.28;
+
+function scalePolys(polys, origin, scale) {
+  return polys.map((polygon) =>
+    polygon.map((ring) =>
+      ring.map(([lon, lat]) => [
+        origin.lon + (lon - origin.lon) * scale,
+        origin.lat + (lat - origin.lat) * scale,
+      ]),
+    ),
+  );
+}
+
+function polysCenter(polys) {
+  let minLon = Infinity;
+  let maxLon = -Infinity;
+  let minLat = Infinity;
+  let maxLat = -Infinity;
+  polys.forEach((polygon) => {
+    (polygon[0] || []).forEach(([lon, lat]) => {
+      if (lon < minLon) minLon = lon;
+      if (lon > maxLon) maxLon = lon;
+      if (lat < minLat) minLat = lat;
+      if (lat > maxLat) maxLat = lat;
+    });
+  });
+  if (!Number.isFinite(minLon)) return { lon: 78.5, lat: 22.5 };
+  return { lon: (minLon + maxLon) / 2, lat: (minLat + maxLat) / 2 };
+}
+
+function paintIndia(ctx, indiaPolys, claimPolys, w, h) {
+  const origin = polysCenter([...indiaPolys, ...claimPolys]);
+  const india = scalePolys(indiaPolys, origin, INDIA_ZOOM);
+  const claims = scalePolys(claimPolys, origin, INDIA_ZOOM);
+
+  ctx.fillStyle = INDIA_FILL;
+  fillPolys(ctx, india, w, h, 'evenodd');
+  fillPolys(ctx, claims, w, h, 'nonzero');
+
+  ctx.strokeStyle = INDIA_EDGE;
+  ctx.lineWidth = Math.max(3.45, w / 1180);
+  const indiaFeatures = [
+    ...india.map((coordinates) => ({ geometry: { type: 'Polygon', coordinates } })),
+    ...claims.map((coordinates) => ({ geometry: { type: 'Polygon', coordinates } })),
+  ];
+  strokeDissolvedOutline(ctx, indiaFeatures, w, h);
+
+  ctx.fillStyle = INDIA_FILL;
+  fillPolys(ctx, india, w, h, 'evenodd');
+  fillPolys(ctx, claims, w, h, 'nonzero');
+}
+
 function makeGlobeTexture(countriesGeo, indiaFeature, disputedGeo, size) {
   const w = size;
   const h = size / 2;
@@ -251,23 +301,7 @@ function makeGlobeTexture(countriesGeo, indiaFeature, disputedGeo, size) {
   strokeDissolvedOutline(ctx, europeFeatures, w, h);
 
   const claimPolys = (disputedGeo?.features || []).flatMap((feature) => polygonsOf(feature.geometry));
-  const indiaUnion = [...indiaPolys, ...claimPolys];
-
-  ctx.fillStyle = INDIA_FILL;
-  fillPolys(ctx, indiaPolys, w, h, 'evenodd');
-  fillPolys(ctx, claimPolys, w, h, 'nonzero');
-
-  ctx.strokeStyle = INDIA_FILL;
-  ctx.lineWidth = Math.max(3.2, w / 1100);
-  strokePolys(ctx, indiaUnion, w, h);
-
-  ctx.strokeStyle = INDIA_EDGE;
-  ctx.lineWidth = Math.max(4.2, w / 980);
-  strokePolys(ctx, indiaUnion, w, h);
-
-  ctx.fillStyle = INDIA_FILL;
-  fillPolys(ctx, indiaPolys, w, h, 'evenodd');
-  fillPolys(ctx, claimPolys, w, h, 'nonzero');
+  paintIndia(ctx, indiaPolys, claimPolys, w, h);
 
   const texture = new CanvasTexture(canvas);
   texture.colorSpace = SRGBColorSpace;
@@ -291,7 +325,7 @@ function slerpSegment(from, to, height, bulge, steps) {
   }
   axis.divideScalar(axisLen);
   const angle = Math.acos(Math.min(1, Math.max(-1, a.dot(b))));
-  const peak = Math.min(0.12, 0.016 + height * (0.22 + 0.78 * (angle / Math.PI)));
+  const peak = Math.min(0.17, (0.016 + height * (0.22 + 0.78 * (angle / Math.PI))) * 1.28);
   const q = new Quaternion();
   for (let i = 0; i <= steps; i += 1) {
     const t = i / steps;
@@ -309,10 +343,10 @@ function makeArcCurve(from, to, height, bulge) {
   return new CatmullRomCurve3(slerpSegment(from, to, height, bulge, 96));
 }
 
-function makeRouteMaterial(opacity) {
+function makeRouteMaterial(opacity, color = ARC_COLOR) {
   return new ShaderMaterial({
     uniforms: {
-      uColor: { value: new Color(ARC_COLOR) },
+      uColor: { value: new Color(color) },
       uOpacity: { value: opacity },
       uBoost: { value: 1 },
     },
@@ -382,14 +416,14 @@ export default function ContactGlobe() {
       const isMobile = window.matchMedia('(max-width: 640px)').matches;
       const texSize = isMobile ? 2048 : 4096;
       const routeList = isMobile
-        ? ROUTES.filter((r) => ['uk', 'southafrica', 'usa', 'brazil', 'japan', 'australia'].includes(r.id))
+        ? ROUTES.filter((r) => ['uk', 'africa', 'usa', 'brazil', 'australia'].includes(r.id))
         : ROUTES;
 
       const { texture } = makeGlobeTexture(countriesGeo, indiaFeature, disputedGeo, texSize);
 
       const scene = new Scene();
       const camera = new PerspectiveCamera(33, 1, 0.1, 20);
-      camera.position.set(0, 0.08, 3.58);
+      camera.position.set(0, 0.08, 3.92);
 
       let renderer;
       try {
@@ -430,6 +464,9 @@ export default function ContactGlobe() {
 
       const worldPos = new Vector3();
       const zAxis = new Vector3(0, 0, 1);
+      const arrowUp = new Vector3(0, 1, 0);
+      const travelDir = new Vector3();
+      const travelAhead = new Vector3();
       const raycaster = new Raycaster();
       const pointer = new Vector2();
       const hoverables = [];
@@ -479,12 +516,11 @@ export default function ContactGlobe() {
         earth.add(halo);
 
         const traveler = new Mesh(
-          new SphereGeometry(0.01, 10, 10),
+          new ConeGeometry(0.009, 0.036, 7),
           new MeshBasicMaterial({
-            color: '#ffffff',
+            color: ARC_COLOR,
             transparent: true,
-            opacity: 0.95,
-            blending: AdditiveBlending,
+            opacity: 1,
             depthWrite: false,
           }),
         );
@@ -641,12 +677,8 @@ export default function ContactGlobe() {
         spin.updateMatrixWorld();
         earth.updateMatrixWorld();
 
-        const slot = 5.4;
-        const n = routes.length;
-        const phase = reduce ? 0 : time / slot;
-        const active = Math.floor(phase) % n;
-        const next = (active + 1) % n;
-        const u = phase - Math.floor(phase);
+        const slot = 2.4;
+        const u = reduce ? 0 : (time / slot) % 1;
 
         if (!reduce) {
           const breathe = 0.5 + 0.5 * Math.sin(time * 0.85);
@@ -665,16 +697,19 @@ export default function ContactGlobe() {
           const haloScale = hovered === route.dest.id ? 1.35 : 0.9 + pulse * 0.25;
           route.halo.scale.setScalar(haloScale);
 
-          let travel = -1;
-          if (!reduce) {
-            if (i === active && u < 0.82) travel = u / 0.82;
-            else if (i === next && u > 0.58) travel = (u - 0.58) / 0.42;
-          }
+          const travel = reduce ? -1 : u;
           if (travel < 0) {
             route.traveler.visible = false;
           } else {
             const tt = travel * travel * (3 - 2 * travel);
-            route.traveler.position.copy(route.curve.getPoint(tt));
+            const point = route.curve.getPoint(tt);
+            const aheadT = Math.min(1, tt + 0.025);
+            route.curve.getPoint(aheadT, travelAhead);
+            travelDir.subVectors(travelAhead, point);
+            if (travelDir.lengthSq() < 1e-8) travelDir.set(0, 1, 0);
+            else travelDir.normalize();
+            route.traveler.position.copy(point);
+            route.traveler.quaternion.setFromUnitVectors(arrowUp, travelDir);
             route.traveler.updateMatrixWorld();
             route.traveler.getWorldPosition(worldPos);
             route.traveler.visible = worldPos.z > 0.12;
